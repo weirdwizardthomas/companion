@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Companion</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_companion">Companion</string>
+    <string name="title_spellbook">Spellbook</string>
+    <string name="title_companions_overview">Companions</string>
+    <string name="title_create_companion_1">Create a new companion</string>
+    <string name="title_edit_companion">Edit Companion</string>
+    <string name="title_create_companion_2">Create a new companion - Proficiencies</string>
+    <string name="title_create_companion_3">Create a new companion - Background</string>
+    <string name="title_companion_overview">Companions overview</string>
+
+    <string name="resetButtonLabel">Reset</string>
+
+    <string name="saving_throw_proficiencies">Saving throw proficiencies</string>
+    <string name="skill_proficiencies">Skill proficiencies</string>
+
+    <string name="attributeStrength">Strength</string>
+    <string name="attributeDexterity">Dexterity</string>
+    <string name="attributeConstitution">Constitution</string>
+    <string name="attributeIntelligence">Intelligence</string>
+    <string name="attributeWisdom">Wisdom</string>
+    <string name="attributeCharisma">Charisma</string>
+
+    <string name="skill_insight">Insight</string>
+    <string name="skill_acrobatics">Acrobatics</string>
+    <string name="skill_sleight_of_hand">Sleight of hand</string>
+    <string name="skill_stealth">Stealth</string>
+    <string name="skill_athletics">Athletics</string>
+    <string name="skill_arcana">Arcana</string>
+    <string name="skill_history">History</string>
+    <string name="skill_investigation">Investigation</string>
+    <string name="skill_nature">Nature</string>
+    <string name="skill_religion">Religion</string>
+    <string name="skill_animal_handling">Animal handling</string>
+    <string name="skill_medicine">Medicine</string>
+    <string name="skill_perception">Perception</string>
+    <string name="skill_survival">Survival</string>
+    <string name="skill_deception">Deception</string>
+    <string name="skill_intimidation">Intimidation</string>
+    <string name="skill_performance">Performance</string>
+    <string name="skill_persuasion">Persuasion</string>
+    <string name="background_label">Background</string>
+    <string name="background_hint">Enter your character\'s background</string>
+    <string name="alignment_label">Alignment</string>
+    <string name="personality_traits_label">Personality traits</string>
+    <string name="ideals_label">Ideals</string>
+    <string name="bonds_label">Bonds</string>
+    <string name="flaws_label">Flaws</string>
+</resources>

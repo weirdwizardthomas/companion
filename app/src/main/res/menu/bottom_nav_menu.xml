@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/companionFragment"
+        android:icon="@mipmap/d20_foreground"
+        android:title="@string/title_companion" />
+
+    <item
+        android:id="@+id/spellbookOverviewFragment"
+        android:icon="@drawable/ic_book_open_page_variant_black_24dp"
+        android:title="@string/title_spellbook" />
+
+    <item
+        android:id="@+id/companionsOverviewFragment"
+        android:icon="@drawable/ic_account_multiple_black_24dp"
+        android:title="@string/title_companions_overview"></item>
+
+</menu>

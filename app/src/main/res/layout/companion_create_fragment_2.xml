@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/saving_throw_proficiency_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/saving_throw_proficiencies"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider1"
+        style="@style/Divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saving_throw_proficiency_header" />
+
+    <TableLayout
+        android:id="@+id/saving_throws_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/strength_saving_throw_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeStrength" />
+
+            <CheckBox
+                android:id="@+id/constitution_saving_throw_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeConstitution" />
+
+            <CheckBox
+                android:id="@+id/dexterity_saving_throw_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeDexterity" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/wisdom_saving_throw_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeWisdom" />
+
+            <CheckBox
+                android:id="@+id/intelligence_saving_throw_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeIntelligence" />
+
+            <CheckBox
+                android:id="@+id/charisma_saving_throw_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeCharisma" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/skill_proficiencies_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skill_proficiencies"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saving_throws_table" />
+
+    <View
+        android:id="@+id/divider2"
+        style="@style/Divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
+
+    <TextView
+        android:id="@+id/strength_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeStrength"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
+
+    <CheckBox
+        android:id="@+id/athletics_skill_proficiency_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skill_athletics"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strength_skill_header" />
+
+    <TextView
+        android:id="@+id/dexterity_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeDexterity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/athletics_skill_proficiency_checkbox" />
+
+    <TableLayout
+        android:id="@+id/dexterity_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dexterity_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/acrobatics_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_acrobatics" />
+
+            <CheckBox
+                android:id="@+id/sleight_of_hand_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_sleight_of_hand" />
+
+            <CheckBox
+                android:id="@+id/stealth_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_stealth" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/intelligence_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeIntelligence"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dexterity_table" />
+
+    <TableLayout
+        android:id="@+id/intelligence_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intelligence_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/arcana_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_arcana" />
+
+            <CheckBox
+                android:id="@+id/history_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_history" />
+
+            <CheckBox
+                android:id="@+id/investigation_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_investigation" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/nature_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_nature" />
+
+            <CheckBox
+                android:id="@+id/religion_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_religion" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/wisdom_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeWisdom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intelligence_table" />
+
+    <TableLayout
+        android:id="@+id/wisdom_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wisdom_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/animal_handling_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_animal_handling" />
+
+            <CheckBox
+                android:id="@+id/insight_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_insight" />
+
+            <CheckBox
+                android:id="@+id/medicine_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_medicine" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/perception_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_perception" />
+
+            <CheckBox
+                android:id="@+id/survival_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_survival" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/charisma_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeCharisma"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wisdom_table" />
+
+    <TableLayout
+        android:id="@+id/charisma_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/charisma_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/deception_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_deception" />
+
+            <CheckBox
+                android:id="@+id/intimidation_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_intimidation" />
+
+            <CheckBox
+                android:id="@+id/performance_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_performance" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/persuasion_skill_proficiency_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skill_persuasion" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/reset_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/resetButtonLabel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/previous_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/charisma_table"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/previous_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_arrow_left_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/reset_button"
+        app:layout_constraintEnd_toStartOf="@+id/reset_button"
+        app:layout_constraintTop_toTopOf="@+id/reset_button" />
+
+    <ImageButton
+        android:id="@+id/next_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_arrow_right_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/reset_button"
+        app:layout_constraintStart_toEndOf="@+id/reset_button"
+        app:layout_constraintTop_toTopOf="@+id/reset_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
