@@ -22,7 +22,8 @@ public class CompanionRepository {
     }
 
     public void insert(Companion companion) {
-        new InsertCompanionAsyncTask(companionDAO).execute(companion);
+        companionDAO.insert(companion);
+        //new InsertCompanionAsyncTask(companionDAO).execute(companion);
     }
 
     public void update(Companion companion) {

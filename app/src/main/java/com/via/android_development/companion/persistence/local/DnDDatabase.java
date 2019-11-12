@@ -7,22 +7,23 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {Companion.class}, version = 1, exportSchema = false)
-@TypeConverters({Converters.class})
+//@TypeConverters({Converters.class})
 public abstract class DnDDatabase extends RoomDatabase {
+
     private static DnDDatabase instance;
 
     public abstract CompanionDAO companionDAO();
 
     public static synchronized DnDDatabase getInstance(Context context) {
         if (instance == null)
-            instance = Room.databaseBuilder(context, DnDDatabase.class, "dndb")
+            instance = Room.databaseBuilder(context.getApplicationContext(), DnDDatabase.class, "dndb")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
+
         return instance;
     }
 

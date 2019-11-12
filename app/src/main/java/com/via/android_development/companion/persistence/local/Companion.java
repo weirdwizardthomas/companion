@@ -1,34 +1,28 @@
 package com.via.android_development.companion.persistence.local;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Companion {
 
-    public static int DEATH_SAVING_THROWS = 3;
-    public static int MIN_LEVEL = 1;
-    public static int MAX_LEVEL = 20;
-    public static int BASE_ARMOUR_CLASS = 10;
-    public static int DEFAULT_ATTRIBUTE_VALUE = 10;
+    public final static int DEATH_SAVING_THROWS = 3;
+    public final static int MIN_LEVEL = 1;
+    public final static int MAX_LEVEL = 20;
+    public final static int BASE_ARMOUR_CLASS = 10;
+    public final static int DEFAULT_ATTRIBUTE_VALUE = 10;
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    //top stats
     private String name;
-    private List<String> classes;
+    //private List<String> classes;
     private int totalLevel;
     private String race;
     private String alignment;
     private int xp;
 
-    //stats
     private int strength;
     private int dexterity;
     private int constitution;
@@ -36,18 +30,15 @@ public class Companion {
     private int wisdom;
     private int charisma;
 
-    //combat
-
     //armor class is based on armour, shield & dex modifier
     //private int armorClass;
     //initiative is equal to dex modifier
     //private int initiative;
     private int speed;
 
-    //Proficiencies
     private int proficiencyBonus;
-    private Set<String> savingThrowProficiencies;
-    private Set<String> skillProficiencies;
+    //private Set<String> savingThrowProficiencies;
+    //private Set<String> skillProficiencies;
 
     private int hitpoints;
     private int maximalHitpoints;
@@ -56,11 +47,9 @@ public class Companion {
     private int hitDiceMaximum;
     private int hitDiceRemaining; //number of hit dice available to roll
 
-    //Death saving throws;
     private int deathSaveSuccesses;
     private int deathSaveFailures;
 
-    //Personality
     private String personalityTraits;
     private String ideals;
     private String bonds;
@@ -69,9 +58,10 @@ public class Companion {
     public Companion() {
     }
 
+    @Ignore
     public Companion(String name) {
         this.name = name;
-        classes = new ArrayList<>();
+        //classes = new ArrayList<>();
         totalLevel = MIN_LEVEL;
         race = "Human"; //TODO change to value from enum
         alignment = "True neutral"; ///TODO change to value from enum
@@ -87,8 +77,8 @@ public class Companion {
         speed = 30;
 
         proficiencyBonus = 2;
-        savingThrowProficiencies = new HashSet<>();
-        skillProficiencies = new HashSet<>();
+        //savingThrowProficiencies = new HashSet<>();
+        //skillProficiencies = new HashSet<>();
 
         hitpoints = 0;
         maximalHitpoints = 0;
@@ -123,14 +113,14 @@ public class Companion {
         this.name = name;
     }
 
-    public List<String> getClasses() {
+    /*public List<String> getClasses() {
         return classes;
     }
 
     public void setClasses(List<String> classes) {
         this.classes = classes;
     }
-
+*/
     public int getTotalLevel() {
         return totalLevel;
     }
@@ -227,22 +217,22 @@ public class Companion {
         this.proficiencyBonus = proficiencyBonus;
     }
 
-    public Set<String> getSavingThrowProficiencies() {
-        return savingThrowProficiencies;
-    }
+    /*  public Set<String> getSavingThrowProficiencies() {
+          return savingThrowProficiencies;
+      }
 
-    public void setSavingThrowProficiencies(Set<String> savingThrowProficiencies) {
-        this.savingThrowProficiencies = savingThrowProficiencies;
-    }
+      public void setSavingThrowProficiencies(Set<String> savingThrowProficiencies) {
+          this.savingThrowProficiencies = savingThrowProficiencies;
+      }
 
-    public Set<String> getSkillProficiencies() {
-        return skillProficiencies;
-    }
+      public Set<String> getSkillProficiencies() {
+          return skillProficiencies;
+      }
 
-    public void setSkillProficiencies(Set<String> skillProficiencies) {
-        this.skillProficiencies = skillProficiencies;
-    }
-
+      public void setSkillProficiencies(Set<String> skillProficiencies) {
+          this.skillProficiencies = skillProficiencies;
+      }
+  */
     public int getHitpoints() {
         return hitpoints;
     }
