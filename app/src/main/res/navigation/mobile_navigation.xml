@@ -9,7 +9,7 @@
         android:id="@+id/companionFragment"
         android:name="com.via.android_development.companion.ui.companion.CompanionFragment"
         android:label="@string/title_companion"
-        tools:layout="@layout/fragment_companion" >
+        tools:layout="@layout/companion_fragment" >
         <argument
             android:name="id"
             app:argType="integer" />
@@ -19,13 +19,13 @@
         android:id="@+id/spellbookOverviewFragment"
         android:name="com.via.android_development.companion.ui.spellbook.SpellbookFragment"
         android:label="@string/title_spellbook"
-        tools:layout="@layout/fragment_spellbook" />
+        tools:layout="@layout/spellbook_fragment" />
 
     <fragment
         android:id="@+id/companionsOverviewFragment"
         android:name="com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment"
         android:label="@string/title_companion_overview"
-        tools:layout="@layout/companion_overview">
+        tools:layout="@layout/companion_overview_fragment">
         <action
             android:id="@+id/overviewToCompanionEditAction"
             app:destination="@id/companionEditFragment" />

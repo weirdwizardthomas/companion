@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/companionFragment"
-        android:icon="@mipmap/d20_foreground"
+        android:icon="@drawable/ic_dice_d20_outline_black_24dp"
         android:title="@string/title_companion" />
 
     <item
