@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_companion"
+    android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/dividerHorizontal"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/race_and_profession" />
+
+        <View
+            android:id="@+id/dividerHorizontal2"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTable" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/race_and_profession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameTextView" />
+
+        <Switch
+            android:id="@+id/stats_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@+id/stats_switch_label"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+        <TableLayout
+            android:id="@+id/statsTable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stats_switch">
+
+            <!--TODO a switch button to swap between abilities and their modifiers -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/strength"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/attributeStrength"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/dexterity"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attributeDexterity"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/constitution"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attributeConstitution"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/intelligence"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attributeIntelligence"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/wisdom"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attributeWisdom"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/charisma"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attributeCharisma"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/general_stats_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerHorizontal2">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/hitpoints_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_heart_black_36dp" />
+
+                    <TextView
+                        android:id="@+id/hitpoints_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/hitpoints" />
+
+                    <TextView
+                        android:id="@+id/hitpoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/temporary_hitpoints_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_heart_half_full_black_36dp" />
+
+                    <TextView
+                        android:id="@+id/temporary_hitpoints_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/temporary_hitpoints" />
+
+                    <TextView
+                        android:id="@+id/temporary_hitpoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/armour_class_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_shield_half_full_black_36dp" />
+
+                    <TextView
+                        android:id="@+id/armour_class_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/armour_class" />
+
+                    <TextView
+                        android:id="@+id/armour_class_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/speed_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_run_black_36dp" />
+
+                    <TextView
+                        android:id="@+id/speed_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/speed" />
+
+                    <TextView
+                        android:id="@+id/speed_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="" />
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/ic_sword_cross_black_36dp" />
+
+                    <TextView
+                        android:id="@+id/initiative_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/initiative" />
+
+                    <TextView
+                        android:id="@+id/initiative_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="" />
+
+                </LinearLayout>
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/skill_proficiencies_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skills"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/general_stats_table" />
+
+        <View
+            android:id="@+id/divider2"
+            style="@style/Divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
+
+        <TextView
+            android:id="@+id/strength_skill_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attributeStrength"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
+
+        <Button
+            android:id="@+id/athletics"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="@string/skillsAthletics"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/strength_skill_header" />
+
+        <TextView
+            android:id="@+id/dexterity_skill_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attributeDexterity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/athletics" />
+
+        <TableLayout
+            android:id="@+id/dexterity_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dexterity_skill_header">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/acrobatics"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsAcrobatics"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/sleightOfHand"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsSleightOfHand"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/stealth"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsStealth"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/intelligence_skill_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attributeIntelligence"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dexterity_table" />
+
+        <TableLayout
+            android:id="@+id/intelligence_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/intelligence_skill_header">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/arcana"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsArcana"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/history"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsHistory"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/investigation"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsInvestigation"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/nature"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsNature"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/religion"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsReligion"
+                    android:textAllCaps="false" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/wisdom_skill_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attributeWisdom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/intelligence_table" />
+
+        <TableLayout
+            android:id="@+id/wisdom_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wisdom_skill_header">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/animalHandling"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsAnimalHandling"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/insight"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsInsight"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/medicine"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsMedicine"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/perception"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsPerception"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/survival"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsSurvival"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/charisma_skill_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attributeCharisma"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wisdom_table" />
+
+        <TableLayout
+            android:id="@+id/charisma_table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/charisma_skill_header">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/deception"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsDeception"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/intimidation"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsIntimidation"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/performance"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsPerformance"
+                    android:textAllCaps="false" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/persuasion"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:text="@string/skillsPersuasion"
+                    android:textAllCaps="false" />
+
+            </TableRow>
+
+        </TableLayout>
+        <!-- TODO SET BOTTOM PADDING OF THE VIEW EQUAL TO THE HEIGHT OF THE BOTTOM NAVIGATION-->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/charisma_table" />
+
+        <TextView
+            android:id="@+id/stats_switch_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show modifiers"
+            app:layout_constraintBottom_toBottomOf="@+id/stats_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/stats_switch" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
