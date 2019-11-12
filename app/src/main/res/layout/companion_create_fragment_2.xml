@@ -106,10 +106,10 @@
         app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
 
     <CheckBox
-        android:id="@+id/athletics_skill_proficiency_checkbox"
+        android:id="@+id/athletics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/skill_athletics"
+        android:text="@string/skillsAthletics"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/strength_skill_header" />
 
@@ -119,7 +119,7 @@
         android:layout_height="wrap_content"
         android:text="@string/attributeDexterity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/athletics_skill_proficiency_checkbox" />
+        app:layout_constraintTop_toBottomOf="@+id/athletics" />
 
     <TableLayout
         android:id="@+id/dexterity_table"
@@ -135,22 +135,22 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/acrobatics_skill_proficiency_checkbox"
+                android:id="@+id/acrobatics"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_acrobatics" />
+                android:text="@string/skillsAcrobatics" />
 
             <CheckBox
-                android:id="@+id/sleight_of_hand_skill_proficiency_checkbox"
+                android:id="@+id/sleightOfHand"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_sleight_of_hand" />
+                android:text="@string/skillsSleightOfHand" />
 
             <CheckBox
-                android:id="@+id/stealth_skill_proficiency_checkbox"
+                android:id="@+id/stealth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_stealth" />
+                android:text="@string/skillsStealth" />
         </TableRow>
 
     </TableLayout>
@@ -177,22 +177,22 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/arcana_skill_proficiency_checkbox"
+                android:id="@+id/arcana"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_arcana" />
+                android:text="@string/skillsArcana" />
 
             <CheckBox
-                android:id="@+id/history_skill_proficiency_checkbox"
+                android:id="@+id/history"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_history" />
+                android:text="@string/skillsHistory" />
 
             <CheckBox
-                android:id="@+id/investigation_skill_proficiency_checkbox"
+                android:id="@+id/investigation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_investigation" />
+                android:text="@string/skillsInvestigation" />
         </TableRow>
 
         <TableRow
@@ -200,16 +200,16 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/nature_skill_proficiency_checkbox"
+                android:id="@+id/nature"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_nature" />
+                android:text="@string/skillsNature" />
 
             <CheckBox
-                android:id="@+id/religion_skill_proficiency_checkbox"
+                android:id="@+id/religion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_religion" />
+                android:text="@string/skillsReligion" />
 
         </TableRow>
 
@@ -237,22 +237,22 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/animal_handling_skill_proficiency_checkbox"
+                android:id="@+id/animalHandling"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_animal_handling" />
+                android:text="@string/skillsAnimalHandling" />
 
             <CheckBox
-                android:id="@+id/insight_skill_proficiency_checkbox"
+                android:id="@+id/insight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_insight" />
+                android:text="@string/skillsInsight" />
 
             <CheckBox
-                android:id="@+id/medicine_skill_proficiency_checkbox"
+                android:id="@+id/medicine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_medicine" />
+                android:text="@string/skillsMedicine" />
         </TableRow>
 
         <TableRow
@@ -260,16 +260,16 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/perception_skill_proficiency_checkbox"
+                android:id="@+id/perception"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_perception" />
+                android:text="@string/skillsPerception" />
 
             <CheckBox
-                android:id="@+id/survival_skill_proficiency_checkbox"
+                android:id="@+id/survival"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_survival" />
+                android:text="@string/skillsSurvival" />
         </TableRow>
 
     </TableLayout>
@@ -296,22 +296,22 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/deception_skill_proficiency_checkbox"
+                android:id="@+id/deception"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_deception" />
+                android:text="@string/skillsDeception" />
 
             <CheckBox
-                android:id="@+id/intimidation_skill_proficiency_checkbox"
+                android:id="@+id/intimidation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_intimidation" />
+                android:text="@string/skillsIntimidation" />
 
             <CheckBox
-                android:id="@+id/performance_skill_proficiency_checkbox"
+                android:id="@+id/performance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_performance" />
+                android:text="@string/skillsPerformance" />
         </TableRow>
 
         <TableRow
@@ -319,10 +319,10 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/persuasion_skill_proficiency_checkbox"
+                android:id="@+id/persuasion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/skill_persuasion" />
+                android:text="@string/skillsPersuasion" />
 
         </TableRow>
 

@@ -50,24 +50,24 @@ public class CompanionCreateFragment2 extends Fragment {
         checkboxes.put(getString(R.string.attributeIntelligence), (CheckBox) root.findViewById(R.id.intelligence_saving_throw_checkbox));
         checkboxes.put(getString(R.string.attributeWisdom), (CheckBox) root.findViewById(R.id.wisdom_saving_throw_checkbox));
         checkboxes.put(getString(R.string.attributeCharisma), (CheckBox) root.findViewById(R.id.charisma_saving_throw_checkbox));
-        checkboxes.put(getString(R.string.skill_athletics), (CheckBox) root.findViewById(R.id.athletics_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_acrobatics), (CheckBox) root.findViewById(R.id.acrobatics_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_sleight_of_hand), (CheckBox) root.findViewById(R.id.sleight_of_hand_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_stealth), (CheckBox) root.findViewById(R.id.stealth_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_arcana), (CheckBox) root.findViewById(R.id.arcana_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_history), (CheckBox) root.findViewById(R.id.history_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_investigation), (CheckBox) root.findViewById(R.id.investigation_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_nature), (CheckBox) root.findViewById(R.id.nature_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_religion), (CheckBox) root.findViewById(R.id.religion_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_animal_handling), (CheckBox) root.findViewById(R.id.animal_handling_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_insight), (CheckBox) root.findViewById(R.id.insight_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_medicine), (CheckBox) root.findViewById(R.id.medicine_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_perception), (CheckBox) root.findViewById(R.id.perception_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_survival), (CheckBox) root.findViewById(R.id.survival_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_deception), (CheckBox) root.findViewById(R.id.deception_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_intimidation), (CheckBox) root.findViewById(R.id.intimidation_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_performance), (CheckBox) root.findViewById(R.id.performance_skill_proficiency_checkbox));
-        checkboxes.put(getString(R.string.skill_persuasion), (CheckBox) root.findViewById(R.id.persuasion_skill_proficiency_checkbox));
+        checkboxes.put(getString(R.string.skillsAthletics), (CheckBox) root.findViewById(R.id.athletics));
+        checkboxes.put(getString(R.string.skillsAcrobatics), (CheckBox) root.findViewById(R.id.acrobatics));
+        checkboxes.put(getString(R.string.skillsSleightOfHand), (CheckBox) root.findViewById(R.id.sleightOfHand));
+        checkboxes.put(getString(R.string.skillsStealth), (CheckBox) root.findViewById(R.id.stealth));
+        checkboxes.put(getString(R.string.skillsArcana), (CheckBox) root.findViewById(R.id.arcana));
+        checkboxes.put(getString(R.string.skillsHistory), (CheckBox) root.findViewById(R.id.history));
+        checkboxes.put(getString(R.string.skillsInvestigation), (CheckBox) root.findViewById(R.id.investigation));
+        checkboxes.put(getString(R.string.skillsNature), (CheckBox) root.findViewById(R.id.nature));
+        checkboxes.put(getString(R.string.skillsReligion), (CheckBox) root.findViewById(R.id.religion));
+        checkboxes.put(getString(R.string.skillsAnimalHandling), (CheckBox) root.findViewById(R.id.animalHandling));
+        checkboxes.put(getString(R.string.skillsInsight), (CheckBox) root.findViewById(R.id.insight));
+        checkboxes.put(getString(R.string.skillsMedicine), (CheckBox) root.findViewById(R.id.medicine));
+        checkboxes.put(getString(R.string.skillsPerception), (CheckBox) root.findViewById(R.id.perception));
+        checkboxes.put(getString(R.string.skillsSurvival), (CheckBox) root.findViewById(R.id.survival));
+        checkboxes.put(getString(R.string.skillsDeception), (CheckBox) root.findViewById(R.id.deception));
+        checkboxes.put(getString(R.string.skillsIntimidation), (CheckBox) root.findViewById(R.id.intimidation));
+        checkboxes.put(getString(R.string.skillsPerformance), (CheckBox) root.findViewById(R.id.performance));
+        checkboxes.put(getString(R.string.skillsPersuasion), (CheckBox) root.findViewById(R.id.persuasion));
     }
 
     private void initialiseBottomButtons(final View root, final Bundle savedInstanceState) {
