@@ -16,9 +16,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.local.Companion;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class CompanionOverviewFragment extends Fragment implements CompanionAdapter.OnItemClickListener {
 
@@ -35,7 +32,7 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         companionOverviewViewModel = ViewModelProviders.of(this).get(CompanionOverviewViewModel.class);
-        final View root = inflater.inflate(R.layout.companion_overview, container, false);
+        final View root = inflater.inflate(R.layout.companion_overview_fragment, container, false);
 
         companionOverviewViewModel.insert(new Companion("Tim"));
         companionOverviewViewModel.insert(new Companion("Tom"));

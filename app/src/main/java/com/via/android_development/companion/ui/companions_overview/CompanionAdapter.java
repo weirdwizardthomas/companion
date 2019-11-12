@@ -38,8 +38,7 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
     @Override
     public void onBindViewHolder(@NonNull CompanionAdapter.ViewHolder holder, int position) {
         Companion companion = data.get(position);
-        List<String> classes = companion.getClasses();
-        String companionClass = classes.size() == 1 ? classes.get(0) : "multiclass";
+        String companionClass = "multiclass";
 
         holder.companionName.setText(companion.getName());
         holder.companionClass.setText(companionClass);
@@ -83,7 +82,7 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
             selectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                //TODO
+                    //TODO
                 }
             });
 
