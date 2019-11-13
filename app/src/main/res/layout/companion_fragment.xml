@@ -2,35 +2,20 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_companion"
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content"
+    android:id="@+id/mainScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/dividerHorizontal"
-            style="@style/Divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/race_and_profession" />
-
-        <View
-            android:id="@+id/dividerHorizontal2"
-            style="@style/Divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/statsTable" />
-
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="Tim"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +35,13 @@
             android:layout_marginStart="5dp"
             app:layout_constraintStart_toEndOf="@+id/stats_switch_label"
             app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+        <View
+            android:id="@+id/dividerHorizontal1"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stats_switch" />
 
         <TableLayout
             android:id="@+id/statsTable"
@@ -125,6 +117,13 @@
             </TableRow>
 
         </TableLayout>
+
+        <View
+            android:id="@+id/dividerHorizontal2"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTable" />
 
         <TableLayout
             android:id="@+id/general_stats_table"
@@ -283,12 +282,13 @@
             android:layout_height="wrap_content"
             android:text="Skills"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/general_stats_table" />
 
         <View
-            android:id="@+id/divider2"
+            android:id="@+id/dividerHorizontal3"
             style="@style/Divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
@@ -298,6 +298,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/attributeStrength"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
 
@@ -317,6 +319,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/attributeDexterity"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/athletics" />
 
@@ -368,6 +372,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/attributeIntelligence"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dexterity_table" />
 
@@ -443,6 +449,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/attributeWisdom"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/intelligence_table" />
 
@@ -517,6 +525,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/attributeCharisma"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wisdom_table" />
 
@@ -578,12 +588,6 @@
 
         </TableLayout>
         <!-- TODO SET BOTTOM PADDING OF THE VIEW EQUAL TO THE HEIGHT OF THE BOTTOM NAVIGATION-->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/charisma_table" />
 
         <TextView
             android:id="@+id/stats_switch_label"

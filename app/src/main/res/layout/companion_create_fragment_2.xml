@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/saving_throws_table" />
 
     <View
-        android:id="@+id/divider2"
+        android:id="@+id/dividerHorizontal3"
         style="@style/Divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />

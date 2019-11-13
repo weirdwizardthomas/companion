@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class CompanionFragment extends Fragment {
         companionViewModel = ViewModelProviders.of(this).get(CompanionViewModel.class);
         View root = inflater.inflate(R.layout.companion_fragment, container, false);
 
+        adjustForMenu(root);
         initialiseButtons(root);
         addOnClickListenersToButtons();
 
@@ -75,5 +77,14 @@ public class CompanionFragment extends Fragment {
         buttons.put(getString(R.string.skillsIntimidation), (Button) root.findViewById(R.id.intimidation));
         buttons.put(getString(R.string.skillsPerformance), (Button) root.findViewById(R.id.performance));
         buttons.put(getString(R.string.skillsPersuasion), (Button) root.findViewById(R.id.persuasion));
+    }
+
+    private void adjustForMenu(View root) {
+        int bottomNavigationHeight = getActivity().findViewById(R.id.nav_view).getHeight();
+
+        ScrollView scrollView = root.findViewById(R.id.mainScrollView);
+        ScrollView.LayoutParams layoutParams = (ScrollView.LayoutParams) scrollView.getLayoutParams();
+        layoutParams.bottomMargin = bottomNavigationHeight;
+        scrollView.setLayoutParams(layoutParams);
     }
 }

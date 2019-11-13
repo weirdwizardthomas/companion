@@ -83,14 +83,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/higherLevelContent" />
 
-        <View
-            android:id="@+id/divider2"
-            style="@style/Divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detailsLabel"></View>
-
         <TextView
             android:id="@+id/rangeLabel"
             android:layout_width="wrap_content"
@@ -99,7 +91,7 @@
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider2" />
+            app:layout_constraintTop_toBottomOf="@id/detailsLabel" />
 
         <TextView
             android:id="@+id/rangeContent"
