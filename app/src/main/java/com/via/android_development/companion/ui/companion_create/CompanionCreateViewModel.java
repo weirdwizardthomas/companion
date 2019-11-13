@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.via.android_development.companion.persistence.local.Companion;
-import com.via.android_development.companion.persistence.repository.CompanionRepository;
+import com.via.android_development.companion.persistence.local.CompanionRepository;
 import com.via.android_development.companion.utility.Alignment;
 import com.via.android_development.companion.utility.Profession;
 import com.via.android_development.companion.utility.Race;

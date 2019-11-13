@@ -30,7 +30,6 @@ public class CompanionFragment extends Fragment {
         initialiseButtons(root);
         addOnClickListenersToButtons();
 
-
         return root;
     }
 

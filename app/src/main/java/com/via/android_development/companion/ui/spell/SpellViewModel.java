@@ -1,26 +1,23 @@
-package com.via.android_development.companion.ui.spellbook;
+package com.via.android_development.companion.ui.spell;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.via.android_development.companion.persistence.api.pojo.BriefSpell;
 import com.via.android_development.companion.persistence.api.pojo.Spell;
 import com.via.android_development.companion.persistence.api.repository.SpellRepository;
 
-import java.util.List;
-
-public class SpellbookViewModel extends AndroidViewModel {
+public class SpellViewModel extends AndroidViewModel {
     private SpellRepository spellRepository;
 
-    public SpellbookViewModel(Application application) {
+    public SpellViewModel(Application application) {
         super(application);
         spellRepository = new SpellRepository();
     }
 
-    public LiveData<List<BriefSpell>> getBriefSpells() {
-        return spellRepository.getBriefSpells();
+    public LiveData<Spell> getSpell(int index) {
+        return spellRepository.getSpell(index);
     }
 
 }

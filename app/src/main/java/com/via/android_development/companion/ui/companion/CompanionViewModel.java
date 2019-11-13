@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.via.android_development.companion.persistence.local.Companion;
-import com.via.android_development.companion.persistence.repository.CompanionRepository;
+import com.via.android_development.companion.persistence.local.CompanionRepository;
 
 public class CompanionViewModel extends AndroidViewModel {
 

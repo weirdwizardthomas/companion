@@ -1,4 +1,4 @@
-package com.via.android_development.companion.persistence.repository;
+package com.via.android_development.companion.persistence.local;
 
 import android.app.Application;
 import android.os.AsyncTask;

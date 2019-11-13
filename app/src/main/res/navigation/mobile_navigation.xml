@@ -19,7 +19,11 @@
         android:id="@+id/spellbookOverviewFragment"
         android:name="com.via.android_development.companion.ui.spellbook.SpellbookFragment"
         android:label="@string/title_spellbook"
-        tools:layout="@layout/spellbook_fragment" />
+        tools:layout="@layout/spellbook_fragment" >
+        <action
+            android:id="@+id/openSpell"
+            app:destination="@id/spellFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/companionsOverviewFragment"
@@ -104,4 +108,9 @@
             android:id="@+id/create3_to_overview"
             app:destination="@id/companionsOverviewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/spellFragment"
+        android:name="com.via.android_development.companion.ui.spell.SpellFragment"
+        android:label="@string/titleSpellFragment"
+        tools:layout="@layout/spell_fragment" />
 </navigation>

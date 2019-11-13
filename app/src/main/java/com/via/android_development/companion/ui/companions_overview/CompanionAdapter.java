@@ -94,7 +94,6 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
             Companion item = data.get(getAdapterPosition());
             onItemClickListener.onItemClick(item);
         }
-
     }
 
     public interface OnItemClickListener {

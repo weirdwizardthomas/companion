@@ -50,6 +50,7 @@ public class CompanionCreateFragment1 extends Fragment {
         companionCreateViewModel = ViewModelProviders.of(this).get(CompanionCreateViewModel.class);
 
         Companion companion = new Companion();
+        companion.setName("Tom");
         companionCreateViewModel.insert(companion);
 
         List<Companion> companions = companionCreateViewModel.getAllCompanions().getValue();

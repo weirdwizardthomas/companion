@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/mainLayout"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/spellName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acid Arrow"
+            android:textSize="40sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+        <View
+            android:id="@+id/divider1"
+            style="@style/Divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spellName"></View>
+
+
+        <TextView
+            android:id="@+id/descriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1"></TextView>
+
+
+        <TextView
+            android:id="@+id/descriptionContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn."
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionLabel"></TextView>
+
+
+        <TextView
+            android:id="@+id/higherLevelLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On higher level"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionContent"></TextView>
+
+
+        <TextView
+            android:id="@+id/higherLevelContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="When you cast this spell using a spell slot of 3rd level or higher, the damage (both initial and later) increases by 1d4 for each slot level above 2nd."
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/higherLevelLabel"></TextView>
+
+
+        <TextView
+            android:id="@+id/detailsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/higherLevelContent" />
+
+        <View
+            android:id="@+id/divider2"
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsLabel"></View>
+
+        <TextView
+            android:id="@+id/rangeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Range"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <TextView
+            android:id="@+id/rangeContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="90 feet"
+            app:layout_constraintStart_toEndOf="@+id/rangeLabel"
+            app:layout_constraintTop_toBottomOf="@+id/detailsLabel" />
+
+        <TextView
+            android:id="@+id/durationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rangeContent" />
+
+        <TextView
+            android:id="@+id/durationContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Instantenous"
+            app:layout_constraintStart_toEndOf="@+id/durationLabel"
+            app:layout_constraintTop_toBottomOf="@+id/rangeContent" />
+
+        <TextView
+            android:id="@+id/concentrationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Concentration"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/durationContent" />
+
+        <TextView
+            android:id="@+id/levelLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/concentrationLabel" />
+
+        <TextView
+            android:id="@+id/levelContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="2"
+            app:layout_constraintStart_toEndOf="@+id/levelLabel"
+            app:layout_constraintTop_toBottomOf="@+id/concentrationLabel" />
+
+        <TextView
+            android:id="@+id/concentrationContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="No"
+            app:layout_constraintStart_toEndOf="@+id/concentrationLabel"
+            app:layout_constraintTop_toBottomOf="@+id/durationContent" />
+
+        <TextView
+            android:id="@+id/castingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Casting"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/levelLabel" />
+
+        <TextView
+            android:id="@+id/componentsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Components"
+            android:textAlignment="textEnd"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/castingLabel" />
+
+        <TextView
+            android:id="@+id/castingContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="1 action"
+            app:layout_constraintStart_toEndOf="@+id/castingLabel"
+            app:layout_constraintTop_toBottomOf="@+id/levelContent" />
+
+        <TextView
+            android:id="@+id/componentsContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="V,S,M"
+            app:layout_constraintStart_toEndOf="@+id/componentsLabel"
+            app:layout_constraintTop_toBottomOf="@id/castingContent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
