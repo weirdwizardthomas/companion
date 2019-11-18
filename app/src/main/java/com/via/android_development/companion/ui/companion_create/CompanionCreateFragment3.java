@@ -13,8 +13,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.shawnlin.numberpicker.NumberPicker;
 import com.via.android_development.companion.R;
+import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.utility.enums.Alignment;
 
@@ -96,7 +98,9 @@ public class CompanionCreateFragment3 extends Fragment {
         nextArrowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateCompanionInstance();
+                updateCompanionInstance(); //get new values
+                saveInstanceToFirestore(); //save to remote db
+                companionCreateViewModel.deleteAllCompanions(); //perform cleanup
                 Navigation.findNavController(root).navigate(R.id.create3_to_overview);
             }
         });
@@ -147,7 +151,12 @@ public class CompanionCreateFragment3 extends Fragment {
         dummy.setFlaws(flawsInput.getText().toString());
         dummy.setPersonalityTraits(traitsInput.getText().toString());
         dummy.setIdeals(idealsInput.getText().toString());
-        companionCreateViewModel.update(dummy);
+
+    }
+
+    private void saveInstanceToFirestore() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Adventurers").document().set(new FirebaseCompanion(dummy));
     }
 
     private void updatePickerValue(NumberPicker picker, String item, String defaultValue) {
