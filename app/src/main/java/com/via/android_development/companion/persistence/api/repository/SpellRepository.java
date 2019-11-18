@@ -23,29 +23,6 @@ public class SpellRepository {
         spellAPI = RetrofitServiceGenerator.getSpellAPI();
     }
 
-    public LiveData<Integer> getSpellCount() {
-        final MutableLiveData<Integer> dummy = new MutableLiveData<>();
-        Call<AllBriefSpellsResponse> call = spellAPI.getAllBriefSpells();
-        call.enqueue(new Callback<AllBriefSpellsResponse>() {
-            @Override
-            public void onResponse(Call<AllBriefSpellsResponse> call, Response<AllBriefSpellsResponse> response) {
-                if (response.code() == 200) {
-                    dummy.setValue(response.body().getCount());
-                    return;
-                } else {
-                    dummy.setValue(-1); //TODO BETTER LOG
-                    return;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AllBriefSpellsResponse> call, Throwable t) {
-                dummy.setValue(-2);  //TODO BETTER LOG
-            }
-        });
-        return dummy;
-    }
-
     public LiveData<Spell> getSpell(int index) {
         final MutableLiveData<Spell> spell = new MutableLiveData<>();
 
@@ -60,6 +37,7 @@ public class SpellRepository {
             @Override
             public void onFailure(Call<SpellDetailsResponse> call, Throwable t) {
                 //TODO
+                int i = 1;
             }
         });
 
@@ -80,6 +58,7 @@ public class SpellRepository {
             @Override
             public void onFailure(Call<AllBriefSpellsResponse> call, Throwable t) {
                 //TODO
+                int i = 1;
             }
         });
 

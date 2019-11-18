@@ -102,7 +102,7 @@ public class SpellFragment extends Fragment {
         higherLevelsLabel = root.findViewById(R.id.higherLevelLabel);
         rangeLabel = root.findViewById(R.id.rangeLabel);
         durationLabel = root.findViewById(R.id.durationLabel);
-        levelLabel = root.findViewById(R.id.levelLabel);
+        levelLabel = root.findViewById(R.id.label);
         concentrationLabel = root.findViewById(R.id.concentrationLabel);
         castingLabel = root.findViewById(R.id.castingLabel);
         componentsLabel = root.findViewById(R.id.componentsLabel);

@@ -132,7 +132,7 @@
             app:layout_constraintTop_toBottomOf="@id/durationContent" />
 
         <TextView
-            android:id="@+id/levelLabel"
+            android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Level"
@@ -147,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="2"
-            app:layout_constraintStart_toEndOf="@+id/levelLabel"
+            app:layout_constraintStart_toEndOf="@+id/label"
             app:layout_constraintTop_toBottomOf="@+id/concentrationLabel" />
 
         <TextView
@@ -167,7 +167,7 @@
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/levelLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/label" />
 
         <TextView
             android:id="@+id/componentsLabel"

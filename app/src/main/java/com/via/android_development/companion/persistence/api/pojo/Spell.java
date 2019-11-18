@@ -50,8 +50,8 @@ public class Spell {
     public String getComponentsAsString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (String component : components)
-            stringBuilder.append(component);
-        return stringBuilder.toString();
+            stringBuilder.append(component).append(" ");
+        return stringBuilder.toString().trim();
     }
 
     public String getDuration() {
