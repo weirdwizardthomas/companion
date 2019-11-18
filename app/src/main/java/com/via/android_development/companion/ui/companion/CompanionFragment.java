@@ -26,38 +26,75 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CompanionFragment extends Fragment {
+    private CompanionViewModel companionViewModel;
 
     private Map<String, Button> buttons;
     private TextView name;
     private TextView raceAndProfession;
-    private Switch statsSwitch;
+    private TextView hitpoints;
+    private TextView temporaryHitpoints;
+    private TextView armourClass;
+    private TextView speed;
+    private TextView initiative;
 
-    private CompanionViewModel companionViewModel;
+    private TextView background;
+    private TextView ideals;
+    private TextView traits;
+    private TextView flaws;
+    private TextView bonds;
+
+    private Switch statsSwitch;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         companionViewModel = ViewModelProviders.of(this).get(CompanionViewModel.class);
         View root = inflater.inflate(R.layout.companion_fragment, container, false);
 
-        adjustForMenu(root);
-        initialiseButtons(root);
-        initialiseStatSwitch(root);
+        initialiseLayout(root);
 
-        name = root.findViewById(R.id.name);
-        raceAndProfession = root.findViewById(R.id.race_and_profession);
-
-        loadCompanion();
+        updateDisplayedValues();
 
         return root;
     }
 
-    private void loadCompanion() {
+    public void initialiseLayout(View root) {
+        initialiseButtons(root);
+        initialiseStatSwitch(root);
+
+        name = root.findViewById(R.id.name);
+        raceAndProfession = root.findViewById(R.id.raceAndProfession);
+        hitpoints = root.findViewById(R.id.hitpointsValue);
+        temporaryHitpoints = root.findViewById(R.id.temporaryHitpointsValue);
+        armourClass = root.findViewById(R.id.armourClassValue);
+        speed = root.findViewById(R.id.speedValue);
+        initiative = root.findViewById(R.id.initiativeValue);
+
+        background = root.findViewById(R.id.backgroundContent);
+        ideals = root.findViewById(R.id.idealsContent);
+        traits = root.findViewById(R.id.traitsContent);
+        flaws = root.findViewById(R.id.flawsContent);
+        bonds = root.findViewById(R.id.bondsContent);
+
+    }
+
+    private void updateDisplayedValues() {
         updateStatButtons(getCompanionAbilityValues());
         Companion companion = companionViewModel.getMockup();
         name.setText(companion.getName());
-        raceAndProfession.setText(new StringBuilder().append(companion.getRace()).append(" ").toString())
-        ;
+        String raceAndStringText = new StringBuilder().append(companion.getRace()).append(" ").append(companion.getProfession()).toString();
+        raceAndProfession.setText(raceAndStringText);
+        String hpText = new StringBuilder().append(companion.getHitpoints()).append("/").append(companion.getMaximalHitpoints()).toString();
+        hitpoints.setText(hpText);
+        temporaryHitpoints.setText(Integer.toString(companion.getTemporaryHitpoints()));
+        armourClass.setText(Integer.toString(companion.getArmourClass()));
+        speed.setText(Integer.toString(companion.getSpeed()));
+        initiative.setText(StatCalculator.abilityModifierAsString(companion.getDexterity()));
 
+        background.setText(companion.getBackground());
+        ideals.setText(companion.getIdeals());
+        traits.setText(companion.getPersonalityTraits());
+        flaws.setText(companion.getFlaws());
+        bonds.setText(companion.getBonds());
     }
 
     private void initialiseStatSwitch(View root) {

@@ -322,17 +322,17 @@ public class Companion {
         this.flaws = flaws;
     }
 
-   /* public Map<String, Integer> getAttributes() {
-        Map<String, Integer> attributes = new HashMap<>();
-        attributes.put(String.valueOf(Attribute.STRENGTH), strength);
-        attributes.put(String.valueOf(Attribute.DEXTERITY), dexterity);
-        attributes.put(String.valueOf(Attribute.CONSTITUTION), constitution);
-        attributes.put(String.valueOf(Attribute.INTELLIGENCE), intelligence);
-        attributes.put(String.valueOf(Attribute.WISDOM), wisdom);
-        attributes.put(String.valueOf(Attribute.CHARISMA), charisma);
-        return attributes;
-    }
-*/
+    /* public Map<String, Integer> getAttributes() {
+         Map<String, Integer> attributes = new HashMap<>();
+         attributes.put(String.valueOf(Attribute.STRENGTH), strength);
+         attributes.put(String.valueOf(Attribute.DEXTERITY), dexterity);
+         attributes.put(String.valueOf(Attribute.CONSTITUTION), constitution);
+         attributes.put(String.valueOf(Attribute.INTELLIGENCE), intelligence);
+         attributes.put(String.valueOf(Attribute.WISDOM), wisdom);
+         attributes.put(String.valueOf(Attribute.CHARISMA), charisma);
+         return attributes;
+     }
+ */
     public Set<String> getSavingThrowProficiencies() {
         return savingThrowProficiencies;
     }
@@ -351,5 +351,9 @@ public class Companion {
 
     public int getArmourClass() {
         return StatCalculator.abilityModifier(dexterity) + BASE_ARMOUR_CLASS;
+    }
+
+    public int getInitiative() {
+        return StatCalculator.abilityModifier(dexterity);
     }
 }

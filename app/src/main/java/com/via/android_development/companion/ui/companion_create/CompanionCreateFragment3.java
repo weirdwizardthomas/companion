@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -71,17 +69,6 @@ public class CompanionCreateFragment3 extends Fragment {
         companionCreateViewModel.getAllCompanions().observe(this, companionsObserver);
     }
 
-    private void adjustButtonBottomNavOffset(View root) {
-
-        LinearLayout bottomButtons = root.findViewById(R.id.bottomButtons);
-        int bottomNavigationHeight = getActivity().findViewById(R.id.nav_view).getHeight();
-
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) bottomButtons.getLayoutParams();
-        layoutParams.bottomMargin = bottomNavigationHeight;
-        bottomButtons.setLayoutParams(layoutParams);
-    }
-
-
     private void initialiseTextInputs(View root) {
         backgroundInput = root.findViewById(R.id.background_edit_text);
         traitsInput = root.findViewById(R.id.personality_traits_edit_text);
@@ -114,7 +101,6 @@ public class CompanionCreateFragment3 extends Fragment {
             }
         });
 
-        adjustButtonBottomNavOffset(root);
     }
 
     private void initialiseStringPicker(NumberPicker picker, String[] values, int defaultValue) {

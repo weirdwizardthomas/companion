@@ -22,12 +22,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/race_and_profession"
+            android:id="@+id/raceAndProfession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Human Fighter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <TextView
+            android:id="@+id/stats_switch_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show modifiers"
+            app:layout_constraintBottom_toBottomOf="@+id/stats_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/stats_switch" />
 
         <Switch
             android:id="@+id/stats_switch"
@@ -35,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             app:layout_constraintStart_toEndOf="@+id/stats_switch_label"
-            app:layout_constraintTop_toBottomOf="@+id/race_and_profession" />
+            app:layout_constraintTop_toBottomOf="@+id/raceAndProfession" />
 
         <View
             android:id="@+id/dividerHorizontal1"
@@ -156,7 +165,7 @@
                         android:text="@string/hitpoints" />
 
                     <TextView
-                        android:id="@+id/hitpoints"
+                        android:id="@+id/hitpointsValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="" />
@@ -180,7 +189,7 @@
                         android:text="@string/temporary_hitpoints" />
 
                     <TextView
-                        android:id="@+id/temporary_hitpoints"
+                        android:id="@+id/temporaryHitpointsValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="" />
@@ -212,7 +221,7 @@
                         android:text="@string/armour_class" />
 
                     <TextView
-                        android:id="@+id/armour_class_value"
+                        android:id="@+id/armourClassValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="" />
@@ -236,7 +245,7 @@
                         android:text="@string/speed" />
 
                     <TextView
-                        android:id="@+id/speed_value"
+                        android:id="@+id/speedValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="" />
@@ -266,7 +275,7 @@
                         android:text="@string/initiative" />
 
                     <TextView
-                        android:id="@+id/initiative_value"
+                        android:id="@+id/initiativeValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="" />
@@ -588,15 +597,117 @@
             </TableRow>
 
         </TableLayout>
-        <!-- TODO SET BOTTOM PADDING OF THE VIEW EQUAL TO THE HEIGHT OF THE BOTTOM NAVIGATION-->
+
 
         <TextView
-            android:id="@+id/stats_switch_label"
+            android:id="@+id/personality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show modifiers"
-            app:layout_constraintBottom_toBottomOf="@+id/stats_switch"
+            android:text="Personality"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/stats_switch" />
+            app:layout_constraintTop_toBottomOf="@+id/charisma_table" />
+
+        <View
+            android:id="@+id/dividerHorizontal4"
+            style="@style/Divider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/personality" />
+
+        <TextView
+            android:id="@+id/backgroundLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Background"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerHorizontal4" />
+
+        <TextView
+            android:id="@+id/backgroundContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backgroundLabel" />
+
+        <TextView
+            android:id="@+id/traitsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personality traits"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backgroundContent" />
+
+        <TextView
+            android:id="@+id/traitsContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/traitsLabel" />
+
+        <TextView
+            android:id="@+id/idealsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ideals"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/traitsContent" />
+
+        <TextView
+            android:id="@+id/idealsContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idealsLabel" />
+
+        <TextView
+            android:id="@+id/flawsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flaws"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idealsContent" />
+
+        <TextView
+            android:id="@+id/flawsContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flawsLabel" />
+
+
+        <TextView
+            android:id="@+id/bondsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bonds"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flawsContent" />
+
+        <TextView
+            android:id="@+id/bondsContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bondsLabel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -49,14 +47,6 @@ public class CompanionCreateFragment2 extends Fragment {
         return root;
     }
 
-    private void adjustButtonBottomNavOffset(View root) {
-        LinearLayout bottomButtons = root.findViewById(R.id.bottomButtons);
-        int bottomNavigationHeight = getActivity().findViewById(R.id.nav_view).getHeight();
-
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) bottomButtons.getLayoutParams();
-        layoutParams.bottomMargin = bottomNavigationHeight;
-        bottomButtons.setLayoutParams(layoutParams);
-    }
 
     private Set<String> getProficiencies(Map<String, CheckBox> checkboxes) {
         Set<String> proficiencies = new HashSet<>();
@@ -123,7 +113,6 @@ public class CompanionCreateFragment2 extends Fragment {
             }
         });
 
-        adjustButtonBottomNavOffset(root);
     }
 
     private void observeCompanions() {

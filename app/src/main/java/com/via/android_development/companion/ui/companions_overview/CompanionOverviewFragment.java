@@ -78,8 +78,5 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
 
     @Override
     public void onItemClick(Companion item) {
-        Bundle bundle = new Bundle();
-        bundle.putInt(CompanionOverviewFragment.ID_KEY, item.getId());
-        Navigation.findNavController(this.getView()).navigate(R.id.overviewToDetailsAction, bundle);
     }
 }
