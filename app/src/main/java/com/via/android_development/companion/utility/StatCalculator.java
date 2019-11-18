@@ -3,7 +3,6 @@ package com.via.android_development.companion.utility;
 public class StatCalculator {
 
     public static int proficiencyBonus(int totalLevel) {
-
         if (totalLevel <= 4)
             return 2;
         if (totalLevel <= 8)
@@ -23,5 +22,8 @@ public class StatCalculator {
         return 10 + abilityModifier(abilityLevel);
     }
 
-
+    public static String abilityModifierAsString(int abilityLevel) {
+        int modifier = abilityModifier(abilityLevel);
+        return (modifier >= 0 ? "+" : "") + modifier;
+    }
 }

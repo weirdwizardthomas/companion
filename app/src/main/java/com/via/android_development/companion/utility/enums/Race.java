@@ -1,4 +1,4 @@
-package com.via.android_development.companion.utility;
+package com.via.android_development.companion.utility.enums;
 
 public enum Race {
     DRAGONBORN("Dragonborn"),

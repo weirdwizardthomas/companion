@@ -4,25 +4,26 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.via.android_development.companion.persistence.local.Companion;
+import com.via.android_development.companion.persistence.local.CompanionRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CompanionOverviewViewModel extends AndroidViewModel {
-    private List<Companion> allCompanions;
+    CompanionRepository companionRepository;
 
     public CompanionOverviewViewModel(@NonNull Application application) {
         super(application);
-        allCompanions = new ArrayList<>();
+        companionRepository = new CompanionRepository(application);
     }
 
-    public List<Companion> getAllCompanions() {
-        return allCompanions;
+    public LiveData<List<Companion>> getAllCompanions() {
+        return companionRepository.getAllCompanions();
     }
 
     public void insert(Companion companion) {
-        allCompanions.add(companion);
+        companionRepository.insert(companion);
     }
 }

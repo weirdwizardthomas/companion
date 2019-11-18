@@ -35,10 +35,10 @@
             app:destination="@id/companionEditFragment" />
         <action
             android:id="@+id/overviewToCreateAction"
-            app:destination="@id/companionCreateFragment"
+            app:destination="@id/companionCreateFragment1"
             app:popUpTo="@+id/companionsOverviewFragment" />
         <action
-            android:id="@+id/overViewToDetailsAction"
+            android:id="@+id/overviewToDetailsAction"
             app:destination="@id/companionDetailsFragment"
             app:popUpTo="@+id/companionsOverviewFragment" />
     </fragment>
@@ -52,17 +52,18 @@
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/companionCreateFragment"
+        android:id="@+id/companionCreateFragment1"
         android:name="com.via.android_development.companion.ui.companion_create.CompanionCreateFragment1"
         android:label="@string/title_create_companion_1"
         tools:layout="@layout/companion_create_fragment_1" >
         <action
             android:id="@+id/create1_to_create2"
             app:destination="@id/companionCreateFragment2"
-            app:popUpTo="@+id/companionCreateFragment" />
+            app:popUpTo="@+id/companionCreateFragment1" />
         <argument
-            android:name="member_id"
-            app:argType="integer" />
+            android:name="openedFromOverview"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/companionDetailsFragment"
@@ -88,10 +89,7 @@
             app:popUpTo="@+id/companionCreateFragment2" />
         <action
             android:id="@+id/create2_to_create1"
-            app:destination="@id/companionCreateFragment" />
-        <argument
-            android:name="member_id"
-            app:argType="integer" />
+            app:destination="@id/companionCreateFragment1" />
     </fragment>
     <fragment
         android:id="@+id/companionCreateFragment3"
@@ -101,9 +99,6 @@
         <action
             android:id="@+id/create3_to_create1"
             app:destination="@id/companionCreateFragment2" />
-        <argument
-            android:name="member_id"
-            app:argType="integer" />
         <action
             android:id="@+id/create3_to_overview"
             app:destination="@id/companionsOverviewFragment" />

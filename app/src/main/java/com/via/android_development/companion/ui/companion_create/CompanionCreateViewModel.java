@@ -7,20 +7,9 @@ import androidx.lifecycle.LiveData;
 
 import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.persistence.local.CompanionRepository;
-import com.via.android_development.companion.utility.Alignment;
-import com.via.android_development.companion.utility.Profession;
-import com.via.android_development.companion.utility.Race;
+import com.via.android_development.companion.utility.EnumTranslator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static com.via.android_development.companion.R.string.attributeCharisma;
-import static com.via.android_development.companion.R.string.attributeConstitution;
-import static com.via.android_development.companion.R.string.attributeDexterity;
-import static com.via.android_development.companion.R.string.attributeIntelligence;
-import static com.via.android_development.companion.R.string.attributeStrength;
-import static com.via.android_development.companion.R.string.attributeWisdom;
 
 public class CompanionCreateViewModel extends AndroidViewModel {
 
@@ -39,7 +28,7 @@ public class CompanionCreateViewModel extends AndroidViewModel {
         companionRepository.insert(companion);
     }
 
-    public Companion getCompanionById(int id) {
+    public LiveData<Companion> getCompanionById(int id) {
         return companionRepository.getCompanionById(id);
     }
 
@@ -47,32 +36,35 @@ public class CompanionCreateViewModel extends AndroidViewModel {
         return companionRepository.getAllCompanions();
     }
 
-    public static List<Integer> getAllAttributesIds() {
-        return new ArrayList<>(Arrays.asList(
-                attributeStrength,
-                attributeDexterity,
-                attributeConstitution,
-                attributeIntelligence,
-                attributeWisdom,
-                attributeCharisma));
+    public void deleteAllCompanions() {
+        companionRepository.deleteAllCompanions();
+    }
 
+    public void update(Companion companion) {
+        companionRepository.update(companion);
     }
 
     public static String[] getAllRaces() {
-        List<String> races = new ArrayList<>();
-        for (Race race : Race.values()) races.add(race.toString());
-        return races.toArray(new String[0]);
+        return EnumTranslator.getAllRaces();
     }
 
     public static String[] getAllProfessions() {
-        List<String> professions = new ArrayList<>();
-        for (Profession profession : Profession.values()) professions.add(profession.toString());
-        return professions.toArray(new String[0]);
+        return EnumTranslator.getAllProfessions();
     }
 
     public static String[] getAllAlignments() {
-        List<String> alignments = new ArrayList<>();
-        for (Alignment alignment : Alignment.values()) alignments.add(alignment.toString());
-        return alignments.toArray(new String[0]);
+        return EnumTranslator.getAllAlignments();
+    }
+
+    public static String getRaceByIndex(int index) {
+        return EnumTranslator.getAllRaces()[index];
+    }
+
+    public static String getProfessionByIndex(int index) {
+        return EnumTranslator.getAllProfessions()[index];
+    }
+
+    public static String getAlignmentByIndex(int index) {
+        return EnumTranslator.getAllAlignments()[index];
     }
 }

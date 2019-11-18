@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.local.Companion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment.ID_KEY;
@@ -22,8 +23,8 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
     private List<Companion> data;
     private OnItemClickListener onItemClickListener;
 
-    public CompanionAdapter(List<Companion> data, OnItemClickListener onItemClickListener) {
-        this.data = data;
+    public CompanionAdapter(OnItemClickListener onItemClickListener) {
+        data = new ArrayList<>();
         this.onItemClickListener = onItemClickListener;
     }
 
@@ -49,6 +50,11 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void setData(List<Companion> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

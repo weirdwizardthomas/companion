@@ -28,5 +28,5 @@ public interface CompanionDAO {
     LiveData<List<Companion>> getAllCompanions();
 
     @Query("SELECT * FROM Companion WHERE id=:id")
-    Companion getCompanionById(int id);
+    LiveData<Companion> getCompanionById(int id);
 }

@@ -5,10 +5,6 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.via.android_development.companion.persistence.local.Companion;
-import com.via.android_development.companion.persistence.local.CompanionDAO;
-import com.via.android_development.companion.persistence.local.DnDDatabase;
-
 import java.util.List;
 
 public class CompanionRepository {
@@ -42,7 +38,7 @@ public class CompanionRepository {
         return allCompanions;
     }
 
-    public Companion getCompanionById(int id) {
+    public LiveData<Companion> getCompanionById(int id) {
         return companionDAO.getCompanionById(id);
     }
 
