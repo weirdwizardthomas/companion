@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -18,7 +17,7 @@
             android:id="@+id/companionBrief_nameText"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="TextView"
+            android:text="@string/adventurerCardNamePlaceholder"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:text="TextView"
+            android:text="@string/adventurerCardLevelPlaceholder"
             app:layout_constraintStart_toEndOf="@+id/companionBrief_totalLevelLabel"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Level:"
+            android:text="@string/adventurerCardLevelLabel"
             app:layout_constraintStart_toEndOf="@+id/companionBrief_nameText"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +45,7 @@
             android:id="@+id/companionBrief_classLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Class:"
+            android:text="@string/adventurerCardClassLabel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/companionBrief_totalLevelLabel"
             app:layout_constraintTop_toBottomOf="@+id/companionBrief_totalLevelLabel" />
@@ -56,37 +55,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:text="TextView"
+            android:text="@string/adventurerCardClassPlaceholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/companionBrief_classLabel"
             app:layout_constraintTop_toBottomOf="@+id/companionBrief_totalLevel" />
 
         <ImageButton
-            android:id="@+id/companionBrief_selectCompanionButton"
+            android:id="@+id/companionBrief_editCompanionButton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:background="@drawable/round_button"
             android:clickable="true"
+            android:contentDescription="TODO"
             android:focusable="true"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_plus_black_18dp" />
-
-        <ImageButton
-            android:id="@+id/companionBrief_editCompanionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/round_button"
-            android:clickable="true"
-            android:focusable="true"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/companionBrief_selectCompanionButton"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_pencil_black_18dp" />
 

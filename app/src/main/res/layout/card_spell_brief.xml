@@ -11,6 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Acid Arrow"
+        android:text="@string/brierAbilityNamePlaceholder"
         android:textSize="26sp" />
 </androidx.cardview.widget.CardView>

@@ -17,10 +17,10 @@
             android:id="@+id/spellName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acid Arrow"
+            android:text="@string/spellNamePlaceholder"
             android:textSize="40sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <View
@@ -28,56 +28,56 @@
             style="@style/Divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spellName"></View>
+            app:layout_constraintTop_toBottomOf="@id/spellName" />
 
 
         <TextView
             android:id="@+id/descriptionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="@string/spellDescriptionLabel"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider1"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/divider1" />
 
 
         <TextView
             android:id="@+id/descriptionContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn."
+            android:text="@string/spellDescriptionPlaceholder"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/descriptionLabel"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
 
 
         <TextView
             android:id="@+id/higherLevelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="On higher level"
+            android:text="@string/spellHigherLevelLabel"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/descriptionContent"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/descriptionContent" />
 
 
         <TextView
             android:id="@+id/higherLevelContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="When you cast this spell using a spell slot of 3rd level or higher, the damage (both initial and later) increases by 1d4 for each slot level above 2nd."
+            android:text="@string/spellHigherLevelPlaceholder"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/higherLevelLabel"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/higherLevelLabel" />
 
 
         <TextView
             android:id="@+id/detailsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Details"
+            android:text="@string/spellDetailsLabel"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,7 @@
             android:id="@+id/rangeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Range"
+            android:text="@string/spellRangeLabel"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="90 feet"
+            android:text="@string/spellRangePlaceholder"
             app:layout_constraintStart_toEndOf="@+id/rangeLabel"
             app:layout_constraintTop_toBottomOf="@+id/detailsLabel" />
 
@@ -106,7 +106,7 @@
             android:id="@+id/durationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Duration"
+            android:text="@string/spellDurationLabel"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Instantenous"
+            android:text="@string/spellDurationPlaceholder"
             app:layout_constraintStart_toEndOf="@+id/durationLabel"
             app:layout_constraintTop_toBottomOf="@+id/rangeContent" />
 
@@ -125,17 +125,17 @@
             android:id="@+id/concentrationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Concentration"
+            android:text="@string/spellConcentrationLabel"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/durationContent" />
 
         <TextView
-            android:id="@+id/label"
+            android:id="@+id/levelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Level"
+            android:text="@string/spellLevelLabel"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,8 +146,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="2"
-            app:layout_constraintStart_toEndOf="@+id/label"
+            android:text="@string/spellLevelPlaceholder"
+            app:layout_constraintStart_toEndOf="@+id/levelLabel"
             app:layout_constraintTop_toBottomOf="@+id/concentrationLabel" />
 
         <TextView
@@ -155,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="No"
+            android:text="@string/spellConcentrationPlaceholder"
             app:layout_constraintStart_toEndOf="@+id/concentrationLabel"
             app:layout_constraintTop_toBottomOf="@+id/durationContent" />
 
@@ -163,17 +163,17 @@
             android:id="@+id/castingLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Casting"
+            android:text="@string/spellCastingLabel"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label" />
+            app:layout_constraintTop_toBottomOf="@+id/levelLabel" />
 
         <TextView
             android:id="@+id/componentsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Components"
+            android:text="@string/spellComponentsLabel"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="1 action"
+            android:text="@string/spellCastingPlaceholder"
             app:layout_constraintStart_toEndOf="@+id/castingLabel"
             app:layout_constraintTop_toBottomOf="@+id/levelContent" />
 
@@ -193,7 +193,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="V,S,M"
+            android:text="@string/spellComponentsPlaceholder"
             app:layout_constraintStart_toEndOf="@+id/componentsLabel"
             app:layout_constraintTop_toBottomOf="@id/castingContent" />
 

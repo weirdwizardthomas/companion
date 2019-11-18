@@ -20,7 +20,7 @@ public class AttributeWrapper {
     public AttributeWrapper(View parent, String displayedLabel) {
         this.parent = parent;
         picker = parent.findViewById(R.id.picker);
-        label = parent.findViewById(R.id.label);
+        label = parent.findViewById(R.id.levelLabel);
         modifier = parent.findViewById(R.id.modifier);
 
         label.setText(displayedLabel);

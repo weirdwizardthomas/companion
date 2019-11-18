@@ -15,7 +15,7 @@
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Tim"
+            android:text="@string/adventurerNamePlaceholder"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
             android:id="@+id/raceAndProfession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Human Fighter"
+            android:text="@string/adventurerRaceAndProfessionPlaceholder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name" />
 
@@ -33,7 +33,7 @@
             android:id="@+id/stats_switch_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show modifiers"
+            android:text="@string/adventurerSwitchLabel"
             app:layout_constraintBottom_toBottomOf="@+id/stats_switch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/stats_switch" />
@@ -62,7 +62,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stats_switch">
 
-            <!--TODO a switch button to swap between abilities and their modifiers -->
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -156,7 +155,8 @@
                         android:id="@+id/hitpoints_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_heart_black_36dp" />
+                        app:srcCompat="@drawable/ic_heart_black_36dp"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:id="@+id/hitpoints_label"
@@ -168,7 +168,7 @@
                         android:id="@+id/hitpointsValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="" />
+                        android:text="@string/adventurerHitpointsPlaceholder" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -180,7 +180,8 @@
                         android:id="@+id/temporary_hitpoints_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_heart_half_full_black_36dp" />
+                        app:srcCompat="@drawable/ic_heart_half_full_black_36dp"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:id="@+id/temporary_hitpoints_label"
@@ -212,7 +213,8 @@
                         android:id="@+id/armour_class_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_shield_half_full_black_36dp" />
+                        app:srcCompat="@drawable/ic_shield_half_full_black_36dp"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:id="@+id/armour_class_label"
@@ -224,7 +226,7 @@
                         android:id="@+id/armourClassValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="" />
+                        android:text="@string/adventurerArmourClassPlaceholder" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -236,7 +238,8 @@
                         android:id="@+id/speed_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_run_black_36dp" />
+                        app:srcCompat="@drawable/ic_run_black_36dp"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:id="@+id/speed_label"
@@ -266,7 +269,8 @@
                         android:id="@+id/imageView8"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/ic_sword_cross_black_36dp" />
+                        app:srcCompat="@drawable/ic_sword_cross_black_36dp"
+                        android:contentDescription="TODO" />
 
                     <TextView
                         android:id="@+id/initiative_label"
@@ -290,7 +294,7 @@
             android:id="@+id/skill_proficiencies_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Skills"
+            android:text="@string/adventurerSkillsLabel"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -603,7 +607,7 @@
             android:id="@+id/personality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Personality"
+            android:text="@string/adventurerPersonalityLabel"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -623,7 +627,7 @@
             android:id="@+id/backgroundLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Background"
+            android:text="@string/adventurerBackgroundLabel"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -641,7 +645,7 @@
             android:id="@+id/traitsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Personality traits"
+            android:text="@string/adventurerPesonalityTraitsLabel"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -659,7 +663,7 @@
             android:id="@+id/idealsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ideals"
+            android:text="@string/adventurerIdealsLabel"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -677,7 +681,7 @@
             android:id="@+id/flawsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Flaws"
+            android:text="@string/adventurerFlawsLabel"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -696,7 +700,7 @@
             android:id="@+id/bondsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bonds"
+            android:text="@string/adventurerBondsLabel"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
