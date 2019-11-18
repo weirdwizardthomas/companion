@@ -16,6 +16,12 @@ public class CompanionViewModel extends AndroidViewModel {
         companionRepository = new CompanionRepository(application);
     }
 
+    public Companion getMockup() {
+        Companion companion = new Companion();
+        companion.setName("Tom");
+
+        return companion;
+    }
 
     public void insertCompanion(Companion companion) {
         companionRepository.insert(companion);

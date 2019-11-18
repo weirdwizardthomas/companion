@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ScrollView;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,7 +16,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.via.android_development.companion.R;
+import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.utility.DieRoller;
+import com.via.android_development.companion.utility.StatCalculator;
+import com.via.android_development.companion.utility.enums.Attribute;
+import com.via.android_development.companion.utility.enums.Skill;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,8 +28,12 @@ import java.util.Map;
 public class CompanionFragment extends Fragment {
 
     private Map<String, Button> buttons;
+    private TextView name;
+    private TextView raceAndProfession;
+    private Switch statsSwitch;
 
     private CompanionViewModel companionViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         companionViewModel = ViewModelProviders.of(this).get(CompanionViewModel.class);
@@ -30,9 +41,48 @@ public class CompanionFragment extends Fragment {
 
         adjustForMenu(root);
         initialiseButtons(root);
-        addOnClickListenersToButtons();
+        initialiseStatSwitch(root);
+
+        name = root.findViewById(R.id.name);
+        raceAndProfession = root.findViewById(R.id.race_and_profession);
+
+        loadCompanion();
 
         return root;
+    }
+
+    private void loadCompanion() {
+        updateStatButtons(getCompanionAbilityValues());
+        Companion companion = companionViewModel.getMockup();
+        name.setText(companion.getName());
+        raceAndProfession.setText(new StringBuilder().append(companion.getRace()).append(" ").toString())
+        ;
+
+    }
+
+    private void initialiseStatSwitch(View root) {
+        statsSwitch = root.findViewById(R.id.stats_switch);
+        statsSwitch.setChecked(false);
+
+        statsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateStatButtons((isChecked ? getCompanionAbilityModifiers() : getCompanionAbilityValues()));
+            }
+        });
+
+        //Initialise default values
+        updateStatButtons(getCompanionAbilityValues());
+    }
+
+    private void updateStatButtons(Map<String, String> dummy) {
+        for (Map.Entry<String, String> entry : dummy.entrySet())
+            updateButton(entry.getKey(), entry.getKey(), entry.getValue());
+    }
+
+    private void updateButton(String key, String label, String value) {
+        String dummy = new StringBuilder().append(label).append(" ").append(value).toString();
+        buttons.get(key).setText(dummy);
     }
 
     private void addOnClickListenersToButtons() {
@@ -51,32 +101,62 @@ public class CompanionFragment extends Fragment {
         buttons = new HashMap<>();
 
         //Attributes
-        buttons.put(getString(R.string.attributeStrength), (Button) root.findViewById(R.id.strength));
-        buttons.put(getString(R.string.attributeDexterity), (Button) root.findViewById(R.id.dexterity));
-        buttons.put(getString(R.string.attributeConstitution), (Button) root.findViewById(R.id.constitution));
-        buttons.put(getString(R.string.attributeIntelligence), (Button) root.findViewById(R.id.intelligence));
-        buttons.put(getString(R.string.attributeWisdom), (Button) root.findViewById(R.id.wisdom));
-        buttons.put(getString(R.string.attributeCharisma), (Button) root.findViewById(R.id.charisma));
+        buttons.put(String.valueOf(Attribute.STRENGTH), (Button) root.findViewById(R.id.strength));
+        buttons.put(String.valueOf(Attribute.DEXTERITY), (Button) root.findViewById(R.id.dexterity));
+        buttons.put(String.valueOf(Attribute.CONSTITUTION), (Button) root.findViewById(R.id.constitution));
+        buttons.put(String.valueOf(Attribute.INTELLIGENCE), (Button) root.findViewById(R.id.intelligence));
+        buttons.put(String.valueOf(Attribute.WISDOM), (Button) root.findViewById(R.id.wisdom));
+        buttons.put(String.valueOf(Attribute.CHARISMA), (Button) root.findViewById(R.id.charisma));
 
         //Skills
-        buttons.put(getString(R.string.skillsAthletics), (Button) root.findViewById(R.id.athletics));
-        buttons.put(getString(R.string.skillsAcrobatics), (Button) root.findViewById(R.id.acrobatics));
-        buttons.put(getString(R.string.skillsSleightOfHand), (Button) root.findViewById(R.id.sleightOfHand));
-        buttons.put(getString(R.string.skillsStealth), (Button) root.findViewById(R.id.stealth));
-        buttons.put(getString(R.string.skillsArcana), (Button) root.findViewById(R.id.arcana));
-        buttons.put(getString(R.string.skillsHistory), (Button) root.findViewById(R.id.history));
-        buttons.put(getString(R.string.skillsInvestigation), (Button) root.findViewById(R.id.investigation));
-        buttons.put(getString(R.string.skillsNature), (Button) root.findViewById(R.id.nature));
-        buttons.put(getString(R.string.skillsReligion), (Button) root.findViewById(R.id.religion));
-        buttons.put(getString(R.string.skillsAnimalHandling), (Button) root.findViewById(R.id.animalHandling));
-        buttons.put(getString(R.string.skillsInsight), (Button) root.findViewById(R.id.insight));
-        buttons.put(getString(R.string.skillsMedicine), (Button) root.findViewById(R.id.medicine));
-        buttons.put(getString(R.string.skillsPerception), (Button) root.findViewById(R.id.perception));
-        buttons.put(getString(R.string.skillsSurvival), (Button) root.findViewById(R.id.survival));
-        buttons.put(getString(R.string.skillsDeception), (Button) root.findViewById(R.id.deception));
-        buttons.put(getString(R.string.skillsIntimidation), (Button) root.findViewById(R.id.intimidation));
-        buttons.put(getString(R.string.skillsPerformance), (Button) root.findViewById(R.id.performance));
-        buttons.put(getString(R.string.skillsPersuasion), (Button) root.findViewById(R.id.persuasion));
+        buttons.put(String.valueOf(Skill.ATHLETICS), (Button) root.findViewById(R.id.athletics));
+        buttons.put(String.valueOf(Skill.ACROBATICS), (Button) root.findViewById(R.id.acrobatics));
+        buttons.put(String.valueOf(Skill.SLEIGHT_OF_HAND), (Button) root.findViewById(R.id.sleightOfHand));
+        buttons.put(String.valueOf(Skill.STEALTH), (Button) root.findViewById(R.id.stealth));
+        buttons.put(String.valueOf(Skill.ARCANA), (Button) root.findViewById(R.id.arcana));
+        buttons.put(String.valueOf(Skill.HISTORY), (Button) root.findViewById(R.id.history));
+        buttons.put(String.valueOf(Skill.INVESTIGATION), (Button) root.findViewById(R.id.investigation));
+        buttons.put(String.valueOf(Skill.NATURE), (Button) root.findViewById(R.id.nature));
+        buttons.put(String.valueOf(Skill.RELIGION), (Button) root.findViewById(R.id.religion));
+        buttons.put(String.valueOf(Skill.ANIMAL_HANDLING), (Button) root.findViewById(R.id.animalHandling));
+        buttons.put(String.valueOf(Skill.INSIGHT), (Button) root.findViewById(R.id.insight));
+        buttons.put(String.valueOf(Skill.MEDICINE), (Button) root.findViewById(R.id.medicine));
+        buttons.put(String.valueOf(Skill.PERCEPTION), (Button) root.findViewById(R.id.perception));
+        buttons.put(String.valueOf(Skill.SURVIVAL), (Button) root.findViewById(R.id.survival));
+        buttons.put(String.valueOf(Skill.DECEPTION), (Button) root.findViewById(R.id.deception));
+        buttons.put(String.valueOf(Skill.INTIMIDATION), (Button) root.findViewById(R.id.intimidation));
+        buttons.put(String.valueOf(Skill.PERFORMANCE), (Button) root.findViewById(R.id.performance));
+        buttons.put(String.valueOf(Skill.PERSUASION), (Button) root.findViewById(R.id.persuasion));
+
+        addOnClickListenersToButtons();
+    }
+
+    private Map<String, String> getCompanionAbilityValues() {
+        Companion companion = companionViewModel.getMockup();
+        Map<String, String> dummy = new HashMap<>();
+
+        dummy.put(String.valueOf(Attribute.STRENGTH), Integer.toString(companion.getStrength()));
+        dummy.put(String.valueOf(Attribute.DEXTERITY), Integer.toString(companion.getDexterity()));
+        dummy.put(String.valueOf(Attribute.CONSTITUTION), Integer.toString(companion.getConstitution()));
+        dummy.put(String.valueOf(Attribute.INTELLIGENCE), Integer.toString(companion.getIntelligence()));
+        dummy.put(String.valueOf(Attribute.WISDOM), Integer.toString(companion.getWisdom()));
+        dummy.put(String.valueOf(Attribute.CHARISMA), Integer.toString(companion.getCharisma()));
+
+        return dummy;
+    }
+
+    private Map<String, String> getCompanionAbilityModifiers() {
+        Companion companion = companionViewModel.getMockup();
+        Map<String, String> dummy = new HashMap<>();
+
+        dummy.put(getString(R.string.attributeStrength), StatCalculator.abilityModifierAsString(companion.getStrength()));
+        dummy.put(getString(R.string.attributeDexterity), StatCalculator.abilityModifierAsString(companion.getDexterity()));
+        dummy.put(getString(R.string.attributeConstitution), StatCalculator.abilityModifierAsString(companion.getConstitution()));
+        dummy.put(getString(R.string.attributeIntelligence), StatCalculator.abilityModifierAsString(companion.getIntelligence()));
+        dummy.put(getString(R.string.attributeWisdom), StatCalculator.abilityModifierAsString(companion.getWisdom()));
+        dummy.put(getString(R.string.attributeCharisma), StatCalculator.abilityModifierAsString(companion.getCharisma()));
+
+        return dummy;
     }
 
     private void adjustForMenu(View root) {
