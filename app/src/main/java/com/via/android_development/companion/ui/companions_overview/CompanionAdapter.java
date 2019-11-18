@@ -62,7 +62,6 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
         TextView companionLevel;
         TextView companionClass;
         ImageButton editButton;
-        ImageButton selectButton;
         int companionId;
 
         public ViewHolder(@NonNull final View itemView) {
@@ -84,13 +83,7 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
                     Navigation.findNavController(itemView).navigate(R.id.overviewToCompanionEditAction, bundle);
                 }
             });
-            selectButton = itemView.findViewById(R.id.companionBrief_selectCompanionButton);
-            selectButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //TODO
-                }
-            });
+
 
             itemView.setOnClickListener(this);
         }
