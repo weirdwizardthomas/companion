@@ -3,6 +3,7 @@ package com.via.android_development.companion.persistence.local;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.utility.StatCalculator;
 import com.via.android_development.companion.utility.enums.Alignment;
 import com.via.android_development.companion.utility.enums.Profession;
@@ -96,6 +97,44 @@ public class Companion {
         ideals = "";
         bonds = "";
         flaws = "";
+    }
+
+    public Companion(FirebaseCompanion firebaseCompanion) {
+        name = firebaseCompanion.getName();
+        profession = firebaseCompanion.getProfession();
+        totalLevel = firebaseCompanion.getTotalLevel();
+        race = firebaseCompanion.getRace();
+        alignment = firebaseCompanion.getAlignment();
+        xp = firebaseCompanion.getXp();
+
+        strength = firebaseCompanion.getStrength();
+        dexterity = firebaseCompanion.getDexterity();
+        constitution = firebaseCompanion.getConstitution();
+        intelligence = firebaseCompanion.getIntelligence();
+        wisdom = firebaseCompanion.getWisdom();
+        charisma = firebaseCompanion.getCharisma();
+
+        speed = firebaseCompanion.getSpeed();
+
+        proficiencyBonus = firebaseCompanion.getProficiencyBonus();
+        savingThrowProficiencies = new HashSet<>(firebaseCompanion.getSavingThrowProficiencies());
+        skillProficiencies = new HashSet<>(firebaseCompanion.getSkillProficiencies());
+
+        hitpoints = firebaseCompanion.getHitpoints();
+        maximalHitpoints = firebaseCompanion.getMaximalHitpoints();
+        temporaryHitpoints = firebaseCompanion.getTemporaryHitpoints();
+        hitDieFacets = firebaseCompanion.getHitDieFacets();
+        hitDiceMaximum = firebaseCompanion.getHitDiceMaximum();
+        hitDiceRemaining = firebaseCompanion.getHitDiceRemaining();
+
+        deathSaveSuccesses = firebaseCompanion.getDeathSaveSuccesses();
+        deathSaveFailures = firebaseCompanion.getDeathSaveFailures();
+
+        background = firebaseCompanion.getBackground();
+        personalityTraits = firebaseCompanion.getPersonalityTraits();
+        ideals = firebaseCompanion.getIdeals();
+        bonds = firebaseCompanion.getBonds();
+        flaws = firebaseCompanion.getFlaws();
     }
 
     public int getId() {

@@ -8,16 +8,21 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.via.android_development.companion.R;
+import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.persistence.local.Companion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,20 +44,24 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
         initialiseRecyclerView(root);
         initialiseAddButton(root);
 
-        observeCompanions();
+        getDataFromFirebase();
 
         return root;
     }
 
-    private void observeCompanions() {
-        Observer<List<Companion>> companionObserver = new Observer<List<Companion>>() {
+    private void getDataFromFirebase() {
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore.collection("Adventurers").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onChanged(List<Companion> companions) {
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<Companion> companions = new ArrayList<>();
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
+                    companions.add(new Companion(firebaseCompanion));
+                }
                 companionsAdapter.setData(companions);
             }
-        };
-
-        companionOverviewViewModel.getAllCompanions().observe(this, companionObserver);
+        });
     }
 
     private void initialiseRecyclerView(final View root) {

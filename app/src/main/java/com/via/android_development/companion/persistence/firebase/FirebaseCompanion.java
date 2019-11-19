@@ -44,6 +44,10 @@ public class FirebaseCompanion {
     private String bonds;
     private String flaws;
 
+    public FirebaseCompanion() {
+
+    }
+
     public FirebaseCompanion(Companion companion) {
         name = companion.getName();
         profession = companion.getProfession();
