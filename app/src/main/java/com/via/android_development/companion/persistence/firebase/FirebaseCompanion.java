@@ -1,6 +1,7 @@
 package com.via.android_development.companion.persistence.firebase;
 
 import com.via.android_development.companion.persistence.local.Companion;
+import com.via.android_development.companion.utility.StatCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,7 @@ public class FirebaseCompanion {
     }
 
     public FirebaseCompanion(Companion companion) {
+        id = companion.getId();
         name = companion.getName();
         profession = companion.getProfession();
         totalLevel = companion.getTotalLevel();
@@ -85,7 +87,6 @@ public class FirebaseCompanion {
         bonds = companion.getBonds();
         flaws = companion.getFlaws();
     }
-
 
     public int getId() {
         return id;
@@ -325,5 +326,13 @@ public class FirebaseCompanion {
 
     public void setFlaws(String flaws) {
         this.flaws = flaws;
+    }
+
+    public int getArmourClass() {
+        return StatCalculator.abilityModifier(dexterity) + Companion.BASE_ARMOUR_CLASS;
+    }
+
+    public int getInitiative() {
+        return StatCalculator.abilityModifier(dexterity);
     }
 }

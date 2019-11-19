@@ -37,6 +37,9 @@
             android:id="@+id/overviewToCreateAction"
             app:destination="@id/companionCreateFragment1"
             app:popUpTo="@+id/companionsOverviewFragment" />
+        <action
+            android:id="@+id/overviewToAdventurer"
+            app:destination="@id/companionFragment" />
     </fragment>
     <fragment
         android:id="@+id/companionEditFragment"

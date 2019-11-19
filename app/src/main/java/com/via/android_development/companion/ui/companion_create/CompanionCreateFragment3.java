@@ -1,6 +1,8 @@
 package com.via.android_development.companion.ui.companion_create;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.via.android_development.companion.utility.enums.Alignment;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 //BACKGROUND AND SHIT
@@ -100,7 +103,7 @@ public class CompanionCreateFragment3 extends Fragment {
             public void onClick(View v) {
                 updateCompanionInstance(); //get new values
                 saveInstanceToFirestore(); //save to remote db
-                companionCreateViewModel.deleteAllCompanions(); //perform cleanup
+                    companionCreateViewModel.deleteAllCompanions(); //perform cleanup
                 Navigation.findNavController(root).navigate(R.id.create3_to_overview);
             }
         });
@@ -155,6 +158,24 @@ public class CompanionCreateFragment3 extends Fragment {
     }
 
     private void saveInstanceToFirestore() {
+
+        int nextID;
+        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
+
+        if (sharedPref.contains("NextID")) {
+            nextID = sharedPref.getInt("NextID", 0);
+            nextID++;
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("NextID", nextID);
+            editor.apply();
+        } else {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            nextID = 0;
+            editor.putInt("NextID", nextID);
+            editor.apply();
+        }
+
+        dummy.setId(nextID);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Adventurers").document().set(new FirebaseCompanion(dummy));
     }

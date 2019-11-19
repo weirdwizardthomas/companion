@@ -12,7 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.via.android_development.companion.R;
-import com.via.android_development.companion.persistence.local.Companion;
+import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 import static com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment.ID_KEY;
 
 public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.ViewHolder> {
-    private List<Companion> data;
+    private List<FirebaseCompanion> data;
     private OnItemClickListener onItemClickListener;
 
     public CompanionAdapter(OnItemClickListener onItemClickListener) {
@@ -38,11 +38,10 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull CompanionAdapter.ViewHolder holder, int position) {
-        Companion companion = data.get(position);
-        String companionClass = "multiclass";
+        FirebaseCompanion companion = data.get(position);
 
         holder.companionName.setText(companion.getName());
-        holder.companionClass.setText(companionClass);
+        holder.companionClass.setText(companion.getProfession());
         holder.companionLevel.setText(Integer.toString(companion.getTotalLevel()));
         holder.companionId = companion.getId();
     }
@@ -52,7 +51,7 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
         return data.size();
     }
 
-    public void setData(List<Companion> data) {
+    public void setData(List<FirebaseCompanion> data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -77,7 +76,6 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
             editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Bundle bundle = new Bundle();
                     bundle.putInt(ID_KEY, companionId);
                     Navigation.findNavController(itemView).navigate(R.id.overviewToCompanionEditAction, bundle);
@@ -90,12 +88,12 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
 
         @Override
         public void onClick(View v) {
-            Companion item = data.get(getAdapterPosition());
+            FirebaseCompanion item = data.get(getAdapterPosition());
             onItemClickListener.onItemClick(item);
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Companion item);
+        void onItemClick(FirebaseCompanion item);
     }
 }

@@ -1,5 +1,7 @@
 package com.via.android_development.companion.ui.companions_overview;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +22,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
-import com.via.android_development.companion.persistence.local.Companion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class CompanionOverviewFragment extends Fragment implements CompanionAdapter.OnItemClickListener {
@@ -54,10 +56,10 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
         firebaseFirestore.collection("Adventurers").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<Companion> companions = new ArrayList<>();
+                List<FirebaseCompanion> companions = new ArrayList<>();
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                     FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
-                    companions.add(new Companion(firebaseCompanion));
+                    companions.add(firebaseCompanion);
                 }
                 companionsAdapter.setData(companions);
             }
@@ -86,6 +88,11 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
     }
 
     @Override
-    public void onItemClick(Companion item) {
+    public void onItemClick(FirebaseCompanion item) {
+        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(ID_KEY, item.getId());
+        editor.apply();
+        Navigation.findNavController(Objects.requireNonNull(this.getView())).navigate(R.id.overviewToAdventurer);
     }
 }

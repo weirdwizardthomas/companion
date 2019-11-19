@@ -4,7 +4,6 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
-import com.via.android_development.companion.utility.StatCalculator;
 import com.via.android_development.companion.utility.enums.Alignment;
 import com.via.android_development.companion.utility.enums.Profession;
 import com.via.android_development.companion.utility.enums.Race;
@@ -361,17 +360,6 @@ public class Companion {
         this.flaws = flaws;
     }
 
-    /* public Map<String, Integer> getAttributes() {
-         Map<String, Integer> attributes = new HashMap<>();
-         attributes.put(String.valueOf(Attribute.STRENGTH), strength);
-         attributes.put(String.valueOf(Attribute.DEXTERITY), dexterity);
-         attributes.put(String.valueOf(Attribute.CONSTITUTION), constitution);
-         attributes.put(String.valueOf(Attribute.INTELLIGENCE), intelligence);
-         attributes.put(String.valueOf(Attribute.WISDOM), wisdom);
-         attributes.put(String.valueOf(Attribute.CHARISMA), charisma);
-         return attributes;
-     }
- */
     public Set<String> getSavingThrowProficiencies() {
         return savingThrowProficiencies;
     }
@@ -388,11 +376,4 @@ public class Companion {
         this.skillProficiencies = skillProficiencies;
     }
 
-    public int getArmourClass() {
-        return StatCalculator.abilityModifier(dexterity) + BASE_ARMOUR_CLASS;
-    }
-
-    public int getInitiative() {
-        return StatCalculator.abilityModifier(dexterity);
-    }
 }

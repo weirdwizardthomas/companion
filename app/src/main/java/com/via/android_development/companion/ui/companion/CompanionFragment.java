@@ -1,12 +1,13 @@
 package com.via.android_development.companion.ui.companion;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.via.android_development.companion.R;
-import com.via.android_development.companion.persistence.local.Companion;
+import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
+import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
 import com.via.android_development.companion.utility.DieRoller;
 import com.via.android_development.companion.utility.StatCalculator;
 import com.via.android_development.companion.utility.enums.Attribute;
@@ -24,6 +29,7 @@ import com.via.android_development.companion.utility.enums.Skill;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class CompanionFragment extends Fragment {
     private CompanionViewModel companionViewModel;
@@ -45,19 +51,34 @@ public class CompanionFragment extends Fragment {
 
     private Switch statsSwitch;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         companionViewModel = ViewModelProviders.of(this).get(CompanionViewModel.class);
         View root = inflater.inflate(R.layout.companion_fragment, container, false);
 
         initialiseLayout(root);
 
-        updateDisplayedValues();
+        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
+        if (!sharedPref.contains(CompanionOverviewFragment.ID_KEY)) {
+            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+        } else {
+            int id = sharedPref.getInt(CompanionOverviewFragment.ID_KEY, -1);
+            FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+            firebaseFirestore.collection("Adventurers").whereEqualTo("id", id).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        FirebaseCompanion firebaseCompanion = queryDocumentSnapshots.getDocuments().get(0).toObject(FirebaseCompanion.class);
+                        companionViewModel.setCompanion(firebaseCompanion);
+                        updateDisplayedValues();
+                    }
+                }
+            });
+        }
 
         return root;
     }
 
-    public void initialiseLayout(View root) {
+    private void initialiseLayout(View root) {
         initialiseButtons(root);
         initialiseStatSwitch(root);
 
@@ -74,16 +95,15 @@ public class CompanionFragment extends Fragment {
         traits = root.findViewById(R.id.traitsContent);
         flaws = root.findViewById(R.id.flawsContent);
         bonds = root.findViewById(R.id.bondsContent);
-
     }
 
     private void updateDisplayedValues() {
+        FirebaseCompanion companion = companionViewModel.getCompanion();
         updateStatButtons(getCompanionAbilityValues());
-        Companion companion = companionViewModel.getMockup();
         name.setText(companion.getName());
-        String raceAndStringText = new StringBuilder().append(companion.getRace()).append(" ").append(companion.getProfession()).toString();
+        String raceAndStringText = companion.getRace() + " " + companion.getProfession();
         raceAndProfession.setText(raceAndStringText);
-        String hpText = new StringBuilder().append(companion.getHitpoints()).append("/").append(companion.getMaximalHitpoints()).toString();
+        String hpText = companion.getHitpoints() + "/" + companion.getMaximalHitpoints();
         hitpoints.setText(hpText);
         temporaryHitpoints.setText(Integer.toString(companion.getTemporaryHitpoints()));
         armourClass.setText(Integer.toString(companion.getArmourClass()));
@@ -118,7 +138,7 @@ public class CompanionFragment extends Fragment {
     }
 
     private void updateButton(String key, String label, String value) {
-        String dummy = new StringBuilder().append(label).append(" ").append(value).toString();
+        String dummy = label + " " + value;
         buttons.get(key).setText(dummy);
     }
 
@@ -169,7 +189,7 @@ public class CompanionFragment extends Fragment {
     }
 
     private Map<String, String> getCompanionAbilityValues() {
-        Companion companion = companionViewModel.getMockup();
+        FirebaseCompanion companion = companionViewModel.getCompanion();
         Map<String, String> dummy = new HashMap<>();
 
         dummy.put(String.valueOf(Attribute.STRENGTH), Integer.toString(companion.getStrength()));
@@ -183,7 +203,7 @@ public class CompanionFragment extends Fragment {
     }
 
     private Map<String, String> getCompanionAbilityModifiers() {
-        Companion companion = companionViewModel.getMockup();
+        FirebaseCompanion companion = companionViewModel.getCompanion();
         Map<String, String> dummy = new HashMap<>();
 
         dummy.put(getString(R.string.attributeStrength), StatCalculator.abilityModifierAsString(companion.getStrength()));
@@ -196,12 +216,4 @@ public class CompanionFragment extends Fragment {
         return dummy;
     }
 
-    private void adjustForMenu(View root) {
-        int bottomNavigationHeight = getActivity().findViewById(R.id.nav_view).getHeight();
-
-        ScrollView scrollView = root.findViewById(R.id.mainScrollView);
-        ScrollView.LayoutParams layoutParams = (ScrollView.LayoutParams) scrollView.getLayoutParams();
-        layoutParams.bottomMargin = bottomNavigationHeight;
-        scrollView.setLayoutParams(layoutParams);
-    }
 }
