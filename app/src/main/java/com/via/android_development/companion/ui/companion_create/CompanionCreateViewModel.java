@@ -11,17 +11,19 @@ import com.via.android_development.companion.utility.EnumTranslator;
 
 import java.util.List;
 
-class CompanionCreateViewModel extends AndroidViewModel {
+public class CompanionCreateViewModel extends AndroidViewModel {
 
     public static final int DEFAULT_RACE_INDEX = 8;
     public static final int DEFAULT_PROFESSION_INDEX = 5;
     public static final int DEFAULT_ALIGNMENT_INDEX = 5;
 
     private final CompanionRepository companionRepository;
+    private Companion companion;
 
     public CompanionCreateViewModel(Application application) {
         super(application);
         companionRepository = new CompanionRepository(application);
+        companion = new Companion();
     }
 
     public void insert(Companion companion) {
@@ -62,5 +64,13 @@ class CompanionCreateViewModel extends AndroidViewModel {
 
     public static String getAlignmentByIndex(int index) {
         return EnumTranslator.getAllAlignments()[index];
+    }
+
+    public Companion getCompanion() {
+        return companion;
+    }
+
+    public void setCompanion(Companion companion) {
+        this.companion = companion;
     }
 }

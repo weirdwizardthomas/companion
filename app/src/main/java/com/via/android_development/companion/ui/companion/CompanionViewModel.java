@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 
-class CompanionViewModel extends AndroidViewModel {
+public class CompanionViewModel extends AndroidViewModel {
 
     private FirebaseCompanion companion;
 

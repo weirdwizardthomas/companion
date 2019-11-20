@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-class CompanionOverviewViewModel extends AndroidViewModel {
+public class CompanionOverviewViewModel extends AndroidViewModel {
 
     public CompanionOverviewViewModel(@NonNull Application application) {
         super(application);

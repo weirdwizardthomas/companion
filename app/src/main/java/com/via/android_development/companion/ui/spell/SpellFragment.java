@@ -17,7 +17,7 @@ import com.via.android_development.companion.persistence.api.pojo.Spell;
 
 import java.util.Objects;
 
-class SpellFragment extends Fragment {
+public class SpellFragment extends Fragment {
 
     private SpellViewModel spellViewModel;
 
@@ -83,10 +83,6 @@ class SpellFragment extends Fragment {
         ScrollView.LayoutParams layoutParams = (ScrollView.LayoutParams) scrollView.getLayoutParams();
         layoutParams.bottomMargin = bottomNavigationHeight;
         scrollView.setLayoutParams(layoutParams);
-
-       /* ScrollView.LayoutParams layoutParams = (ScrollView.LayoutParams) constraintLayout.getLayoutParams();
-        layoutParams. = bottomNavigationHeight;
-        constraintLayout.setLayoutParams(layoutParams);*/
     }
 
     private void initialiseTextViews(View root) {

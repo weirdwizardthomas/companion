@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/editButton"
-        android:icon="@drawable/ic_pencil_white_18dp"
+        android:icon="@drawable/ic_pencil_black_18dp"
         android:title="@string/editButton"
         app:showAsAction="ifRoom" />
 </menu>

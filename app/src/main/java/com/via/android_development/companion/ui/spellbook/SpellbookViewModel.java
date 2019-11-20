@@ -10,7 +10,7 @@ import com.via.android_development.companion.persistence.api.repository.SpellRep
 
 import java.util.List;
 
-class SpellbookViewModel extends AndroidViewModel {
+public class SpellbookViewModel extends AndroidViewModel {
     private final SpellRepository spellRepository;
 
     public SpellbookViewModel(Application application) {

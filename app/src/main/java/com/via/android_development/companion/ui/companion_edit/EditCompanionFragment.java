@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-class EditCompanionFragment extends Fragment {
+public class EditCompanionFragment extends Fragment {
 
     private EditCompanionViewModel editCompanionViewModel;
 

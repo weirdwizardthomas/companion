@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 //PROFICIENCIES
-class CompanionCreateFragment2 extends Fragment {
+public class CompanionCreateFragment2 extends Fragment {
     private CompanionCreateViewModel companionCreateViewModel;
 
     private Map<String, CheckBox> savingThrowCheckboxes;
@@ -30,8 +30,6 @@ class CompanionCreateFragment2 extends Fragment {
 
     private Button resetButton;
     private Button nextArrowButton;
-
-    private Companion dummy;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -119,15 +117,16 @@ class CompanionCreateFragment2 extends Fragment {
         Observer<List<Companion>> companionObserver = new Observer<List<Companion>>() {
             @Override
             public void onChanged(List<Companion> companions) {
-                dummy = companions.get(0);
+                companionCreateViewModel.setCompanion(companions.get(0));
                 updateDisplayedValues();
-
             }
         };
         companionCreateViewModel.getAllCompanions().observe(this, companionObserver);
     }
 
     private void updateDisplayedValues() {
+        Companion dummy = companionCreateViewModel.getCompanion();
+
         Set<String> skills = dummy.getSkillProficiencies();
         for (Map.Entry<String, CheckBox> entry : skillCheckboxes.entrySet())
             entry.getValue().setChecked(skills.contains(entry.getKey()));
@@ -141,6 +140,7 @@ class CompanionCreateFragment2 extends Fragment {
         Set<String> savingThrows = getProficiencies(savingThrowCheckboxes);
         Set<String> skills = getProficiencies(skillCheckboxes);
 
+        Companion dummy = companionCreateViewModel.getCompanion();
         dummy.setSkillProficiencies(skills);
         dummy.setSavingThrowProficiencies(savingThrows);
         companionCreateViewModel.update(dummy);

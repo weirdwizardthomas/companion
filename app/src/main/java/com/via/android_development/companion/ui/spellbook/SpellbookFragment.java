@@ -27,7 +27,6 @@ public class SpellbookFragment extends Fragment implements SpellAdapter.OnItemCl
     private RecyclerView spellRecyclerView;
     private SpellAdapter spellAdapter;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         spellbookViewModel = ViewModelProviders.of(this).get(SpellbookViewModel.class);
         View root = inflater.inflate(R.layout.spellbook_fragment, container, false);

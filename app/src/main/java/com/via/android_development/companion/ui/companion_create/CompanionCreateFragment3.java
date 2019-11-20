@@ -29,7 +29,7 @@ import java.util.Objects;
 
 
 //BACKGROUND AND SHIT
-class CompanionCreateFragment3 extends Fragment {
+public class CompanionCreateFragment3 extends Fragment {
     private CompanionCreateViewModel companionCreateViewModel;
 
     private NumberPicker alignmentPicker;
@@ -42,8 +42,6 @@ class CompanionCreateFragment3 extends Fragment {
 
     private Button resetButton;
     private Button nextArrowButton;
-
-    private Companion dummy;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
@@ -67,7 +65,7 @@ class CompanionCreateFragment3 extends Fragment {
         Observer<List<Companion>> companionsObserver = new Observer<List<Companion>>() {
             @Override
             public void onChanged(List<Companion> companions) {
-                dummy = companions.get(0);
+                companionCreateViewModel.setCompanion(companions.get(0));
                 updateDisplayedValues();
             }
         };
@@ -85,7 +83,10 @@ class CompanionCreateFragment3 extends Fragment {
 
     private void initialiseAlignmentPicker(View root) {
         alignmentPicker = root.findViewById(R.id.alignmentPicker);
-        initialiseStringPicker(alignmentPicker, CompanionCreateViewModel.getAllAlignments(), CompanionCreateViewModel.DEFAULT_ALIGNMENT_INDEX);
+        alignmentPicker.setMinValue(1);
+        alignmentPicker.setMaxValue(CompanionCreateViewModel.getAllAlignments().length);
+        alignmentPicker.setDisplayedValues(CompanionCreateViewModel.getAllAlignments());
+        alignmentPicker.setValue(CompanionCreateViewModel.DEFAULT_ALIGNMENT_INDEX);
     }
 
     private void initialiseBottomButtons(final View root) {
@@ -111,14 +112,8 @@ class CompanionCreateFragment3 extends Fragment {
 
     }
 
-    private void initialiseStringPicker(NumberPicker picker, String[] values, int defaultValue) {
-        picker.setMinValue(1);
-        picker.setMaxValue(values.length);
-        picker.setDisplayedValues(values);
-        picker.setValue(defaultValue);
-    }
-
     private void resetCompanion() {
+        Companion dummy = companionCreateViewModel.getCompanion();
         dummy.setBackground("");
         dummy.setAlignment(String.valueOf(Alignment.TRUE_NEUTRAL));
         dummy.setPersonalityTraits("");
@@ -140,6 +135,7 @@ class CompanionCreateFragment3 extends Fragment {
     }
 
     private void updateDisplayedValues() {
+        Companion dummy = companionCreateViewModel.getCompanion();
         updatePickerValue(alignmentPicker, dummy.getAlignment(), String.valueOf(Alignment.TRUE_NEUTRAL));
         backgroundInput.setText(dummy.getBackground());
         traitsInput.setText(dummy.getPersonalityTraits());
@@ -149,6 +145,7 @@ class CompanionCreateFragment3 extends Fragment {
     }
 
     private void updateCompanionInstance() {
+        Companion dummy = companionCreateViewModel.getCompanion();
         dummy.setBackground(backgroundInput.getText().toString());
         dummy.setAlignment(CompanionCreateViewModel.getAlignmentByIndex(alignmentPicker.getValue() - 1));
         dummy.setBonds(bondsInput.getText().toString());
@@ -159,7 +156,7 @@ class CompanionCreateFragment3 extends Fragment {
     }
 
     private void saveInstanceToFirestore() {
-
+        Companion dummy = companionCreateViewModel.getCompanion();
         int nextID;
         SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
 

@@ -9,7 +9,7 @@ import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.utility.StatCalculator;
 
-class AttributeWrapper {
+public class AttributeWrapper {
 
     private final NumberPicker picker;
     private final TextView label;

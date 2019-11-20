@@ -18,6 +18,7 @@ import com.shawnlin.numberpicker.NumberPicker;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
+import com.via.android_development.companion.utility.StatCalculator;
 import com.via.android_development.companion.utility.enums.Attribute;
 import com.via.android_development.companion.utility.enums.Profession;
 import com.via.android_development.companion.utility.enums.Race;
@@ -28,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 
 //LANDING - NAME, STATS, RACE & PROFESSION
-class CompanionCreateFragment1 extends Fragment {
+public class CompanionCreateFragment1 extends Fragment {
 
     private EditText name;
 
@@ -39,8 +40,6 @@ class CompanionCreateFragment1 extends Fragment {
 
     private Button resetButton;
     private Button nextArrowButton;
-
-    private Companion dummy;
 
     private CompanionCreateViewModel companionCreateViewModel;
 
@@ -132,7 +131,7 @@ class CompanionCreateFragment1 extends Fragment {
             @Override
             public void onChanged(List<Companion> companions) {
                 if (companions.size() != 0) {
-                    dummy = companions.get(0);
+                    companionCreateViewModel.setCompanion(companions.get(0));
                     updateDisplayedValues();
                 }
             }
@@ -142,6 +141,8 @@ class CompanionCreateFragment1 extends Fragment {
     }
 
     private void saveCompanionInstance() {
+        Companion dummy = companionCreateViewModel.getCompanion();
+
         dummy.setName(name.getText().toString());
         dummy.setRace(CompanionCreateViewModel.getRaceByIndex(racePicker.getValue() - 1)); //offset for the difference between number picker and array index
         dummy.setProfession(CompanionCreateViewModel.getProfessionByIndex(professionPicker.getValue() - 1));//offset for the difference between number picker and array index
@@ -152,10 +153,18 @@ class CompanionCreateFragment1 extends Fragment {
         dummy.setWisdom(items.get(4).getPickerValue());
         dummy.setCharisma(items.get(5).getPickerValue());
 
+        dummy.setHitDiceMaximum(1);
+        dummy.setHitDiceRemaining(1);
+        dummy.setHitDieFacets(10);
+        dummy.setMaximalHitpoints(8 + StatCalculator.abilityModifier(dummy.getConstitution()));
+        dummy.setHitpoints(dummy.getHitpoints());
+
         companionCreateViewModel.update(dummy);
     }
 
     private void updateDisplayedValues() {
+        Companion dummy = companionCreateViewModel.getCompanion();
+
         name.setText(dummy.getName());
         updatePickerValue(racePicker, dummy.getRace(), String.valueOf(Race.HUMAN));
         updatePickerValue(professionPicker, dummy.getProfession(), String.valueOf(Profession.FIGHTER));

@@ -154,7 +154,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/labelHitpoints"
-                        app:srcCompat="@drawable/ic_heart_black_36dp" />
+                        app:srcCompat="@drawable/ic_heart_grey600_36dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -177,7 +177,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/labelTemporaryHitpoints"
-                        app:srcCompat="@drawable/ic_heart_half_full_black_36dp" />
+                        app:srcCompat="@drawable/ic_heart_half_full_grey600_36dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -208,7 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/labelArmourClass"
-                        app:srcCompat="@drawable/ic_shield_half_full_black_36dp" />
+                        app:srcCompat="@drawable/ic_heart_half_full_grey600_36dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -231,7 +231,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/labelSpeed"
-                        app:srcCompat="@drawable/ic_run_black_36dp" />
+                        app:srcCompat="@drawable/ic_run_grey600_36dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -260,7 +260,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:contentDescription="@string/labelInitiative"
-                        app:srcCompat="@drawable/ic_sword_cross_black_36dp" />
+                        app:srcCompat="@drawable/ic_sword_cross_grey600_36dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
