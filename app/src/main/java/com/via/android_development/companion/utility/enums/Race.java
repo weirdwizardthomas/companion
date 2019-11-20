@@ -1,5 +1,7 @@
 package com.via.android_development.companion.utility.enums;
 
+import androidx.annotation.NonNull;
+
 public enum Race {
     DRAGONBORN("Dragonborn"),
     DWARF("Dwarf"),
@@ -18,6 +20,7 @@ public enum Race {
     }
 
 
+    @NonNull
     public String toString() {
         return stringValue;
     }

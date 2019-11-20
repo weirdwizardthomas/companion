@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Set;
 
 //PROFICIENCIES
-public class CompanionCreateFragment2 extends Fragment {
+class CompanionCreateFragment2 extends Fragment {
     private CompanionCreateViewModel companionCreateViewModel;
 
     private Map<String, CheckBox> savingThrowCheckboxes;

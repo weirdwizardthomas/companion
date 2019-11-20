@@ -11,13 +11,14 @@ import com.via.android_development.companion.persistence.api.response.AllBriefSp
 import com.via.android_development.companion.persistence.api.response.SpellDetailsResponse;
 
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SpellRepository {
-    SpellAPI spellAPI;
+    private final SpellAPI spellAPI;
 
     public SpellRepository() {
         spellAPI = RetrofitServiceGenerator.getSpellAPI();
@@ -30,7 +31,7 @@ public class SpellRepository {
         call.enqueue(new Callback<SpellDetailsResponse>() {
             @Override
             public void onResponse(Call<SpellDetailsResponse> call, Response<SpellDetailsResponse> response) {
-                Spell dummy = response.body().getSpell();
+                Spell dummy = Objects.requireNonNull(response.body()).getSpell();
                 spell.setValue(dummy);
             }
 
@@ -51,7 +52,7 @@ public class SpellRepository {
             @Override
             public void onResponse(Call<AllBriefSpellsResponse> call, Response<AllBriefSpellsResponse> response) {
                 if (response.code() == 200) {
-                    dummy.setValue(response.body().getResults());
+                    dummy.setValue(Objects.requireNonNull(response.body()).getResults());
                 }
             }
 

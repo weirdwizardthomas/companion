@@ -29,7 +29,7 @@ import java.util.Objects;
 
 
 //BACKGROUND AND SHIT
-public class CompanionCreateFragment3 extends Fragment {
+class CompanionCreateFragment3 extends Fragment {
     private CompanionCreateViewModel companionCreateViewModel;
 
     private NumberPicker alignmentPicker;

@@ -92,7 +92,6 @@
         app:layout_constraintTop_toBottomOf="@+id/saving_throws_table" />
 
     <View
-        android:id="@+id/dividerHorizontal3"
         style="@style/Divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skill_proficiencies_header" />
@@ -177,7 +176,6 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/arcana"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/skillsArcana" />
@@ -329,7 +327,6 @@
     </TableLayout>
 
     <LinearLayout
-        android:id="@+id/bottomButtons"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

@@ -5,7 +5,6 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/savingThrowHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/labelSavingThrowProficiencies" />
@@ -16,7 +15,6 @@
         android:layout_width="match_parent" />
 
     <TableLayout
-        android:id="@+id/savingThrowsTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*">
@@ -70,18 +68,15 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/skillsHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/labelSkillProficiencies" />
 
     <View
-        android:id="@+id/divider2"
         style="@style/Divider"
         android:layout_width="match_parent" />
 
     <TableLayout
-        android:id="@+id/skillsTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*">
@@ -115,7 +110,6 @@
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/arcana"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/skillsArcana" />

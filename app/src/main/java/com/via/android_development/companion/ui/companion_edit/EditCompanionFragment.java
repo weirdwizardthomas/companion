@@ -32,9 +32,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
-public class EditCompanionFragment extends Fragment {
+class EditCompanionFragment extends Fragment {
 
     private EditCompanionViewModel editCompanionViewModel;
 
@@ -76,13 +77,11 @@ public class EditCompanionFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.saveButton:
-                updateAdventurerInstance();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.saveButton) {
+            updateAdventurerInstance();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void updateAdventurerInstance() {
@@ -106,20 +105,20 @@ public class EditCompanionFragment extends Fragment {
         firebaseCompanion.setBonds(bonds.getText().toString());
         firebaseCompanion.setFlaws(flaws.getText().toString());
 
-       FirebaseFirestore
+        FirebaseFirestore
                 .getInstance()
                 .collection(CompanionFragment.COLLECTION_NAME)
                 .document(String.valueOf(firebaseCompanion.getId()))
                 .set(firebaseCompanion);
 
         updateDisplayedValues();
-        Navigation.findNavController(getView()).popBackStack();
+        Navigation.findNavController(Objects.requireNonNull(getView())).popBackStack();
     }
 
     private List<String> getProficiencies(Map<String, CheckBox> checkboxes) {
         List<String> proficiencies = new ArrayList<>();
 
-        for (Map.Entry<String, CheckBox> entry : savingThrowCheckboxes.entrySet())
+        for (Map.Entry<String, CheckBox> entry : checkboxes.entrySet())
             if (entry.getValue().isChecked())
                 proficiencies.add(entry.getKey());
 
@@ -138,7 +137,7 @@ public class EditCompanionFragment extends Fragment {
 
     private void initialiseAlignmentSpinner(View root) {
         alignmentSpinner = root.findViewById(R.id.alignmentSpinner);
-        ArrayAdapter<String> alignments = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, EnumTranslator.getAllAlignmentsList());
+        ArrayAdapter<String> alignments = new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, EnumTranslator.getAllAlignmentsList());
         alignments.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         alignmentSpinner.setAdapter(alignments);
     }
@@ -181,14 +180,14 @@ public class EditCompanionFragment extends Fragment {
 
     private void initialiseProfessionSpinner(View root) {
         professionSpinner = root.findViewById(R.id.professionSpinner);
-        ArrayAdapter<String> professions = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, EnumTranslator.getAllProfessionsList());
+        ArrayAdapter<String> professions = new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, EnumTranslator.getAllProfessionsList());
         professions.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         professionSpinner.setAdapter(professions);
     }
 
     private void initialiseRaceSpinner(View root) {
         raceSpinner = root.findViewById(R.id.raceSpinner);
-        ArrayAdapter<String> races = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, EnumTranslator.getAllRacesList());
+        ArrayAdapter<String> races = new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, EnumTranslator.getAllRacesList());
         races.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         raceSpinner.setAdapter(races);
     }

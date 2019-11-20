@@ -2,8 +2,8 @@ package com.via.android_development.companion.persistence.api.pojo;
 
 public class BriefSpell {
 
-    private String name;
-    private String url;
+    private final String name;
+    private final String url;
 
     public BriefSpell(String name, String url) {
         this.name = name;

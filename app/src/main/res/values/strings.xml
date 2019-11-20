@@ -7,7 +7,6 @@
     <string name="titleCreateAdventurer2">Create a new adventurer - Proficiencies</string>
     <string name="titleCreateAdventurer3">Create a new adventurer - Background</string>
     <string name="titleEditAdventurer">Edit adventurer</string>
-    <string name="titleHome">Home</string>
     <string name="titleSpellbook">Spellbook</string>
     <string name="titleSpellFragment">Spell</string>
 
@@ -64,7 +63,6 @@
     <string name="placeholderSpellConcentration">No</string>
     <string name="placeholderSpellCasting">1 action</string>
     <string name="placeholderSpellComponents">V,S,M</string>
-    <string name="placeholderHitpoints">20/20</string>
 
     <string name="labelSaveAndContinueButton">Save and continue</string>
     <string name="labelArmourClass">Armour class:</string>
@@ -94,5 +92,13 @@
     <string name="labelResetButton">Reset</string>
     <string name="labelSavingThrowProficiencies">Saving throw proficiencies</string>
     <string name="labelSkillProficiencies">Skill proficiencies</string>
+    <string name="labelEditButton">Edit button</string>
+    <string name="labelRace">Race</string>
+    <string name="labelClass">Class</string>
+    <string name="labelAlignment">Alignment</string>
+    <string name="editButton">Edit</string>
+    <string name="saveButton">Save</string>
+    <string name="decrementButton">Decrement button</string>
+    <string name="incrementButton">Increment Button</string>
 
 </resources>

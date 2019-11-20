@@ -129,7 +129,6 @@
         app:layout_constraintTop_toBottomOf="@+id/flaws_label" />
 
     <LinearLayout
-        android:id="@+id/bottomButtons"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

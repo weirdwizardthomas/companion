@@ -12,9 +12,9 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/nameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:labelFor="@id/nameInput"
             android:text="@string/placeholderAdventurerCardName"
             app:layout_constraintBottom_toBottomOf="@+id/nameInput"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,8 @@
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/raceSpinner"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAutofill="no" />
 
         <Spinner
             android:id="@+id/raceSpinner"
@@ -40,10 +41,9 @@
             app:layout_constraintTop_toBottomOf="@+id/nameInput" />
 
         <TextView
-            android:id="@+id/raceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Race"
+            android:text="@string/labelRace"
             app:layout_constraintBottom_toBottomOf="@+id/raceSpinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameInput" />
@@ -58,11 +58,10 @@
             app:layout_constraintTop_toBottomOf="@+id/raceSpinner" />
 
         <TextView
-            android:id="@+id/classLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Class"
+            android:text="@string/labelClass"
             app:layout_constraintBottom_toBottomOf="@+id/professionSpinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/raceSpinner" />
@@ -71,7 +70,7 @@
             android:id="@+id/alignmentLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alignment"
+            android:text="@string/labelAlignment"
             app:layout_constraintBottom_toBottomOf="@+id/alignmentSpinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/professionSpinner" />

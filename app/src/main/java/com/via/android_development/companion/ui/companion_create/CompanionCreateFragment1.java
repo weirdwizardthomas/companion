@@ -25,9 +25,10 @@ import com.via.android_development.companion.utility.enums.Race;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 //LANDING - NAME, STATS, RACE & PROFESSION
-public class CompanionCreateFragment1 extends Fragment {
+class CompanionCreateFragment1 extends Fragment {
 
     private EditText name;
 
@@ -50,7 +51,7 @@ public class CompanionCreateFragment1 extends Fragment {
 
         companionCreateViewModel = ViewModelProviders.of(this).get(CompanionCreateViewModel.class);
 
-        boolean openedFromOverview = getArguments().getBoolean(CompanionOverviewFragment.IS_OPEN_FROM_OVERVIEW);
+        boolean openedFromOverview = Objects.requireNonNull(getArguments()).getBoolean(CompanionOverviewFragment.IS_OPEN_FROM_OVERVIEW);
 
         if (openedFromOverview) {
             //wipe and create a new character

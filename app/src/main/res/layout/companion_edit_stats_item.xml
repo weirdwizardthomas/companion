@@ -22,7 +22,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/attributeSpinner"
         app:layout_constraintEnd_toStartOf="@+id/attributeSpinner"
         app:layout_constraintTop_toTopOf="@+id/attributeSpinner"
-        app:srcCompat="@drawable/ic_minus_black_18dp" />
+        app:srcCompat="@drawable/ic_minus_black_18dp"
+        android:contentDescription="@string/decrementButton" />
 
     <com.shawnlin.numberpicker.NumberPicker
         android:id="@+id/attributeSpinner"
@@ -42,7 +43,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/attributeSpinner"
         app:layout_constraintStart_toEndOf="@+id/attributeSpinner"
         app:layout_constraintTop_toTopOf="@+id/attributeSpinner"
-        app:srcCompat="@drawable/ic_plus_black_18dp" />
+        app:srcCompat="@drawable/ic_plus_black_18dp"
+        android:contentDescription="@string/incrementButton" />
 
     <TextView
         android:id="@+id/attributeModifier"

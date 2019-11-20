@@ -9,16 +9,14 @@ import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.utility.StatCalculator;
 
-public class AttributeWrapper {
+class AttributeWrapper {
 
-    View parent;
-    NumberPicker picker;
-    TextView label;
-    TextView modifier;
+    private final NumberPicker picker;
+    private final TextView label;
+    private final TextView modifier;
 
     @SuppressLint("WrongConstant")
     public AttributeWrapper(View parent, String displayedLabel) {
-        this.parent = parent;
         picker = parent.findViewById(R.id.picker);
         label = parent.findViewById(R.id.levelLabel);
         modifier = parent.findViewById(R.id.modifier);

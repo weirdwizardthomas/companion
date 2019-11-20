@@ -15,7 +15,9 @@ import androidx.lifecycle.ViewModelProviders;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.api.pojo.Spell;
 
-public class SpellFragment extends Fragment {
+import java.util.Objects;
+
+class SpellFragment extends Fragment {
 
     private SpellViewModel spellViewModel;
 
@@ -42,7 +44,7 @@ public class SpellFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         spellViewModel = ViewModelProviders.of(this).get(SpellViewModel.class);
         View root = inflater.inflate(R.layout.spell_fragment, container, false);
-        int dummy = getArguments().getInt("spell_index");
+        int dummy = Objects.requireNonNull(getArguments()).getInt("spell_index");
 
         initialiseTextViews(root);
 
@@ -75,7 +77,7 @@ public class SpellFragment extends Fragment {
     }
 
     private void adjustForMenu(View root) {
-        int bottomNavigationHeight = getActivity().findViewById(R.id.nav_view).getHeight();
+        int bottomNavigationHeight = Objects.requireNonNull(getActivity()).findViewById(R.id.nav_view).getHeight();
 
         ScrollView scrollView = root.findViewById(R.id.mainScrollView);
         ScrollView.LayoutParams layoutParams = (ScrollView.LayoutParams) scrollView.getLayoutParams();

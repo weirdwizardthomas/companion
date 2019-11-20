@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,10 +17,11 @@ import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.api.pojo.BriefSpell;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SpellbookFragment extends Fragment implements SpellAdapter.OnItemClickListener {
 
-    public static final String SPELL_INDEX_KEY = "spell_index";
+    private static final String SPELL_INDEX_KEY = "spell_index";
 
     private SpellbookViewModel spellbookViewModel;
     private RecyclerView spellRecyclerView;
@@ -59,6 +59,6 @@ public class SpellbookFragment extends Fragment implements SpellAdapter.OnItemCl
         int index = Integer.parseInt(relativePath);
         Bundle bundle = new Bundle();
         bundle.putInt(SPELL_INDEX_KEY, index);
-        Navigation.findNavController(this.getView()).navigate(R.id.openSpell, bundle);
+        Navigation.findNavController(Objects.requireNonNull(this.getView())).navigate(R.id.openSpell, bundle);
     }
 }

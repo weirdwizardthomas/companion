@@ -1,6 +1,6 @@
 package com.via.android_development.companion.persistence.api.response;
 
-public class SpellCountResponse {
+class SpellCountResponse {
     private int count;
 
     public int getCount() {

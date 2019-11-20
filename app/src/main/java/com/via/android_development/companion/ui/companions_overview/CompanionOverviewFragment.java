@@ -32,7 +32,7 @@ import java.util.Objects;
 public class CompanionOverviewFragment extends Fragment implements CompanionAdapter.OnItemClickListener {
 
     public static final String ID_KEY = "companionId";
-    public static final String IS_OPEN_FROM_OVERVIEW = "openFromInteview";
+    public static final String IS_OPEN_FROM_OVERVIEW = "openFromOverview";
 
     private RecyclerView companionsRecyclerView;
     private CompanionAdapter companionsAdapter;
@@ -47,12 +47,12 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
         initialiseRecyclerView(root);
         initialiseAddButton(root);
 
-        getDataFromFirebase();
+        getDataFromFirestore();
 
         return root;
     }
 
-    private void getDataFromFirebase() {
+    private void getDataFromFirestore() {
         FirebaseFirestore
                 .getInstance()
                 .collection(CompanionFragment.COLLECTION_NAME)
@@ -93,7 +93,7 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
 
     @Override
     public void onItemClick(FirebaseCompanion item) {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(ID_KEY, item.getId());
         editor.apply();

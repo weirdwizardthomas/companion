@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.ViewHolder> {
     private List<BriefSpell> data;
-    private OnItemClickListener onItemClickListener;
+    private final OnItemClickListener onItemClickListener;
 
     public SpellAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
@@ -50,9 +50,9 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         String url;
-        TextView spellName;
+        final TextView spellName;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             spellName = itemView.findViewById(R.id.ability_name);
             itemView.setOnClickListener(this);

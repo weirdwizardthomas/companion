@@ -25,7 +25,7 @@ public class DieRoller {
         return random.nextInt(facets) + 1 + modifier;
     }
 
-    public int rollDice(int[] diceFacets) {
+    private int rollDice(int[] diceFacets) {
         int result = 0;
         for (int facet : diceFacets) result += rollDie(facet);
         return result;

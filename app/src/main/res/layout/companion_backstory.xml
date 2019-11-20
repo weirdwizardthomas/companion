@@ -9,6 +9,7 @@
         android:id="@+id/backgroundLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:labelFor="@id/backgroundContent"
         android:text="@string/labelAdventurerBackground" />
 
     <EditText
@@ -17,12 +18,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/traitsLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:labelFor="@id/traitsContent"
         android:text="@string/labelAdventurerPersonality" />
 
     <EditText
@@ -31,12 +34,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/idealsLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:labelFor="@id/idealsContent"
         android:text="@string/labelAdventurerIdeals" />
 
     <EditText
@@ -45,12 +50,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/bondsLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:labelFor="@id/bondsContent"
         android:text="@string/labelAdventurerBonds" />
 
     <EditText
@@ -59,12 +66,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/flawsLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:labelFor="@id/flawsContent"
         android:text="@string/labelAdventurerFlaws" />
 
     <EditText
@@ -73,5 +82,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:importantForAutofill="no" />
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.via.android_development.companion.utility.enums;
 
+import androidx.annotation.NonNull;
+
 public enum Alignment {
     LAWFUL_GOOD("Lawful good"),
     NEUTRAL_GOOD("Neutral good"),
@@ -18,6 +20,7 @@ public enum Alignment {
     }
 
 
+    @NonNull
     public String toString() {
         return stringValue;
     }

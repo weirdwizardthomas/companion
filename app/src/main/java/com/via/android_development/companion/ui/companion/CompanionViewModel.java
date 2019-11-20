@@ -4,10 +4,9 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 
-public class CompanionViewModel extends AndroidViewModel {
+class CompanionViewModel extends AndroidViewModel {
 
     private FirebaseCompanion companion;
 
@@ -24,11 +23,4 @@ public class CompanionViewModel extends AndroidViewModel {
         this.companion = companion;
     }
 
-    public void deleteCompanion() {
-        FirebaseFirestore
-                .getInstance()
-                .collection(CompanionFragment.COLLECTION_NAME)
-                .document(String.valueOf(companion.getId()))
-                .delete();
-    }
 }

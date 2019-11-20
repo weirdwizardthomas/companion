@@ -21,7 +21,7 @@ import static com.via.android_development.companion.ui.companions_overview.Compa
 
 public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.ViewHolder> {
     private List<FirebaseCompanion> data;
-    private OnItemClickListener onItemClickListener;
+    private final OnItemClickListener onItemClickListener;
 
     public CompanionAdapter(OnItemClickListener onItemClickListener) {
         data = new ArrayList<>();
@@ -57,13 +57,13 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView companionName;
-        TextView companionLevel;
-        TextView companionClass;
-        ImageButton editButton;
+        final TextView companionName;
+        final TextView companionLevel;
+        final TextView companionClass;
+        final ImageButton editButton;
         int companionId;
 
-        public ViewHolder(@NonNull final View itemView) {
+        ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             companionName = itemView.findViewById(R.id.companionBrief_nameText);

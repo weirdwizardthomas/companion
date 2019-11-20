@@ -33,6 +33,7 @@ import com.via.android_development.companion.utility.enums.Skill;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class CompanionFragment extends Fragment {
     public static final String COLLECTION_NAME = "Adventurers";
@@ -78,20 +79,17 @@ public class CompanionFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.editButton: {
-                Bundle bundle = new Bundle();
-                bundle.putInt(CompanionOverviewFragment.ID_KEY, companionViewModel.getCompanion().getId());
-                Navigation.findNavController(getView()).navigate(R.id.companionToEdit, bundle);
-                return true;
-            }
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.editButton) {
+            Bundle bundle = new Bundle();
+            bundle.putInt(CompanionOverviewFragment.ID_KEY, companionViewModel.getCompanion().getId());
+            Navigation.findNavController(Objects.requireNonNull(getView())).navigate(R.id.companionToEdit, bundle);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadAdventurer() {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
         if (sharedPref.contains(CompanionOverviewFragment.ID_KEY)) {
             int id = sharedPref.getInt(CompanionOverviewFragment.ID_KEY, -1);
 
@@ -176,7 +174,7 @@ public class CompanionFragment extends Fragment {
 
     private void updateButton(String key, String label, String value) {
         String dummy = label + " " + value;
-        buttons.get(key).setText(dummy);
+        Objects.requireNonNull(buttons.get(key)).setText(dummy);
     }
 
     private void addOnClickListenersToButtons() {

@@ -3,16 +3,16 @@ package com.via.android_development.companion.persistence.api.pojo;
 import java.util.List;
 
 public class Spell {
-    private String name;
-    private List<String> description;
-    private List<String> higherLevel;
-    private String range;
-    private List<String> components;
-    private String duration;
-    private String concentration;
-    private String casting_time;
-    private Integer level;
-    private String url;
+    private final String name;
+    private final List<String> description;
+    private final List<String> higherLevel;
+    private final String range;
+    private final List<String> components;
+    private final String duration;
+    private final String concentration;
+    private final String casting_time;
+    private final Integer level;
+    private final String url;
 
     public Spell(String name, List<String> description, List<String> higherLevel, String range, List<String> components, String duration, String concentration, String casting_time, Integer level, String url) {
         this.name = name;

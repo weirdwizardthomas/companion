@@ -7,10 +7,10 @@ import java.util.List;
 public class SpellDetailsResponse {
 
     private String name;
-    private List<String> desc = null;
-    private List<String> higher_level = null;
+    private final List<String> desc = null;
+    private final List<String> higher_level = null;
     private String range;
-    private List<String> components = null;
+    private final List<String> components = null;
     private String duration;
     private String concentration;
     private String casting_time;

@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Converters {
+class Converters {
     @TypeConverter
     public static List<String> listFromString(String value) {
         Type listType = new TypeToken<ArrayList<String>>() {

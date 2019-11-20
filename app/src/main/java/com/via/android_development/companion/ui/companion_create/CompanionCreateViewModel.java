@@ -11,13 +11,13 @@ import com.via.android_development.companion.utility.EnumTranslator;
 
 import java.util.List;
 
-public class CompanionCreateViewModel extends AndroidViewModel {
+class CompanionCreateViewModel extends AndroidViewModel {
 
     public static final int DEFAULT_RACE_INDEX = 8;
     public static final int DEFAULT_PROFESSION_INDEX = 5;
     public static final int DEFAULT_ALIGNMENT_INDEX = 5;
 
-    private CompanionRepository companionRepository;
+    private final CompanionRepository companionRepository;
 
     public CompanionCreateViewModel(Application application) {
         super(application);
@@ -26,10 +26,6 @@ public class CompanionCreateViewModel extends AndroidViewModel {
 
     public void insert(Companion companion) {
         companionRepository.insert(companion);
-    }
-
-    public LiveData<Companion> getCompanionById(int id) {
-        return companionRepository.getCompanionById(id);
     }
 
     public LiveData<List<Companion>> getAllCompanions() {

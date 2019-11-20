@@ -1,5 +1,7 @@
 package com.via.android_development.companion.utility.enums;
 
+import androidx.annotation.NonNull;
+
 public enum Skill {
     ATHLETICS("Athletics"),
     ACROBATICS("Acrobatics"),
@@ -27,6 +29,7 @@ public enum Skill {
     }
 
 
+    @NonNull
     public String toString() {
         return stringValue;
     }

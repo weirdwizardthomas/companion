@@ -44,7 +44,7 @@ public class EnumTranslator {
         return professions;
     }
 
-    public static List getAllAlignmentsList() {
+    public static List<String> getAllAlignmentsList() {
         List<String> alignments = new ArrayList<>();
         for (Alignment alignment : Alignment.values())
             alignments.add(alignment.toString());

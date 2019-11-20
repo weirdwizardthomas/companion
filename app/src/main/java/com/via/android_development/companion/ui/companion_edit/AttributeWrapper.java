@@ -10,12 +10,12 @@ import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.utility.StatCalculator;
 
-public class AttributeWrapper {
-    private TextView label;
-    private ImageButton minusButton;
-    private NumberPicker picker;
-    private ImageButton plusButton;
-    private TextView modifier;
+class AttributeWrapper {
+    private final TextView label;
+    private final ImageButton minusButton;
+    private final NumberPicker picker;
+    private final ImageButton plusButton;
+    private final TextView modifier;
 
     @SuppressLint("WrongConstant")
     public AttributeWrapper(View parent, String labelText) {

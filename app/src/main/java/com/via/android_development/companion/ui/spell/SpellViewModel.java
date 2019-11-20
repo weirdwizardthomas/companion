@@ -8,8 +8,8 @@ import androidx.lifecycle.LiveData;
 import com.via.android_development.companion.persistence.api.pojo.Spell;
 import com.via.android_development.companion.persistence.api.repository.SpellRepository;
 
-public class SpellViewModel extends AndroidViewModel {
-    private SpellRepository spellRepository;
+class SpellViewModel extends AndroidViewModel {
+    private final SpellRepository spellRepository;
 
     public SpellViewModel(Application application) {
         super(application);
