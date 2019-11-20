@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,10 +18,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
@@ -29,9 +33,10 @@ import com.via.android_development.companion.utility.enums.Skill;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class CompanionFragment extends Fragment {
+    public static final String COLLECTION_NAME = "Adventurers";
+
     private CompanionViewModel companionViewModel;
 
     private Map<String, Button> buttons;
@@ -56,27 +61,58 @@ public class CompanionFragment extends Fragment {
         View root = inflater.inflate(R.layout.companion_fragment, container, false);
 
         initialiseLayout(root);
+        setHasOptionsMenu(true);
 
-        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
-        if (!sharedPref.contains(CompanionOverviewFragment.ID_KEY)) {
-            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-        } else {
-            int id = sharedPref.getInt(CompanionOverviewFragment.ID_KEY, -1);
-            FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-            firebaseFirestore.collection("Adventurers").whereEqualTo("id", id).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        FirebaseCompanion firebaseCompanion = queryDocumentSnapshots.getDocuments().get(0).toObject(FirebaseCompanion.class);
-                        companionViewModel.setCompanion(firebaseCompanion);
-                        updateDisplayedValues();
-                    }
-                }
-            });
-        }
+        loadAdventurer();
 
         return root;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.top_edit_options_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.editButton: {
+                Bundle bundle = new Bundle();
+                bundle.putInt(CompanionOverviewFragment.ID_KEY, companionViewModel.getCompanion().getId());
+                Navigation.findNavController(getView()).navigate(R.id.companionToEdit, bundle);
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void loadAdventurer() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        if (sharedPref.contains(CompanionOverviewFragment.ID_KEY)) {
+            int id = sharedPref.getInt(CompanionOverviewFragment.ID_KEY, -1);
+
+            FirebaseFirestore
+                    .getInstance()
+                    .collection(COLLECTION_NAME)
+                    .document(String.valueOf(id))
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()) {
+                                FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
+                                companionViewModel.setCompanion(firebaseCompanion);
+                                updateDisplayedValues();
+                            }
+                        }
+                    });
+        }
+    }
+
 
     private void initialiseLayout(View root) {
         initialiseButtons(root);
@@ -101,15 +137,16 @@ public class CompanionFragment extends Fragment {
         FirebaseCompanion companion = companionViewModel.getCompanion();
         updateStatButtons(getCompanionAbilityValues());
         name.setText(companion.getName());
+
         String raceAndStringText = companion.getRace() + " " + companion.getProfession();
         raceAndProfession.setText(raceAndStringText);
         String hpText = companion.getHitpoints() + "/" + companion.getMaximalHitpoints();
         hitpoints.setText(hpText);
+
         temporaryHitpoints.setText(Integer.toString(companion.getTemporaryHitpoints()));
         armourClass.setText(Integer.toString(companion.getArmourClass()));
         speed.setText(Integer.toString(companion.getSpeed()));
-        initiative.setText(StatCalculator.abilityModifierAsString(companion.getDexterity()));
-
+        initiative.setText(Integer.toString(companion.getInitiative()));
         background.setText(companion.getBackground());
         ideals.setText(companion.getIdeals());
         traits.setText(companion.getPersonalityTraits());
@@ -170,7 +207,7 @@ public class CompanionFragment extends Fragment {
         buttons.put(String.valueOf(Skill.ACROBATICS), (Button) root.findViewById(R.id.acrobatics));
         buttons.put(String.valueOf(Skill.SLEIGHT_OF_HAND), (Button) root.findViewById(R.id.sleightOfHand));
         buttons.put(String.valueOf(Skill.STEALTH), (Button) root.findViewById(R.id.stealth));
-        buttons.put(String.valueOf(Skill.ARCANA), (Button) root.findViewById(R.id.arcana));
+        buttons.put(String.valueOf(Skill.ARCANA), (Button) root.findViewById(R.id.deception));
         buttons.put(String.valueOf(Skill.HISTORY), (Button) root.findViewById(R.id.history));
         buttons.put(String.valueOf(Skill.INVESTIGATION), (Button) root.findViewById(R.id.investigation));
         buttons.put(String.valueOf(Skill.NATURE), (Button) root.findViewById(R.id.nature));

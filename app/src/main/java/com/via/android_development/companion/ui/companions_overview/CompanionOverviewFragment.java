@@ -22,6 +22,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
+import com.via.android_development.companion.ui.companion.CompanionFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,18 +53,21 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
     }
 
     private void getDataFromFirebase() {
-        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("Adventurers").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<FirebaseCompanion> companions = new ArrayList<>();
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
-                    companions.add(firebaseCompanion);
-                }
-                companionsAdapter.setData(companions);
-            }
-        });
+        FirebaseFirestore
+                .getInstance()
+                .collection(CompanionFragment.COLLECTION_NAME)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<FirebaseCompanion> companions = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
+                            companions.add(firebaseCompanion);
+                        }
+                        companionsAdapter.setData(companions);
+                    }
+                });
     }
 
     private void initialiseRecyclerView(final View root) {
@@ -89,7 +93,7 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
 
     @Override
     public void onItemClick(FirebaseCompanion item) {
-        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(ID_KEY, item.getId());
         editor.apply();

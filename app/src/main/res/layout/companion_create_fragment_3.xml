@@ -11,7 +11,7 @@
         android:id="@+id/background_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/background_label"
+        android:text="@string/labelAdventurerBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/background_hint"
+        android:hint="@string/hintBackground"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
         android:id="@+id/alignment_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/alignment_label"
+        android:text="@string/labelAdventurerPersonality"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/background_edit_text" />
 
@@ -47,7 +47,7 @@
         android:id="@+id/personality_traits_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/personality_traits_label"
+        android:text="@string/labelAdventurerPersonalityTraits"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alignmentPicker" />
 
@@ -58,7 +58,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/enter_your_companion_s_personality_traits"
+        android:hint="@string/hintPersonalityTraits"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
         android:id="@+id/ideals_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ideals_label"
+        android:text="@string/labelAdventurerIdeals"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/personality_traits_edit_text" />
 
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/enter_your_companion_s_ideals"
+        android:hint="@string/hintIdeals"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,7 @@
         android:id="@+id/bonds_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bonds_label"
+        android:text="@string/labelAdventurerBonds"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ideals_edit_text" />
 
@@ -100,7 +100,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/enter_your_companion_s_bonds"
+        android:hint="@string/hintBonds"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +111,7 @@
         android:id="@+id/flaws_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/flaws_label"
+        android:text="@string/labelAdventurerFlaws"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bonds_edit_text" />
 
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/enter_your_companion_s_flaws"
+        android:hint="@string/hintFlaws"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +143,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/resetButtonLabel" />
+            android:text="@string/labelResetButton" />
 
         <Button
             android:id="@+id/next_button"
@@ -151,7 +151,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/saveAndContinue" />
+            android:text="@string/labelSaveAndContinueButton" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/savingThrowHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/labelSavingThrowProficiencies" />
+
+    <View
+        android:id="@+id/divider1"
+        style="@style/Divider"
+        android:layout_width="match_parent" />
+
+    <TableLayout
+        android:id="@+id/savingThrowsTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/strength"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeStrength" />
+
+            <CheckBox
+                android:id="@+id/dexterity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeDexterity" />
+
+            <CheckBox
+                android:id="@+id/constitution"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeConstitution" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/intelligence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeIntelligence" />
+
+            <CheckBox
+                android:id="@+id/wisdom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeWisdom" />
+
+            <CheckBox
+                android:id="@+id/charisma"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/attributeCharisma" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/skillsHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/labelSkillProficiencies" />
+
+    <View
+        android:id="@+id/divider2"
+        style="@style/Divider"
+        android:layout_width="match_parent" />
+
+    <TableLayout
+        android:id="@+id/skillsTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/acrobatics"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsAcrobatics" />
+
+            <CheckBox
+                android:id="@+id/athletics"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsAthletics" />
+
+            <CheckBox
+                android:id="@+id/animalHandling"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsAnimalHandling" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/arcana"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsArcana" />
+
+            <CheckBox
+                android:id="@+id/deception"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsDeception" />
+
+            <CheckBox
+                android:id="@+id/history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsHistory" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/insight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsInsight" />
+
+            <CheckBox
+                android:id="@+id/intimidation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsIntimidation" />
+
+            <CheckBox
+                android:id="@+id/investigation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsInvestigation" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/medicine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsMedicine" />
+
+            <CheckBox
+                android:id="@+id/nature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsNature" />
+
+            <CheckBox
+                android:id="@+id/perception"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsPerception" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/performance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsPerformance" />
+
+            <CheckBox
+                android:id="@+id/persuasion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsPersuasion" />
+
+            <CheckBox
+                android:id="@+id/religion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsReligion" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/sleightOfHand"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsSleightOfHand" />
+
+            <CheckBox
+                android:id="@+id/stealth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsStealth" />
+
+            <CheckBox
+                android:id="@+id/survival"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/skillsSurvival" />
+
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

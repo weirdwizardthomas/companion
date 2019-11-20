@@ -335,4 +335,5 @@ public class FirebaseCompanion {
     public int getInitiative() {
         return StatCalculator.abilityModifier(dexterity);
     }
+
 }

@@ -15,7 +15,7 @@
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerNamePlaceholder"
+            android:text="@string/placeholderAdventurerName"
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
             android:id="@+id/raceAndProfession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerRaceAndProfessionPlaceholder"
+            android:text="@string/placeholderAdventurerRaceAndProfession"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name" />
 
@@ -33,7 +33,7 @@
             android:id="@+id/stats_switch_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerSwitchLabel"
+            android:text="@string/labelAdventurerSwitch"
             app:layout_constraintBottom_toBottomOf="@+id/stats_switch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/stats_switch" />
@@ -155,20 +155,20 @@
                         android:id="@+id/hitpoints_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_heart_black_36dp"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/ic_heart_black_36dp" />
 
                     <TextView
                         android:id="@+id/hitpoints_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/hitpoints" />
+                        android:text="@string/labelHitpoints" />
 
                     <TextView
                         android:id="@+id/hitpointsValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/adventurerHitpointsPlaceholder" />
+                        android:text="@string/placeholderAdventurerHitpoints" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -180,14 +180,14 @@
                         android:id="@+id/temporary_hitpoints_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_heart_half_full_black_36dp"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/ic_heart_half_full_black_36dp" />
 
                     <TextView
                         android:id="@+id/temporary_hitpoints_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/temporary_hitpoints" />
+                        android:text="@string/labelTemporaryHitpoints" />
 
                     <TextView
                         android:id="@+id/temporaryHitpointsValue"
@@ -213,20 +213,20 @@
                         android:id="@+id/armour_class_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_shield_half_full_black_36dp"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/ic_shield_half_full_black_36dp" />
 
                     <TextView
                         android:id="@+id/armour_class_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/armour_class" />
+                        android:text="@string/labelArmourClass" />
 
                     <TextView
                         android:id="@+id/armourClassValue"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/adventurerArmourClassPlaceholder" />
+                        android:text="@string/placeholderAdventurerArmourClass" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,14 +238,14 @@
                         android:id="@+id/speed_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_run_black_36dp"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/ic_run_black_36dp" />
 
                     <TextView
                         android:id="@+id/speed_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/speed" />
+                        android:text="@string/labelSpeed" />
 
                     <TextView
                         android:id="@+id/speedValue"
@@ -269,14 +269,14 @@
                         android:id="@+id/imageView8"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/ic_sword_cross_black_36dp"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/ic_sword_cross_black_36dp" />
 
                     <TextView
                         android:id="@+id/initiative_label"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/initiative" />
+                        android:text="@string/labelInitiative" />
 
                     <TextView
                         android:id="@+id/initiativeValue"
@@ -294,7 +294,7 @@
             android:id="@+id/skill_proficiencies_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerSkillsLabel"
+            android:text="@string/labelAdventurerSkills"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -607,7 +607,7 @@
             android:id="@+id/personality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerPersonalityLabel"
+            android:text="@string/labelAdventurerPersonality"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -627,7 +627,7 @@
             android:id="@+id/backgroundLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerBackgroundLabel"
+            android:text="@string/labelAdventurerBackground"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -645,7 +645,7 @@
             android:id="@+id/traitsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerPesonalityTraitsLabel"
+            android:text="@string/labelAdventurerPersonalityTraits"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -663,7 +663,7 @@
             android:id="@+id/idealsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerIdealsLabel"
+            android:text="@string/labelAdventurerIdeals"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -681,7 +681,7 @@
             android:id="@+id/flawsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerFlawsLabel"
+            android:text="@string/labelAdventurerFlaws"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -700,7 +700,7 @@
             android:id="@+id/bondsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/adventurerBondsLabel"
+            android:text="@string/labelAdventurerBonds"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

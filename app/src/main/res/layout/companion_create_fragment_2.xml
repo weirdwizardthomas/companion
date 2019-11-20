@@ -11,7 +11,7 @@
         android:id="@+id/saving_throw_proficiency_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/saving_throw_proficiencies"
+        android:text="@string/labelSavingThrowProficiencies"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
         android:id="@+id/skill_proficiencies_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/skill_proficiencies"
+        android:text="@string/labelSkillProficiencies"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -343,7 +343,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/resetButtonLabel" />
+            android:text="@string/labelResetButton" />
 
         <Button
             android:id="@+id/next_button"
@@ -351,7 +351,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/saveAndContinue" />
+            android:text="@string/labelSaveAndContinueButton" />
     </LinearLayout>
 
 

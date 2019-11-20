@@ -78,7 +78,7 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putInt(ID_KEY, companionId);
-                    Navigation.findNavController(itemView).navigate(R.id.overviewToCompanionEditAction, bundle);
+                    Navigation.findNavController(itemView).navigate(R.id.overviewToEdit, bundle);
                 }
             });
 

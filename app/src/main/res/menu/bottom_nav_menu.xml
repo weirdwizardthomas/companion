@@ -4,16 +4,16 @@
     <item
         android:id="@+id/companionFragment"
         android:icon="@drawable/ic_dice_d20_outline_black_24dp"
-        android:title="@string/title_companion" />
+        android:title="@string/titleAdventurer" />
 
     <item
         android:id="@+id/spellbookOverviewFragment"
         android:icon="@drawable/ic_book_open_page_variant_black_24dp"
-        android:title="@string/title_spellbook" />
+        android:title="@string/titleSpellbook" />
 
     <item
         android:id="@+id/companionsOverviewFragment"
         android:icon="@drawable/ic_account_multiple_black_24dp"
-        android:title="@string/title_companions_overview"></item>
+        android:title="@string/titleAdventurersOverview" />
 
 </menu>

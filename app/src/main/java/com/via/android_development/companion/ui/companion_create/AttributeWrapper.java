@@ -39,7 +39,6 @@ public class AttributeWrapper {
         });
     }
 
-
     private void updateModifier(int newVal) {
         int modifierValue = StatCalculator.abilityModifier(newVal);
         String newModifierText = (modifierValue >= 0 ? "+" : "") + modifierValue;
@@ -52,7 +51,6 @@ public class AttributeWrapper {
 
     public void reset() {
         picker.setValue(Companion.DEFAULT_ATTRIBUTE_VALUE);
-        //updateModifier(Companion.DEFAULT_ATTRIBUTE_VALUE);
     }
 
     public void setAttributeValue(int newValue) {

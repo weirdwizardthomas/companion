@@ -20,6 +20,7 @@ import com.shawnlin.numberpicker.NumberPicker;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.persistence.local.Companion;
+import com.via.android_development.companion.ui.companion.CompanionFragment;
 import com.via.android_development.companion.utility.enums.Alignment;
 
 import java.util.Arrays;
@@ -103,7 +104,7 @@ public class CompanionCreateFragment3 extends Fragment {
             public void onClick(View v) {
                 updateCompanionInstance(); //get new values
                 saveInstanceToFirestore(); //save to remote db
-                    companionCreateViewModel.deleteAllCompanions(); //perform cleanup
+                companionCreateViewModel.deleteAllCompanions(); //perform cleanup
                 Navigation.findNavController(root).navigate(R.id.create3_to_overview);
             }
         });
@@ -176,8 +177,12 @@ public class CompanionCreateFragment3 extends Fragment {
         }
 
         dummy.setId(nextID);
+
+        FirebaseCompanion firebaseCompanion = new FirebaseCompanion(dummy);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Adventurers").document().set(new FirebaseCompanion(dummy));
+        db.collection(CompanionFragment.COLLECTION_NAME)
+                .document(String.valueOf(firebaseCompanion.getId()))
+                .set(firebaseCompanion);
     }
 
     private void updatePickerValue(NumberPicker picker, String item, String defaultValue) {

@@ -69,7 +69,7 @@ public class CompanionCreateFragment2 extends Fragment {
         savingThrowCheckboxes.put(getString(R.string.skillsAcrobatics), (CheckBox) root.findViewById(R.id.acrobatics));
         savingThrowCheckboxes.put(getString(R.string.skillsSleightOfHand), (CheckBox) root.findViewById(R.id.sleightOfHand));
         savingThrowCheckboxes.put(getString(R.string.skillsStealth), (CheckBox) root.findViewById(R.id.stealth));
-        savingThrowCheckboxes.put(getString(R.string.skillsArcana), (CheckBox) root.findViewById(R.id.arcana));
+        savingThrowCheckboxes.put(getString(R.string.skillsArcana), (CheckBox) root.findViewById(R.id.deception));
         savingThrowCheckboxes.put(getString(R.string.skillsHistory), (CheckBox) root.findViewById(R.id.history));
         savingThrowCheckboxes.put(getString(R.string.skillsInvestigation), (CheckBox) root.findViewById(R.id.investigation));
         savingThrowCheckboxes.put(getString(R.string.skillsNature), (CheckBox) root.findViewById(R.id.nature));

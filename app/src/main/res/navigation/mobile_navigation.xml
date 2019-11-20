@@ -8,18 +8,22 @@
     <fragment
         android:id="@+id/companionFragment"
         android:name="com.via.android_development.companion.ui.companion.CompanionFragment"
-        android:label="@string/title_companion"
-        tools:layout="@layout/companion_fragment" >
+        android:label="@string/titleAdventurer"
+        tools:layout="@layout/companion_fragment">
         <argument
             android:name="id"
             app:argType="integer" />
+        <action
+            android:id="@+id/companionToEdit"
+            app:destination="@id/companionEditFragment"
+            app:popUpTo="@+id/companionFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/spellbookOverviewFragment"
         android:name="com.via.android_development.companion.ui.spellbook.SpellbookFragment"
-        android:label="@string/title_spellbook"
-        tools:layout="@layout/spellbook_fragment" >
+        android:label="@string/titleSpellbook"
+        tools:layout="@layout/spellbook_fragment">
         <action
             android:id="@+id/openSpell"
             app:destination="@id/spellFragment" />
@@ -28,11 +32,8 @@
     <fragment
         android:id="@+id/companionsOverviewFragment"
         android:name="com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment"
-        android:label="@string/title_companion_overview"
+        android:label="@string/titleAdventurersOverview"
         tools:layout="@layout/companion_overview_fragment">
-        <action
-            android:id="@+id/overviewToCompanionEditAction"
-            app:destination="@id/companionEditFragment" />
         <action
             android:id="@+id/overviewToCreateAction"
             app:destination="@id/companionCreateFragment1"
@@ -40,11 +41,15 @@
         <action
             android:id="@+id/overviewToAdventurer"
             app:destination="@id/companionFragment" />
+        <action
+            android:id="@+id/overviewToEdit"
+            app:destination="@id/companionEditFragment"
+            app:popUpTo="@+id/companionsOverviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/companionEditFragment"
         android:name="com.via.android_development.companion.ui.companion_edit.EditCompanionFragment"
-        android:label="@string/title_edit_companion"
+        android:label="@string/titleEditAdventurer"
         tools:layout="@layout/companion_edit_fragment">
         <argument
             android:name="companionID"
@@ -53,22 +58,22 @@
     <fragment
         android:id="@+id/companionCreateFragment1"
         android:name="com.via.android_development.companion.ui.companion_create.CompanionCreateFragment1"
-        android:label="@string/title_create_companion_1"
-        tools:layout="@layout/companion_create_fragment_1" >
+        android:label="@string/titleCreateAdventurer1"
+        tools:layout="@layout/companion_create_fragment_1">
         <action
             android:id="@+id/create1_to_create2"
             app:destination="@id/companionCreateFragment2"
             app:popUpTo="@+id/companionCreateFragment1" />
         <argument
             android:name="openedFromOverview"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/companionCreateFragment2"
         android:name="com.via.android_development.companion.ui.companion_create.CompanionCreateFragment2"
-        android:label="@string/title_create_companion_2"
-        tools:layout="@layout/companion_create_fragment_2" >
+        android:label="@string/titleCreateAdventurer2"
+        tools:layout="@layout/companion_create_fragment_2">
         <action
             android:id="@+id/create2_to_create3"
             app:destination="@id/companionCreateFragment3"
@@ -77,8 +82,8 @@
     <fragment
         android:id="@+id/companionCreateFragment3"
         android:name="com.via.android_development.companion.ui.companion_create.CompanionCreateFragment3"
-        android:label="@string/title_create_companion_3"
-        tools:layout="@layout/companion_create_fragment_3" >
+        android:label="@string/titleCreateAdventurer3"
+        tools:layout="@layout/companion_create_fragment_3">
         <action
             android:id="@+id/create3_to_overview"
             app:destination="@id/companionsOverviewFragment" />

@@ -17,7 +17,7 @@
             android:id="@+id/spellName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellNamePlaceholder"
+            android:text="@string/placeholderSpellName"
             android:textSize="40sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
             android:id="@+id/descriptionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellDescriptionLabel"
+            android:text="@string/labelSpellDescription"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             android:id="@+id/descriptionContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellDescriptionPlaceholder"
+            android:text="@string/placeholderSpellDescription"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
@@ -56,7 +56,7 @@
             android:id="@+id/higherLevelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellHigherLevelLabel"
+            android:text="@string/labelSpellHigherLevel"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
             android:id="@+id/higherLevelContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellHigherLevelPlaceholder"
+            android:text="@string/placeholderSpellHigherLevel"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/higherLevelLabel" />
@@ -77,7 +77,7 @@
             android:id="@+id/detailsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellDetailsLabel"
+            android:text="@string/labelSpellDetails"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,7 @@
             android:id="@+id/rangeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellRangeLabel"
+            android:text="@string/labelSpellRange"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/spellRangePlaceholder"
+            android:text="@string/placeholderSpellRange"
             app:layout_constraintStart_toEndOf="@+id/rangeLabel"
             app:layout_constraintTop_toBottomOf="@+id/detailsLabel" />
 
@@ -106,7 +106,7 @@
             android:id="@+id/durationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellDurationLabel"
+            android:text="@string/labelSpellDuration"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/spellDurationPlaceholder"
+            android:text="@string/placeholderSpellDuration"
             app:layout_constraintStart_toEndOf="@+id/durationLabel"
             app:layout_constraintTop_toBottomOf="@+id/rangeContent" />
 
@@ -125,7 +125,7 @@
             android:id="@+id/concentrationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellConcentrationLabel"
+            android:text="@string/labelSpellConcentration"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,7 @@
             android:id="@+id/levelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellLevelLabel"
+            android:text="@string/labelSpellLevel"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/spellLevelPlaceholder"
+            android:text="@string/placeholderSpellLevelP"
             app:layout_constraintStart_toEndOf="@+id/levelLabel"
             app:layout_constraintTop_toBottomOf="@+id/concentrationLabel" />
 
@@ -155,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/spellConcentrationPlaceholder"
+            android:text="@string/placeholderSpellConcentration"
             app:layout_constraintStart_toEndOf="@+id/concentrationLabel"
             app:layout_constraintTop_toBottomOf="@+id/durationContent" />
 
@@ -163,7 +163,7 @@
             android:id="@+id/castingLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellCastingLabel"
+            android:text="@string/labelSpellCasting"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -173,7 +173,7 @@
             android:id="@+id/componentsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/spellComponentsLabel"
+            android:text="@string/labelSpellComponents"
             android:textAlignment="textEnd"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/spellCastingPlaceholder"
+            android:text="@string/placeholderSpellCasting"
             app:layout_constraintStart_toEndOf="@+id/castingLabel"
             app:layout_constraintTop_toBottomOf="@+id/levelContent" />
 
@@ -193,7 +193,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/spellComponentsPlaceholder"
+            android:text="@string/placeholderSpellComponents"
             app:layout_constraintStart_toEndOf="@+id/componentsLabel"
             app:layout_constraintTop_toBottomOf="@id/castingContent" />
 

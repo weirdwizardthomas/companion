@@ -29,4 +29,25 @@ public class EnumTranslator {
             alignments.add(alignment.toString());
         return alignments.toArray(new String[0]);
     }
+
+    public static List<String> getAllRacesList() {
+        List<String> races = new ArrayList<>();
+        for (Race race : Race.values())
+            races.add(race.toString());
+        return races;
+    }
+
+    public static List<String> getAllProfessionsList() {
+        List<String> professions = new ArrayList<>();
+        for (Profession profession : Profession.values())
+            professions.add(profession.toString());
+        return professions;
+    }
+
+    public static List getAllAlignmentsList() {
+        List<String> alignments = new ArrayList<>();
+        for (Alignment alignment : Alignment.values())
+            alignments.add(alignment.toString());
+        return alignments;
+    }
 }
