@@ -21,7 +21,6 @@ public class EditCompanionViewModel extends AndroidViewModel {
     private final FirebaseFirestore firestore;
     private final LiveData<Task<DocumentSnapshot>> liveData;
 
-
     public EditCompanionViewModel(@NonNull Application application, String observedDocumentPath) {
         super(application);
         firestore = FirebaseFirestore.getInstance();

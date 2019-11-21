@@ -119,7 +119,7 @@ public class CompanionCreateFragment2 extends Fragment {
         Observer<List<Companion>> companionObserver = new Observer<List<Companion>>() {
             @Override
             public void onChanged(List<Companion> companions) {
-                companionCreateViewModel.setCompanion(companions.get(0));
+                companionCreateViewModel.setAdventurer(companions.get(0));
                 updateDisplayedValues();
             }
         };
@@ -127,7 +127,7 @@ public class CompanionCreateFragment2 extends Fragment {
     }
 
     private void updateDisplayedValues() {
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
 
         Set<String> skills = dummy.getSkillProficiencies();
         for (Map.Entry<String, CheckBox> entry : skillCheckboxes.entrySet())
@@ -142,7 +142,7 @@ public class CompanionCreateFragment2 extends Fragment {
         Set<String> savingThrows = getProficiencies(savingThrowCheckboxes);
         Set<String> skills = getProficiencies(skillCheckboxes);
 
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
         dummy.setSkillProficiencies(skills);
         dummy.setSavingThrowProficiencies(savingThrows);
         companionCreateViewModel.update(dummy);

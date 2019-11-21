@@ -131,7 +131,7 @@ public class CompanionCreateFragment1 extends Fragment {
             @Override
             public void onChanged(List<Companion> companions) {
                 if (companions.size() != 0) {
-                    companionCreateViewModel.setCompanion(companions.get(0));
+                    companionCreateViewModel.setAdventurer(companions.get(0));
                     updateDisplayedValues();
                 }
             }
@@ -141,7 +141,7 @@ public class CompanionCreateFragment1 extends Fragment {
     }
 
     private void saveCompanionInstance() {
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
 
         dummy.setName(name.getText().toString());
         dummy.setRace(CompanionCreateViewModel.getRaceByIndex(racePicker.getValue() - 1)); //offset for the difference between number picker and array index
@@ -163,7 +163,7 @@ public class CompanionCreateFragment1 extends Fragment {
     }
 
     private void updateDisplayedValues() {
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
 
         name.setText(dummy.getName());
         updatePickerValue(racePicker, dummy.getRace(), String.valueOf(Race.HUMAN));

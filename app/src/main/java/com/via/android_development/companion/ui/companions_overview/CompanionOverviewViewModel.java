@@ -9,6 +9,7 @@ public class CompanionOverviewViewModel extends AndroidViewModel {
 
     public CompanionOverviewViewModel(@NonNull Application application) {
         super(application);
+
     }
 
 }

@@ -106,27 +106,27 @@ public class EditCompanionFragment extends Fragment {
     }
 
     private void updateAdventurerInstance() {
-        FirebaseCompanion firebaseCompanion = editCompanionViewModel.getCompanion();
+        FirebaseCompanion firestoreAdventurer = editCompanionViewModel.getCompanion();
 
-        firebaseCompanion.setName(name.getText().toString());
-        firebaseCompanion.setRace(raceSpinner.getSelectedItem().toString());
-        firebaseCompanion.setProfession(professionSpinner.getSelectedItem().toString());
-        firebaseCompanion.setAlignment(alignmentSpinner.getSelectedItem().toString());
-        firebaseCompanion.setStrength(attributes.get(0).getValue());
-        firebaseCompanion.setDexterity(attributes.get(1).getValue());
-        firebaseCompanion.setConstitution(attributes.get(2).getValue());
-        firebaseCompanion.setIntelligence(attributes.get(3).getValue());
-        firebaseCompanion.setWisdom(attributes.get(4).getValue());
-        firebaseCompanion.setCharisma(attributes.get(5).getValue());
-        firebaseCompanion.setSavingThrowProficiencies(getProficiencies(savingThrowCheckboxes));
-        firebaseCompanion.setSkillProficiencies(getProficiencies(skillCheckboxes));
-        firebaseCompanion.setBackground(background.getText().toString());
-        firebaseCompanion.setPersonalityTraits(traits.getText().toString());
-        firebaseCompanion.setIdeals(ideals.getText().toString());
-        firebaseCompanion.setBonds(bonds.getText().toString());
-        firebaseCompanion.setFlaws(flaws.getText().toString());
+        firestoreAdventurer.setName(name.getText().toString());
+        firestoreAdventurer.setRace(raceSpinner.getSelectedItem().toString());
+        firestoreAdventurer.setProfession(professionSpinner.getSelectedItem().toString());
+        firestoreAdventurer.setAlignment(alignmentSpinner.getSelectedItem().toString());
+        firestoreAdventurer.setStrength(attributes.get(0).getValue());
+        firestoreAdventurer.setDexterity(attributes.get(1).getValue());
+        firestoreAdventurer.setConstitution(attributes.get(2).getValue());
+        firestoreAdventurer.setIntelligence(attributes.get(3).getValue());
+        firestoreAdventurer.setWisdom(attributes.get(4).getValue());
+        firestoreAdventurer.setCharisma(attributes.get(5).getValue());
+        firestoreAdventurer.setSavingThrowProficiencies(getProficiencies(savingThrowCheckboxes));
+        firestoreAdventurer.setSkillProficiencies(getProficiencies(skillCheckboxes));
+        firestoreAdventurer.setBackground(background.getText().toString());
+        firestoreAdventurer.setPersonalityTraits(traits.getText().toString());
+        firestoreAdventurer.setIdeals(ideals.getText().toString());
+        firestoreAdventurer.setBonds(bonds.getText().toString());
+        firestoreAdventurer.setFlaws(flaws.getText().toString());
 
-        editCompanionViewModel.saveCompanion(firebaseCompanion);
+        editCompanionViewModel.saveCompanion(firestoreAdventurer);
     }
 
     private List<String> getProficiencies(Map<String, CheckBox> checkboxes) {

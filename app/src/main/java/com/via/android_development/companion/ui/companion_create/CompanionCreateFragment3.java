@@ -15,12 +15,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.shawnlin.numberpicker.NumberPicker;
 import com.via.android_development.companion.R;
-import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.persistence.local.Companion;
-import com.via.android_development.companion.ui.companion.CompanionFragment;
 import com.via.android_development.companion.utility.enums.Alignment;
 
 import java.util.Arrays;
@@ -65,7 +62,7 @@ public class CompanionCreateFragment3 extends Fragment {
         Observer<List<Companion>> companionsObserver = new Observer<List<Companion>>() {
             @Override
             public void onChanged(List<Companion> companions) {
-                companionCreateViewModel.setCompanion(companions.get(0));
+                companionCreateViewModel.setAdventurer(companions.get(0));
                 updateDisplayedValues();
             }
         };
@@ -113,7 +110,7 @@ public class CompanionCreateFragment3 extends Fragment {
     }
 
     private void resetCompanion() {
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
         dummy.setBackground("");
         dummy.setAlignment(String.valueOf(Alignment.TRUE_NEUTRAL));
         dummy.setPersonalityTraits("");
@@ -135,7 +132,7 @@ public class CompanionCreateFragment3 extends Fragment {
     }
 
     private void updateDisplayedValues() {
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
         updatePickerValue(alignmentPicker, dummy.getAlignment(), String.valueOf(Alignment.TRUE_NEUTRAL));
         backgroundInput.setText(dummy.getBackground());
         traitsInput.setText(dummy.getPersonalityTraits());
@@ -145,7 +142,7 @@ public class CompanionCreateFragment3 extends Fragment {
     }
 
     private void updateCompanionInstance() {
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
         dummy.setBackground(backgroundInput.getText().toString());
         dummy.setAlignment(CompanionCreateViewModel.getAlignmentByIndex(alignmentPicker.getValue() - 1));
         dummy.setBonds(bondsInput.getText().toString());
@@ -156,13 +153,13 @@ public class CompanionCreateFragment3 extends Fragment {
     }
 
     private void saveInstanceToFirestore() {
-        Companion dummy = companionCreateViewModel.getCompanion();
+        Companion dummy = companionCreateViewModel.getAdventurer();
         int nextID;
         SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
 
         if (sharedPref.contains("NextID")) {
-            nextID = sharedPref.getInt("NextID", 0);
-            nextID++;
+            nextID = sharedPref.getInt("NextID", 0) + 1;
+
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt("NextID", nextID);
             editor.apply();
@@ -174,12 +171,8 @@ public class CompanionCreateFragment3 extends Fragment {
         }
 
         dummy.setId(nextID);
-
-        FirebaseCompanion firebaseCompanion = new FirebaseCompanion(dummy);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(CompanionFragment.COLLECTION_NAME)
-                .document(String.valueOf(firebaseCompanion.getId()))
-                .set(firebaseCompanion);
+        companionCreateViewModel.setAdventurer(dummy);
+        companionCreateViewModel.saveToFirebase();
     }
 
     private void updatePickerValue(NumberPicker picker, String item, String defaultValue) {

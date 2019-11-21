@@ -5,8 +5,11 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.persistence.local.Companion;
 import com.via.android_development.companion.persistence.local.CompanionRepository;
+import com.via.android_development.companion.ui.companion.CompanionFragment;
 import com.via.android_development.companion.utility.EnumTranslator;
 
 import java.util.List;
@@ -18,16 +21,16 @@ public class CompanionCreateViewModel extends AndroidViewModel {
     public static final int DEFAULT_ALIGNMENT_INDEX = 5;
 
     private final CompanionRepository companionRepository;
-    private Companion companion;
+    private Companion adventurer;
 
     public CompanionCreateViewModel(Application application) {
         super(application);
         companionRepository = new CompanionRepository(application);
-        companion = new Companion();
+        adventurer = new Companion();
     }
 
-    public void insert(Companion companion) {
-        companionRepository.insert(companion);
+    public void insert(Companion adventurer) {
+        companionRepository.insert(adventurer);
     }
 
     public LiveData<List<Companion>> getAllCompanions() {
@@ -38,8 +41,8 @@ public class CompanionCreateViewModel extends AndroidViewModel {
         companionRepository.deleteAllCompanions();
     }
 
-    public void update(Companion companion) {
-        companionRepository.update(companion);
+    public void update(Companion adventurer) {
+        companionRepository.update(adventurer);
     }
 
     public static String[] getAllRaces() {
@@ -66,11 +69,19 @@ public class CompanionCreateViewModel extends AndroidViewModel {
         return EnumTranslator.getAllAlignments()[index];
     }
 
-    public Companion getCompanion() {
-        return companion;
+    public Companion getAdventurer() {
+        return adventurer;
     }
 
-    public void setCompanion(Companion companion) {
-        this.companion = companion;
+    public void setAdventurer(Companion adventurer) {
+        this.adventurer = adventurer;
+    }
+
+    public void saveToFirebase() {
+        FirebaseCompanion firestoreAdventurer = new FirebaseCompanion(adventurer);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(CompanionFragment.COLLECTION_NAME)
+                .document(String.valueOf(firestoreAdventurer.getId()))
+                .set(firestoreAdventurer);
     }
 }

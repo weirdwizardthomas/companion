@@ -9,15 +9,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.via.android_development.companion.R;
@@ -53,21 +56,21 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
     }
 
     private void getDataFromFirestore() {
-        FirebaseFirestore
+
+        CollectionReference collectionReference = FirebaseFirestore
                 .getInstance()
-                .collection(CompanionFragment.COLLECTION_NAME)
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<FirebaseCompanion> companions = new ArrayList<>();
-                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
-                            companions.add(firebaseCompanion);
-                        }
-                        companionsAdapter.setData(companions);
-                    }
-                });
+                .collection(CompanionFragment.COLLECTION_NAME);
+        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
+                    List<FirebaseCompanion> companions = new ArrayList<>();
+                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots)
+                        companions.add(documentSnapshot.toObject(FirebaseCompanion.class));
+                    companionsAdapter.setData(companions);
+                }
+            }
+        });
     }
 
     private void initialiseRecyclerView(final View root) {

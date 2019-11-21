@@ -27,7 +27,7 @@ public class CompanionViewModel extends AndroidViewModel {
     }
 
     @NonNull
-    public LiveData<Task<DocumentSnapshot>> getdataSnapshotLiveData(){
+    public LiveData<Task<DocumentSnapshot>> getdataSnapshotLiveData() {
         return liveData;
     }
 

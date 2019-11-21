@@ -19,6 +19,7 @@ public class FirestoreQueryLiveData extends LiveData<Task<DocumentSnapshot>> {
         this.documentReference = ref;
     }
 
+
     @Override
     protected void onActive() {
         Log.d(Log_tag, "onActive");
