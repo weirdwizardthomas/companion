@@ -15,15 +15,15 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
-import com.via.android_development.companion.ui.companion.CompanionFragment;
 import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
 import com.via.android_development.companion.utility.EnumTranslator;
 
@@ -57,13 +57,33 @@ public class EditCompanionFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        editCompanionViewModel = ViewModelProviders.of(this).get(EditCompanionViewModel.class);
+
+        int id = getArguments() != null ? getArguments().getInt(CompanionOverviewFragment.ID_KEY) : -1;
+
+        editCompanionViewModel = ViewModelProviders
+                .of(this, new FirebaseEditCompanionViewModelFactory(getActivity().getApplication(), Integer.toString(id)))
+                .get(EditCompanionViewModel.class);
+
         View root = inflater.inflate(R.layout.companion_edit_fragment, container, false);
 
         setHasOptionsMenu(true);
         initialiseLayout(root);
-        loadAdventurer();
 
+        LiveData<Task<DocumentSnapshot>> liveData = editCompanionViewModel.getdataSnapshotLiveData();
+        liveData.observe(this, new Observer<Task<DocumentSnapshot>>() {
+            @Override
+            public void onChanged(Task<DocumentSnapshot> documentSnapshotTask) {
+                if (documentSnapshotTask.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = documentSnapshotTask.getResult();
+                    FirebaseCompanion companion = documentSnapshot.toObject(FirebaseCompanion.class);
+                    if (companion != null) {
+                        editCompanionViewModel.setCompanion(companion);
+                        updateDisplayedValues();
+                    }
+                }
+
+            }
+        });
         return root;
     }
 
@@ -79,6 +99,7 @@ public class EditCompanionFragment extends Fragment {
         // Handle item selection
         if (item.getItemId() == R.id.saveButton) {
             updateAdventurerInstance();
+            Navigation.findNavController(Objects.requireNonNull(getView())).popBackStack();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -105,14 +126,7 @@ public class EditCompanionFragment extends Fragment {
         firebaseCompanion.setBonds(bonds.getText().toString());
         firebaseCompanion.setFlaws(flaws.getText().toString());
 
-        FirebaseFirestore
-                .getInstance()
-                .collection(CompanionFragment.COLLECTION_NAME)
-                .document(String.valueOf(firebaseCompanion.getId()))
-                .set(firebaseCompanion);
-
-        updateDisplayedValues();
-        Navigation.findNavController(Objects.requireNonNull(getView())).popBackStack();
+        editCompanionViewModel.saveCompanion(firebaseCompanion);
     }
 
     private List<String> getProficiencies(Map<String, CheckBox> checkboxes) {
@@ -210,22 +224,6 @@ public class EditCompanionFragment extends Fragment {
         ideals = backstoryParent.findViewById(R.id.idealsContent);
         bonds = backstoryParent.findViewById(R.id.bondsContent);
         flaws = backstoryParent.findViewById(R.id.flawsContent);
-    }
-
-    private void loadAdventurer() {
-        int id = getArguments() != null ? getArguments().getInt(CompanionOverviewFragment.ID_KEY) : -1;
-        FirebaseFirestore.getInstance()
-                .collection(CompanionFragment.COLLECTION_NAME)
-                .document(String.valueOf(id))
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
-                        editCompanionViewModel.setCompanion(firebaseCompanion);
-                        updateDisplayedValues();
-                    }
-                });
     }
 
     private void updateDisplayedValues() {
