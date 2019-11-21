@@ -62,7 +62,7 @@ public class CompanionFragment extends Fragment {
 
         int id = getSavedId();
         companionViewModel = ViewModelProviders
-                .of(this, new CompanionViewModelFactory(getActivity().getApplication(), Integer.toString(id)))
+                .of(this, new FirebaseCompanionViewModelFactory(getActivity().getApplication(), Integer.toString(id)))
                 .get(CompanionViewModel.class);
         View root = inflater.inflate(R.layout.companion_fragment, container, false);
 
@@ -99,8 +99,9 @@ public class CompanionFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         if (item.getItemId() == R.id.editButton) {
+            FirebaseCompanion companion = companionViewModel.getCompanion();
             Bundle bundle = new Bundle();
-            bundle.putInt(CompanionOverviewFragment.ID_KEY, companionViewModel.getCompanion().getId());
+            bundle.putInt(CompanionOverviewFragment.ID_KEY, companion.getId());
             Navigation.findNavController(Objects.requireNonNull(getView())).navigate(R.id.companionToEdit, bundle);
             return true;
         }

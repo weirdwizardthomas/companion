@@ -16,7 +16,7 @@ import static com.via.android_development.companion.ui.companion.CompanionFragme
 
 public class CompanionViewModel extends AndroidViewModel {
     private final FirebaseFirestore firestore;
-    private final LiveData liveData;
+    private final LiveData<Task<DocumentSnapshot>> liveData;
     private FirebaseCompanion companion;
 
     public CompanionViewModel(Application application, String observedDocumentPath) {
@@ -25,7 +25,6 @@ public class CompanionViewModel extends AndroidViewModel {
         liveData = new FirestoreQueryLiveData(firestore.collection(COLLECTION_NAME).document(observedDocumentPath));
         companion = new FirebaseCompanion();
     }
-
 
     @NonNull
     public LiveData<Task<DocumentSnapshot>> getdataSnapshotLiveData(){
