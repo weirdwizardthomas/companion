@@ -99,6 +99,8 @@ public class CompanionCreateFragment2 extends Fragment {
             public void onClick(View v) {
                 for (CheckBox checkBox : savingThrowCheckboxes.values())
                     checkBox.setChecked(false);
+                for (CheckBox checkBox : skillCheckboxes.values())
+                    checkBox.setChecked(false);
             }
         });
 

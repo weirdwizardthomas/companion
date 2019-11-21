@@ -17,12 +17,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
 import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
@@ -58,14 +59,31 @@ public class CompanionFragment extends Fragment {
     private Switch statsSwitch;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        companionViewModel = ViewModelProviders.of(this).get(CompanionViewModel.class);
+
+        int id = getSavedId();
+        companionViewModel = ViewModelProviders
+                .of(this, new CompanionViewModelFactory(getActivity().getApplication(), Integer.toString(id)))
+                .get(CompanionViewModel.class);
         View root = inflater.inflate(R.layout.companion_fragment, container, false);
 
         initialiseLayout(root);
         setHasOptionsMenu(true);
 
-        loadAdventurer();
+        LiveData<Task<DocumentSnapshot>> liveData = companionViewModel.getdataSnapshotLiveData();
+        liveData.observe(this, new Observer<Task<DocumentSnapshot>>() {
+            @Override
+            public void onChanged(Task<DocumentSnapshot> documentSnapshotTask) {
+                if (documentSnapshotTask.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = documentSnapshotTask.getResult();
+                    FirebaseCompanion companion = documentSnapshot.toObject(FirebaseCompanion.class);
+                    if (companion != null) {
+                        companionViewModel.setCompanion(companion);
+                        updateDisplayedValues();
+                    }
+                }
 
+            }
+        });
         return root;
     }
 
@@ -75,6 +93,7 @@ public class CompanionFragment extends Fragment {
         inflater.inflate(R.menu.top_edit_options_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,29 +107,13 @@ public class CompanionFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadAdventurer() {
-        SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
-        if (sharedPref.contains(CompanionOverviewFragment.ID_KEY)) {
-            int id = sharedPref.getInt(CompanionOverviewFragment.ID_KEY, -1);
+    private int getSavedId() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 
-            FirebaseFirestore
-                    .getInstance()
-                    .collection(COLLECTION_NAME)
-                    .document(String.valueOf(id))
-                    .get()
-                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if (documentSnapshot.exists()) {
-                                FirebaseCompanion firebaseCompanion = documentSnapshot.toObject(FirebaseCompanion.class);
-                                companionViewModel.setCompanion(firebaseCompanion);
-                                updateDisplayedValues();
-                            }
-                        }
-                    });
-        }
+        return sharedPref.contains(CompanionOverviewFragment.ID_KEY)
+                ? sharedPref.getInt(CompanionOverviewFragment.ID_KEY, -1)
+                : -1;
     }
-
 
     private void initialiseLayout(View root) {
         initialiseButtons(root);
@@ -135,7 +138,6 @@ public class CompanionFragment extends Fragment {
         FirebaseCompanion companion = companionViewModel.getCompanion();
         updateStatButtons(getCompanionAbilityValues());
         name.setText(companion.getName());
-
         String raceAndStringText = companion.getRace() + " " + companion.getProfession();
         raceAndProfession.setText(raceAndStringText);
         String hpText = companion.getHitpoints() + "/" + companion.getMaximalHitpoints();
@@ -162,9 +164,6 @@ public class CompanionFragment extends Fragment {
                 updateStatButtons((isChecked ? getCompanionAbilityModifiers() : getCompanionAbilityValues()));
             }
         });
-
-        //Initialise default values
-        updateStatButtons(getCompanionAbilityValues());
     }
 
     private void updateStatButtons(Map<String, String> dummy) {
