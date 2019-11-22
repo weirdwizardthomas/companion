@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/strength_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeStrength"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/strength_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/strength_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/athletics"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:text="@string/skillsAthletics"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/strength_skill_header" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/dexterity_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeDexterity"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strength_table" />
+
+    <TableLayout
+        android:id="@+id/dexterity_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dexterity_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/acrobatics"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsAcrobatics"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/sleightOfHand"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsSleightOfHand"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/stealth"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsStealth"
+                android:textAllCaps="false" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/intelligence_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeIntelligence"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dexterity_table" />
+
+    <TableLayout
+        android:id="@+id/intelligence_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intelligence_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsArcana"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/history"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsHistory"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/investigation"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsInvestigation"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/nature"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsNature"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/religion"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsReligion"
+                android:textAllCaps="false" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/wisdom_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeWisdom"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intelligence_table" />
+
+    <TableLayout
+        android:id="@+id/wisdom_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wisdom_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/animalHandling"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsAnimalHandling"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/insight"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsInsight"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/medicine"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsMedicine"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/perception"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsPerception"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/survival"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsSurvival"
+                android:textAllCaps="false" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/charisma_skill_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attributeCharisma"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wisdom_table" />
+
+    <TableLayout
+        android:id="@+id/charisma_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/charisma_skill_header">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/deception"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsDeception"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/intimidation"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsIntimidation"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/performance"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsPerformance"
+                android:textAllCaps="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/persuasion"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:text="@string/skillsPersuasion"
+                android:textAllCaps="false" />
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

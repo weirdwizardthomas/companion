@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,79 +8,65 @@
         android:id="@+id/backgroundLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@id/backgroundContent"
-        android:text="@string/labelAdventurerBackground" />
+        android:text="@string/labelAdventurerBackground"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/backgroundContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:importantForAutofill="no" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/traitsLabel"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@id/traitsContent"
-        android:text="@string/labelAdventurerPersonality" />
+        android:text="@string/labelAdventurerPersonalityTraits"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/traitsContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:importantForAutofill="no" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/idealsLabel"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@id/idealsContent"
-        android:text="@string/labelAdventurerIdeals" />
-
-    <EditText
-        android:id="@+id/idealsContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:importantForAutofill="no" />
+        android:text="@string/labelAdventurerIdeals"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/bondsLabel"
+        android:id="@+id/idealsContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/bondsContent"
-        android:text="@string/labelAdventurerBonds" />
-
-    <EditText
-        android:id="@+id/bondsContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:importantForAutofill="no" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/flawsLabel"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:labelFor="@id/flawsContent"
-        android:text="@string/labelAdventurerFlaws" />
+        android:text="@string/labelAdventurerFlaws"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/flawsContent"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/bondsLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:importantForAutofill="no" />
+        android:text="@string/labelAdventurerBonds"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/bondsContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

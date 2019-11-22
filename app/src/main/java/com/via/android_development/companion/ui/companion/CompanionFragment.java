@@ -137,25 +137,28 @@ public class CompanionFragment extends Fragment {
         buttons.put(String.valueOf(Attribute.WISDOM), (Button) root.findViewById(R.id.wisdom));
         buttons.put(String.valueOf(Attribute.CHARISMA), (Button) root.findViewById(R.id.charisma));
 
+
+        View skillsParent = root.findViewById(R.id.skills);
+
         //Skills
-        buttons.put(String.valueOf(Skill.ATHLETICS), (Button) root.findViewById(R.id.athletics));
-        buttons.put(String.valueOf(Skill.ACROBATICS), (Button) root.findViewById(R.id.acrobatics));
-        buttons.put(String.valueOf(Skill.SLEIGHT_OF_HAND), (Button) root.findViewById(R.id.sleightOfHand));
-        buttons.put(String.valueOf(Skill.STEALTH), (Button) root.findViewById(R.id.stealth));
-        buttons.put(String.valueOf(Skill.ARCANA), (Button) root.findViewById(R.id.deception));
-        buttons.put(String.valueOf(Skill.HISTORY), (Button) root.findViewById(R.id.history));
-        buttons.put(String.valueOf(Skill.INVESTIGATION), (Button) root.findViewById(R.id.investigation));
-        buttons.put(String.valueOf(Skill.NATURE), (Button) root.findViewById(R.id.nature));
-        buttons.put(String.valueOf(Skill.RELIGION), (Button) root.findViewById(R.id.religion));
-        buttons.put(String.valueOf(Skill.ANIMAL_HANDLING), (Button) root.findViewById(R.id.animalHandling));
-        buttons.put(String.valueOf(Skill.INSIGHT), (Button) root.findViewById(R.id.insight));
-        buttons.put(String.valueOf(Skill.MEDICINE), (Button) root.findViewById(R.id.medicine));
-        buttons.put(String.valueOf(Skill.PERCEPTION), (Button) root.findViewById(R.id.perception));
-        buttons.put(String.valueOf(Skill.SURVIVAL), (Button) root.findViewById(R.id.survival));
-        buttons.put(String.valueOf(Skill.DECEPTION), (Button) root.findViewById(R.id.deception));
-        buttons.put(String.valueOf(Skill.INTIMIDATION), (Button) root.findViewById(R.id.intimidation));
-        buttons.put(String.valueOf(Skill.PERFORMANCE), (Button) root.findViewById(R.id.performance));
-        buttons.put(String.valueOf(Skill.PERSUASION), (Button) root.findViewById(R.id.persuasion));
+        buttons.put(String.valueOf(Skill.ATHLETICS), (Button) skillsParent.findViewById(R.id.athletics));
+        buttons.put(String.valueOf(Skill.ACROBATICS), (Button) skillsParent.findViewById(R.id.acrobatics));
+        buttons.put(String.valueOf(Skill.SLEIGHT_OF_HAND), (Button) skillsParent.findViewById(R.id.sleightOfHand));
+        buttons.put(String.valueOf(Skill.STEALTH), (Button) skillsParent.findViewById(R.id.stealth));
+        buttons.put(String.valueOf(Skill.ARCANA), (Button) skillsParent.findViewById(R.id.deception));
+        buttons.put(String.valueOf(Skill.HISTORY), (Button) skillsParent.findViewById(R.id.history));
+        buttons.put(String.valueOf(Skill.INVESTIGATION), (Button) skillsParent.findViewById(R.id.investigation));
+        buttons.put(String.valueOf(Skill.NATURE), (Button) skillsParent.findViewById(R.id.nature));
+        buttons.put(String.valueOf(Skill.RELIGION), (Button) skillsParent.findViewById(R.id.religion));
+        buttons.put(String.valueOf(Skill.ANIMAL_HANDLING), (Button) skillsParent.findViewById(R.id.animalHandling));
+        buttons.put(String.valueOf(Skill.INSIGHT), (Button) skillsParent.findViewById(R.id.insight));
+        buttons.put(String.valueOf(Skill.MEDICINE), (Button) skillsParent.findViewById(R.id.medicine));
+        buttons.put(String.valueOf(Skill.PERCEPTION), (Button) skillsParent.findViewById(R.id.perception));
+        buttons.put(String.valueOf(Skill.SURVIVAL), (Button) skillsParent.findViewById(R.id.survival));
+        buttons.put(String.valueOf(Skill.DECEPTION), (Button) skillsParent.findViewById(R.id.deception));
+        buttons.put(String.valueOf(Skill.INTIMIDATION), (Button) skillsParent.findViewById(R.id.intimidation));
+        buttons.put(String.valueOf(Skill.PERFORMANCE), (Button) skillsParent.findViewById(R.id.performance));
+        buttons.put(String.valueOf(Skill.PERSUASION), (Button) skillsParent.findViewById(R.id.persuasion));
 
         addOnClickListenersToButtons();
     }
@@ -172,11 +175,13 @@ public class CompanionFragment extends Fragment {
         speed = root.findViewById(R.id.speedValue);
         initiative = root.findViewById(R.id.initiativeValue);
 
-        background = root.findViewById(R.id.backgroundContent);
-        ideals = root.findViewById(R.id.idealsContent);
-        traits = root.findViewById(R.id.traitsContent);
-        flaws = root.findViewById(R.id.flawsContent);
-        bonds = root.findViewById(R.id.bondsContent);
+        View backstoryParent = root.findViewById(R.id.backstory);
+
+        background = backstoryParent.findViewById(R.id.backgroundContent);
+        ideals = backstoryParent.findViewById(R.id.idealsContent);
+        traits = backstoryParent.findViewById(R.id.traitsContent);
+        flaws = backstoryParent.findViewById(R.id.flawsContent);
+        bonds = backstoryParent.findViewById(R.id.bondsContent);
     }
 
     private void initialiseStatSwitch(View root) {
