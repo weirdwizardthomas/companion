@@ -46,16 +46,6 @@ public class CompanionCreateFragment2 extends Fragment {
     }
 
 
-    private Set<String> getProficiencies(Map<String, CheckBox> checkboxes) {
-        Set<String> proficiencies = new HashSet<>();
-
-        for (Map.Entry<String, CheckBox> entry : checkboxes.entrySet())
-            if (entry.getValue().isChecked())
-                proficiencies.add(entry.getKey());
-
-        return proficiencies;
-    }
-
     private void initialiseLayout(View root) {
         initialiseCheckBoxes(root);
         initialiseBottomButtons(root);
@@ -113,6 +103,16 @@ public class CompanionCreateFragment2 extends Fragment {
             }
         });
 
+    }
+
+    private Set<String> getProficiencies(Map<String, CheckBox> checkboxes) {
+        Set<String> proficiencies = new HashSet<>();
+
+        for (Map.Entry<String, CheckBox> entry : checkboxes.entrySet())
+            if (entry.getValue().isChecked())
+                proficiencies.add(entry.getKey());
+
+        return proficiencies;
     }
 
     private void observeCompanions() {

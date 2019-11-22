@@ -2,21 +2,23 @@ package com.via.android_development.companion.ui.companion_edit;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-public class FirebaseEditCompanionViewModelFactory implements ViewModelProvider.Factory {
+public class EditCompanionViewModelFactory implements ViewModelProvider.Factory {
     private Application mApplication;
     private String mParam;
 
-    public FirebaseEditCompanionViewModelFactory(Application application, String param) {
+    public EditCompanionViewModelFactory(Application application, String param) {
         mApplication = application;
         mParam = param;
     }
 
 
+    @NonNull
     @Override
-    public <T extends ViewModel> T create(Class<T> modelClass) {
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new EditCompanionViewModel(mApplication, mParam);
     }
 }

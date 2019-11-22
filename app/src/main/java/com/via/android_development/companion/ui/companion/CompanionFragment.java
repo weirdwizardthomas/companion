@@ -26,9 +26,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
-import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
+import com.via.android_development.companion.ui.companions_overview.CompanionOverviewViewModel;
 import com.via.android_development.companion.utility.DieRoller;
-import com.via.android_development.companion.utility.StatCalculator;
 import com.via.android_development.companion.utility.enums.Attribute;
 import com.via.android_development.companion.utility.enums.Skill;
 
@@ -62,7 +61,7 @@ public class CompanionFragment extends Fragment {
 
         int id = getSavedId();
         companionViewModel = ViewModelProviders
-                .of(this, new FirebaseCompanionViewModelFactory(getActivity().getApplication(), Integer.toString(id)))
+                .of(this, new CompanionViewModelFactory(getActivity().getApplication(), Integer.toString(id)))
                 .get(CompanionViewModel.class);
         View root = inflater.inflate(R.layout.companion_fragment, container, false);
 
@@ -94,87 +93,17 @@ public class CompanionFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         if (item.getItemId() == R.id.editButton) {
             FirebaseCompanion companion = companionViewModel.getCompanion();
             Bundle bundle = new Bundle();
-            bundle.putInt(CompanionOverviewFragment.ID_KEY, companion.getId());
+            bundle.putInt(CompanionOverviewViewModel.ID_KEY, companion.getId());
             Navigation.findNavController(Objects.requireNonNull(getView())).navigate(R.id.companionToEdit, bundle);
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private int getSavedId() {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-
-        return sharedPref.contains(CompanionOverviewFragment.ID_KEY)
-                ? sharedPref.getInt(CompanionOverviewFragment.ID_KEY, -1)
-                : -1;
-    }
-
-    private void initialiseLayout(View root) {
-        initialiseButtons(root);
-        initialiseStatSwitch(root);
-
-        name = root.findViewById(R.id.name);
-        raceAndProfession = root.findViewById(R.id.raceAndProfession);
-        hitpoints = root.findViewById(R.id.hitpointsValue);
-        temporaryHitpoints = root.findViewById(R.id.temporaryHitpointsValue);
-        armourClass = root.findViewById(R.id.armourClassValue);
-        speed = root.findViewById(R.id.speedValue);
-        initiative = root.findViewById(R.id.initiativeValue);
-
-        background = root.findViewById(R.id.backgroundContent);
-        ideals = root.findViewById(R.id.idealsContent);
-        traits = root.findViewById(R.id.traitsContent);
-        flaws = root.findViewById(R.id.flawsContent);
-        bonds = root.findViewById(R.id.bondsContent);
-    }
-
-    private void updateDisplayedValues() {
-        FirebaseCompanion companion = companionViewModel.getCompanion();
-        updateStatButtons(getCompanionAbilityValues());
-        name.setText(companion.getName());
-        String raceAndStringText = companion.getRace() + " " + companion.getProfession();
-        raceAndProfession.setText(raceAndStringText);
-        String hpText = companion.getHitpoints() + "/" + companion.getMaximalHitpoints();
-        hitpoints.setText(hpText);
-
-        temporaryHitpoints.setText(Integer.toString(companion.getTemporaryHitpoints()));
-        armourClass.setText(Integer.toString(companion.getArmourClass()));
-        speed.setText(Integer.toString(companion.getSpeed()));
-        initiative.setText(Integer.toString(companion.getInitiative()));
-        background.setText(companion.getBackground());
-        ideals.setText(companion.getIdeals());
-        traits.setText(companion.getPersonalityTraits());
-        flaws.setText(companion.getFlaws());
-        bonds.setText(companion.getBonds());
-    }
-
-    private void initialiseStatSwitch(View root) {
-        statsSwitch = root.findViewById(R.id.stats_switch);
-        statsSwitch.setChecked(false);
-
-        statsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                updateStatButtons((isChecked ? getCompanionAbilityModifiers() : getCompanionAbilityValues()));
-            }
-        });
-    }
-
-    private void updateStatButtons(Map<String, String> dummy) {
-        for (Map.Entry<String, String> entry : dummy.entrySet())
-            updateButton(entry.getKey(), entry.getKey(), entry.getValue());
-    }
-
-    private void updateButton(String key, String label, String value) {
-        String dummy = label + " " + value;
-        Objects.requireNonNull(buttons.get(key)).setText(dummy);
     }
 
     private void addOnClickListenersToButtons() {
@@ -183,10 +112,18 @@ public class CompanionFragment extends Fragment {
             entry.getValue().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(), Integer.toString(DieRoller.getInstance().rollDie(20)), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), Integer.toString(DieRoller.getInstance().rollDie(DieRoller.D20)), Toast.LENGTH_SHORT).show();
                 }
             });
         }
+    }
+
+    private int getSavedId() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+        return sharedPref.contains(CompanionOverviewViewModel.ID_KEY)
+                ? sharedPref.getInt(CompanionOverviewViewModel.ID_KEY, -1)
+                : -1;
     }
 
     private void initialiseButtons(View root) {
@@ -223,32 +160,68 @@ public class CompanionFragment extends Fragment {
         addOnClickListenersToButtons();
     }
 
-    private Map<String, String> getCompanionAbilityValues() {
-        FirebaseCompanion companion = companionViewModel.getCompanion();
-        Map<String, String> dummy = new HashMap<>();
+    private void initialiseLayout(View root) {
+        initialiseButtons(root);
+        initialiseStatSwitch(root);
 
-        dummy.put(String.valueOf(Attribute.STRENGTH), Integer.toString(companion.getStrength()));
-        dummy.put(String.valueOf(Attribute.DEXTERITY), Integer.toString(companion.getDexterity()));
-        dummy.put(String.valueOf(Attribute.CONSTITUTION), Integer.toString(companion.getConstitution()));
-        dummy.put(String.valueOf(Attribute.INTELLIGENCE), Integer.toString(companion.getIntelligence()));
-        dummy.put(String.valueOf(Attribute.WISDOM), Integer.toString(companion.getWisdom()));
-        dummy.put(String.valueOf(Attribute.CHARISMA), Integer.toString(companion.getCharisma()));
+        name = root.findViewById(R.id.name);
+        raceAndProfession = root.findViewById(R.id.raceAndProfession);
+        hitpoints = root.findViewById(R.id.hitpointsValue);
+        temporaryHitpoints = root.findViewById(R.id.temporaryHitpointsValue);
+        armourClass = root.findViewById(R.id.armourClassValue);
+        speed = root.findViewById(R.id.speedValue);
+        initiative = root.findViewById(R.id.initiativeValue);
 
-        return dummy;
+        background = root.findViewById(R.id.backgroundContent);
+        ideals = root.findViewById(R.id.idealsContent);
+        traits = root.findViewById(R.id.traitsContent);
+        flaws = root.findViewById(R.id.flawsContent);
+        bonds = root.findViewById(R.id.bondsContent);
     }
 
-    private Map<String, String> getCompanionAbilityModifiers() {
-        FirebaseCompanion companion = companionViewModel.getCompanion();
-        Map<String, String> dummy = new HashMap<>();
+    private void initialiseStatSwitch(View root) {
+        statsSwitch = root.findViewById(R.id.stats_switch);
+        statsSwitch.setChecked(false);
 
-        dummy.put(getString(R.string.attributeStrength), StatCalculator.abilityModifierAsString(companion.getStrength()));
-        dummy.put(getString(R.string.attributeDexterity), StatCalculator.abilityModifierAsString(companion.getDexterity()));
-        dummy.put(getString(R.string.attributeConstitution), StatCalculator.abilityModifierAsString(companion.getConstitution()));
-        dummy.put(getString(R.string.attributeIntelligence), StatCalculator.abilityModifierAsString(companion.getIntelligence()));
-        dummy.put(getString(R.string.attributeWisdom), StatCalculator.abilityModifierAsString(companion.getWisdom()));
-        dummy.put(getString(R.string.attributeCharisma), StatCalculator.abilityModifierAsString(companion.getCharisma()));
-
-        return dummy;
+        statsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateStatButtons((
+                        isChecked
+                                ? companionViewModel.getCompanionAbilityModifiers()
+                                : companionViewModel.getCompanionAbilityValues()));
+            }
+        });
     }
 
+    private void updateDisplayedValues() {
+        updateStatButtons(companionViewModel.getCompanionAbilityValues());
+
+        FirebaseCompanion companion = companionViewModel.getCompanion();
+        name.setText(companion.getName());
+        String raceAndStringText = companion.getRace() + " " + companion.getProfession();
+        raceAndProfession.setText(raceAndStringText);
+        String hpText = companion.getHitpoints() + "/" + companion.getMaximalHitpoints();
+        hitpoints.setText(hpText);
+
+        temporaryHitpoints.setText(Integer.toString(companion.getTemporaryHitpoints()));
+        armourClass.setText(Integer.toString(companion.getArmourClass()));
+        speed.setText(Integer.toString(companion.getSpeed()));
+        initiative.setText(Integer.toString(companion.getInitiative()));
+        background.setText(companion.getBackground());
+        ideals.setText(companion.getIdeals());
+        traits.setText(companion.getPersonalityTraits());
+        flaws.setText(companion.getFlaws());
+        bonds.setText(companion.getBonds());
+    }
+
+    private void updateStatButtons(Map<String, String> dummy) {
+        for (Map.Entry<String, String> entry : dummy.entrySet())
+            updateButtonLabel(entry.getKey(), entry.getKey(), entry.getValue());
+    }
+
+    private void updateButtonLabel(String key, String label, String value) {
+        String dummy = label + " " + value;
+        Objects.requireNonNull(buttons.get(key)).setText(dummy);
+    }
 }

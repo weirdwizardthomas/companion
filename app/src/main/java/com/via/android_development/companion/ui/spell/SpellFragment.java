@@ -31,14 +31,7 @@ public class SpellFragment extends Fragment {
     private TextView casting;
     private TextView components;
 
-    private TextView descriptionLabel;
     private TextView higherLevelsLabel;
-    private TextView rangeLabel;
-    private TextView durationLabel;
-    private TextView levelLabel;
-    private TextView concentrationLabel;
-    private TextView castingLabel;
-    private TextView componentsLabel;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,29 +43,7 @@ public class SpellFragment extends Fragment {
 
         adjustForMenu(root);
 
-        spellViewModel.getSpell(dummy).observe(this, new Observer<Spell>() {
-            @Override
-            public void onChanged(Spell spell) {
-                name.setText(spell.getName());
-                description.setText(spell.getDescription().get(0));
-
-                if (spell.getHigherLevel() == null) {
-                    higherLevels.setVisibility(View.GONE);
-                    higherLevelsLabel.setVisibility(View.GONE);
-                } else {
-                    higherLevels.setVisibility(View.VISIBLE);
-                    higherLevelsLabel.setVisibility(View.VISIBLE);
-                    higherLevels.setText(spell.getHigherLevel().get(0));
-                }
-
-                range.setText(spell.getRange());
-                duration.setText(spell.getDuration());
-                level.setText(Integer.toString(spell.getLevel()));
-                concentration.setText(spell.getConcentration());
-                casting.setText(spell.getCasting_time());
-                components.setText(spell.getComponentsAsString());
-            }
-        });
+        observeSpell(dummy);
         return root;
     }
 
@@ -96,14 +67,38 @@ public class SpellFragment extends Fragment {
         casting = root.findViewById(R.id.castingContent);
         components = root.findViewById(R.id.componentsContent);
 
-        descriptionLabel = root.findViewById(R.id.descriptionLabel);
+
         higherLevelsLabel = root.findViewById(R.id.higherLevelLabel);
-        rangeLabel = root.findViewById(R.id.rangeLabel);
-        durationLabel = root.findViewById(R.id.durationLabel);
-        levelLabel = root.findViewById(R.id.levelLabel);
-        concentrationLabel = root.findViewById(R.id.concentrationLabel);
-        castingLabel = root.findViewById(R.id.castingLabel);
-        componentsLabel = root.findViewById(R.id.componentsLabel);
+    }
+
+    private void observeSpell(int dummy) {
+        spellViewModel.getSpell(dummy).observe(this, new Observer<Spell>() {
+            @Override
+            public void onChanged(Spell spell) {
+                updateDisplayedValues(spell);
+            }
+        });
+    }
+
+    private void updateDisplayedValues(Spell spell) {
+        name.setText(spell.getName());
+        description.setText(spell.getDescription().get(0));
+
+        if (spell.getHigherLevel() == null) {
+            higherLevels.setVisibility(View.GONE);
+            higherLevelsLabel.setVisibility(View.GONE);
+        } else {
+            higherLevels.setVisibility(View.VISIBLE);
+            higherLevelsLabel.setVisibility(View.VISIBLE);
+            higherLevels.setText(spell.getHigherLevel().get(0));
+        }
+
+        range.setText(spell.getRange());
+        duration.setText(spell.getDuration());
+        level.setText(Integer.toString(spell.getLevel()));
+        concentration.setText(spell.getConcentration());
+        casting.setText(spell.getCasting_time());
+        components.setText(spell.getComponentsAsString());
     }
 
 }

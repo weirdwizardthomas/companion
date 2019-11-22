@@ -29,28 +29,20 @@ public class CompanionCreateViewModel extends AndroidViewModel {
         adventurer = new Companion();
     }
 
-    public void insert(Companion adventurer) {
-        companionRepository.insert(adventurer);
-    }
-
-    public LiveData<List<Companion>> getAllCompanions() {
-        return companionRepository.getAllCompanions();
-    }
-
     public void deleteAllCompanions() {
         companionRepository.deleteAllCompanions();
     }
 
-    public void update(Companion adventurer) {
-        companionRepository.update(adventurer);
-    }
-
-    public static String[] getAllRaces() {
-        return EnumTranslator.getAllRaces();
+    public static String getAlignmentByIndex(int index) {
+        return EnumTranslator.getAllAlignments()[index];
     }
 
     public static String[] getAllProfessions() {
         return EnumTranslator.getAllProfessions();
+    }
+
+    public static String[] getAllRaces() {
+        return EnumTranslator.getAllRaces();
     }
 
     public static String[] getAllAlignments() {
@@ -61,20 +53,24 @@ public class CompanionCreateViewModel extends AndroidViewModel {
         return EnumTranslator.getAllRaces()[index];
     }
 
-    public static String getProfessionByIndex(int index) {
-        return EnumTranslator.getAllProfessions()[index];
-    }
-
-    public static String getAlignmentByIndex(int index) {
-        return EnumTranslator.getAllAlignments()[index];
-    }
-
     public Companion getAdventurer() {
         return adventurer;
     }
 
+    public static String getProfessionByIndex(int index) {
+        return EnumTranslator.getAllProfessions()[index];
+    }
+
     public void setAdventurer(Companion adventurer) {
         this.adventurer = adventurer;
+    }
+
+    public LiveData<List<Companion>> getAllCompanions() {
+        return companionRepository.getAllCompanions();
+    }
+
+    public void insert(Companion adventurer) {
+        companionRepository.insert(adventurer);
     }
 
     public void saveToFirebase() {
@@ -83,5 +79,9 @@ public class CompanionCreateViewModel extends AndroidViewModel {
         db.collection(CompanionFragment.COLLECTION_NAME)
                 .document(String.valueOf(firestoreAdventurer.getId()))
                 .set(firestoreAdventurer);
+    }
+
+    public void update(Companion adventurer) {
+        companionRepository.update(adventurer);
     }
 }

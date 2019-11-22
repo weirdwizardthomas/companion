@@ -58,26 +58,6 @@ public class CompanionCreateFragment3 extends Fragment {
         initialiseBottomButtons(root);
     }
 
-    private void observeCompanions() {
-        Observer<List<Companion>> companionsObserver = new Observer<List<Companion>>() {
-            @Override
-            public void onChanged(List<Companion> companions) {
-                companionCreateViewModel.setAdventurer(companions.get(0));
-                updateDisplayedValues();
-            }
-        };
-
-        companionCreateViewModel.getAllCompanions().observe(this, companionsObserver);
-    }
-
-    private void initialiseTextInputs(View root) {
-        backgroundInput = root.findViewById(R.id.background_edit_text);
-        traitsInput = root.findViewById(R.id.personality_traits_edit_text);
-        idealsInput = root.findViewById(R.id.ideals_edit_text);
-        bondsInput = root.findViewById(R.id.bonds_edit_text);
-        flawsInput = root.findViewById(R.id.flaws_edit_text);
-    }
-
     private void initialiseAlignmentPicker(View root) {
         alignmentPicker = root.findViewById(R.id.alignmentPicker);
         alignmentPicker.setMinValue(1);
@@ -109,6 +89,26 @@ public class CompanionCreateFragment3 extends Fragment {
 
     }
 
+    private void initialiseTextInputs(View root) {
+        backgroundInput = root.findViewById(R.id.background_edit_text);
+        traitsInput = root.findViewById(R.id.personality_traits_edit_text);
+        idealsInput = root.findViewById(R.id.ideals_edit_text);
+        bondsInput = root.findViewById(R.id.bonds_edit_text);
+        flawsInput = root.findViewById(R.id.flaws_edit_text);
+    }
+
+    private void observeCompanions() {
+        Observer<List<Companion>> companionsObserver = new Observer<List<Companion>>() {
+            @Override
+            public void onChanged(List<Companion> companions) {
+                companionCreateViewModel.setAdventurer(companions.get(0));
+                updateDisplayedValues();
+            }
+        };
+
+        companionCreateViewModel.getAllCompanions().observe(this, companionsObserver);
+    }
+
     private void resetCompanion() {
         Companion dummy = companionCreateViewModel.getAdventurer();
         dummy.setBackground("");
@@ -129,27 +129,6 @@ public class CompanionCreateFragment3 extends Fragment {
         idealsInput.setText("");
         bondsInput.setText("");
         flawsInput.setText("");
-    }
-
-    private void updateDisplayedValues() {
-        Companion dummy = companionCreateViewModel.getAdventurer();
-        updatePickerValue(alignmentPicker, dummy.getAlignment(), String.valueOf(Alignment.TRUE_NEUTRAL));
-        backgroundInput.setText(dummy.getBackground());
-        traitsInput.setText(dummy.getPersonalityTraits());
-        idealsInput.setText(dummy.getIdeals());
-        bondsInput.setText(dummy.getBonds());
-        flawsInput.setText(dummy.getFlaws());
-    }
-
-    private void updateCompanionInstance() {
-        Companion dummy = companionCreateViewModel.getAdventurer();
-        dummy.setBackground(backgroundInput.getText().toString());
-        dummy.setAlignment(CompanionCreateViewModel.getAlignmentByIndex(alignmentPicker.getValue() - 1));
-        dummy.setBonds(bondsInput.getText().toString());
-        dummy.setFlaws(flawsInput.getText().toString());
-        dummy.setPersonalityTraits(traitsInput.getText().toString());
-        dummy.setIdeals(idealsInput.getText().toString());
-
     }
 
     private void saveInstanceToFirestore() {
@@ -173,6 +152,27 @@ public class CompanionCreateFragment3 extends Fragment {
         dummy.setId(nextID);
         companionCreateViewModel.setAdventurer(dummy);
         companionCreateViewModel.saveToFirebase();
+    }
+
+    private void updateDisplayedValues() {
+        Companion dummy = companionCreateViewModel.getAdventurer();
+        updatePickerValue(alignmentPicker, dummy.getAlignment(), String.valueOf(Alignment.TRUE_NEUTRAL));
+        backgroundInput.setText(dummy.getBackground());
+        traitsInput.setText(dummy.getPersonalityTraits());
+        idealsInput.setText(dummy.getIdeals());
+        bondsInput.setText(dummy.getBonds());
+        flawsInput.setText(dummy.getFlaws());
+    }
+
+    private void updateCompanionInstance() {
+        Companion dummy = companionCreateViewModel.getAdventurer();
+        dummy.setBackground(backgroundInput.getText().toString());
+        dummy.setAlignment(CompanionCreateViewModel.getAlignmentByIndex(alignmentPicker.getValue() - 1));
+        dummy.setBonds(bondsInput.getText().toString());
+        dummy.setFlaws(flawsInput.getText().toString());
+        dummy.setPersonalityTraits(traitsInput.getText().toString());
+        dummy.setIdeals(idealsInput.getText().toString());
+
     }
 
     private void updatePickerValue(NumberPicker picker, String item, String defaultValue) {

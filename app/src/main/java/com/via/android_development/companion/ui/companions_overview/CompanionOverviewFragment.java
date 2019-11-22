@@ -34,8 +34,7 @@ import java.util.Objects;
 
 public class CompanionOverviewFragment extends Fragment implements CompanionAdapter.OnItemClickListener {
 
-    public static final String ID_KEY = "companionId";
-    public static final String IS_OPEN_FROM_OVERVIEW = "openFromOverview";
+
 
     private RecyclerView companionsRecyclerView;
     private CompanionAdapter companionsAdapter;
@@ -88,7 +87,7 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putBoolean(IS_OPEN_FROM_OVERVIEW, true);
+                bundle.putBoolean(CompanionOverviewViewModel.IS_OPEN_FROM_OVERVIEW, true);
                 Navigation.findNavController(root).navigate(R.id.overviewToCreateAction, bundle);
             }
         });
@@ -98,7 +97,7 @@ public class CompanionOverviewFragment extends Fragment implements CompanionAdap
     public void onItemClick(FirebaseCompanion item) {
         SharedPreferences sharedPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(ID_KEY, item.getId());
+        editor.putInt(CompanionOverviewViewModel.ID_KEY, item.getId());
         editor.apply();
         Navigation.findNavController(Objects.requireNonNull(this.getView())).navigate(R.id.overviewToAdventurer);
     }

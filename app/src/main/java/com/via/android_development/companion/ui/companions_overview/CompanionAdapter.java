@@ -17,7 +17,6 @@ import com.via.android_development.companion.persistence.firebase.FirebaseCompan
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment.ID_KEY;
 
 public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.ViewHolder> {
     private List<FirebaseCompanion> data;
@@ -77,7 +76,7 @@ public class CompanionAdapter extends RecyclerView.Adapter<CompanionAdapter.View
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putInt(ID_KEY, companionId);
+                    bundle.putInt(CompanionOverviewViewModel.ID_KEY, companionId);
                     Navigation.findNavController(itemView).navigate(R.id.overviewToEdit, bundle);
                 }
             });

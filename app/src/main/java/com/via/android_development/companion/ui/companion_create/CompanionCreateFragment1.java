@@ -17,7 +17,7 @@ import androidx.navigation.Navigation;
 import com.shawnlin.numberpicker.NumberPicker;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.local.Companion;
-import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
+import com.via.android_development.companion.ui.companions_overview.CompanionOverviewViewModel;
 import com.via.android_development.companion.utility.StatCalculator;
 import com.via.android_development.companion.utility.enums.Attribute;
 import com.via.android_development.companion.utility.enums.Profession;
@@ -50,7 +50,7 @@ public class CompanionCreateFragment1 extends Fragment {
 
         companionCreateViewModel = ViewModelProviders.of(this).get(CompanionCreateViewModel.class);
 
-        boolean openedFromOverview = Objects.requireNonNull(getArguments()).getBoolean(CompanionOverviewFragment.IS_OPEN_FROM_OVERVIEW);
+        boolean openedFromOverview = Objects.requireNonNull(getArguments()).getBoolean(CompanionOverviewViewModel.IS_OPEN_FROM_OVERVIEW);
 
         if (openedFromOverview) {
             //wipe and create a new character

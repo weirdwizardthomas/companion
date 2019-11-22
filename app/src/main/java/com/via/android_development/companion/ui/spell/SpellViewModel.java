@@ -19,5 +19,4 @@ public class SpellViewModel extends AndroidViewModel {
     public LiveData<Spell> getSpell(int index) {
         return spellRepository.getSpell(index);
     }
-
 }

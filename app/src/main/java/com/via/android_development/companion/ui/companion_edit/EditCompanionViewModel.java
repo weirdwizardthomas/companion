@@ -29,7 +29,7 @@ public class EditCompanionViewModel extends AndroidViewModel {
     }
 
     @NonNull
-    public LiveData<Task<DocumentSnapshot>> getdataSnapshotLiveData() {
+    public LiveData<Task<DocumentSnapshot>> getDataSnapshotLiveData() {
         return liveData;
     }
 
@@ -37,13 +37,13 @@ public class EditCompanionViewModel extends AndroidViewModel {
         return companion;
     }
 
-    public void setCompanion(FirebaseCompanion companion) {
-        this.companion = companion;
-    }
-
     public void saveCompanion(FirebaseCompanion companion) {
         firestore.collection(CompanionFragment.COLLECTION_NAME)
                 .document(String.valueOf(companion.getId()))
                 .set(companion);
+    }
+
+    public void setCompanion(FirebaseCompanion companion) {
+        this.companion = companion;
     }
 }

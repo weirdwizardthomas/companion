@@ -3,6 +3,7 @@ package com.via.android_development.companion.utility;
 import java.util.Random;
 
 public class DieRoller {
+    public static final int D20 = 20;
 
     private static DieRoller instance;
     private final Random random;

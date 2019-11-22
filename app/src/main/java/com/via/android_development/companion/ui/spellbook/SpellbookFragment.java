@@ -31,8 +31,13 @@ public class SpellbookFragment extends Fragment implements SpellAdapter.OnItemCl
         spellbookViewModel = ViewModelProviders.of(this).get(SpellbookViewModel.class);
         View root = inflater.inflate(R.layout.spellbook_fragment, container, false);
 
-        spellAdapter = new SpellAdapter(this);
+        initialiseRecyclerView(root);
+        observeSpells();
 
+        return root;
+    }
+
+    private void observeSpells() {
         Observer<List<BriefSpell>> spellObserver = new Observer<List<BriefSpell>>() {
             @Override
             public void onChanged(List<BriefSpell> briefSpells) {
@@ -41,12 +46,14 @@ public class SpellbookFragment extends Fragment implements SpellAdapter.OnItemCl
         };
 
         spellbookViewModel.getBriefSpells().observe(this, spellObserver);
+    }
+
+    private void initialiseRecyclerView(View root) {
+        spellAdapter = new SpellAdapter(this);
         spellRecyclerView = root.findViewById(R.id.spellsRecyclerView);
         spellRecyclerView.hasFixedSize();
         spellRecyclerView.setAdapter(spellAdapter);
         spellRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
-        return root;
     }
 
     @Override

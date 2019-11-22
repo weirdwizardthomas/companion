@@ -24,7 +24,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.via.android_development.companion.R;
 import com.via.android_development.companion.persistence.firebase.FirebaseCompanion;
-import com.via.android_development.companion.ui.companions_overview.CompanionOverviewFragment;
+import com.via.android_development.companion.ui.companions_overview.CompanionOverviewViewModel;
 import com.via.android_development.companion.utility.EnumTranslator;
 
 import java.util.ArrayList;
@@ -58,10 +58,12 @@ public class EditCompanionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        int id = getArguments() != null ? getArguments().getInt(CompanionOverviewFragment.ID_KEY) : -1;
+        int id = getArguments() != null ? getArguments().getInt(CompanionOverviewViewModel.ID_KEY) : -1;
 
         editCompanionViewModel = ViewModelProviders
-                .of(this, new FirebaseEditCompanionViewModelFactory(getActivity().getApplication(), Integer.toString(id)))
+                .of(this, new EditCompanionViewModelFactory(
+                        Objects.requireNonNull(getActivity()).getApplication(),
+                        Integer.toString(id)))
                 .get(EditCompanionViewModel.class);
 
         View root = inflater.inflate(R.layout.companion_edit_fragment, container, false);
@@ -69,7 +71,7 @@ public class EditCompanionFragment extends Fragment {
         setHasOptionsMenu(true);
         initialiseLayout(root);
 
-        LiveData<Task<DocumentSnapshot>> liveData = editCompanionViewModel.getdataSnapshotLiveData();
+        LiveData<Task<DocumentSnapshot>> liveData = editCompanionViewModel.getDataSnapshotLiveData();
         liveData.observe(this, new Observer<Task<DocumentSnapshot>>() {
             @Override
             public void onChanged(Task<DocumentSnapshot> documentSnapshotTask) {
@@ -105,30 +107,6 @@ public class EditCompanionFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateAdventurerInstance() {
-        FirebaseCompanion firestoreAdventurer = editCompanionViewModel.getCompanion();
-
-        firestoreAdventurer.setName(name.getText().toString());
-        firestoreAdventurer.setRace(raceSpinner.getSelectedItem().toString());
-        firestoreAdventurer.setProfession(professionSpinner.getSelectedItem().toString());
-        firestoreAdventurer.setAlignment(alignmentSpinner.getSelectedItem().toString());
-        firestoreAdventurer.setStrength(attributes.get(0).getValue());
-        firestoreAdventurer.setDexterity(attributes.get(1).getValue());
-        firestoreAdventurer.setConstitution(attributes.get(2).getValue());
-        firestoreAdventurer.setIntelligence(attributes.get(3).getValue());
-        firestoreAdventurer.setWisdom(attributes.get(4).getValue());
-        firestoreAdventurer.setCharisma(attributes.get(5).getValue());
-        firestoreAdventurer.setSavingThrowProficiencies(getProficiencies(savingThrowCheckboxes));
-        firestoreAdventurer.setSkillProficiencies(getProficiencies(skillCheckboxes));
-        firestoreAdventurer.setBackground(background.getText().toString());
-        firestoreAdventurer.setPersonalityTraits(traits.getText().toString());
-        firestoreAdventurer.setIdeals(ideals.getText().toString());
-        firestoreAdventurer.setBonds(bonds.getText().toString());
-        firestoreAdventurer.setFlaws(flaws.getText().toString());
-
-        editCompanionViewModel.saveCompanion(firestoreAdventurer);
-    }
-
     private List<String> getProficiencies(Map<String, CheckBox> checkboxes) {
         List<String> proficiencies = new ArrayList<>();
 
@@ -139,16 +117,6 @@ public class EditCompanionFragment extends Fragment {
         return proficiencies;
     }
 
-    private void initialiseLayout(View root) {
-        initialiseName(root);
-        initialiseRaceSpinner(root);
-        initialiseProfessionSpinner(root);
-        initialiseAlignmentSpinner(root);
-        initialiseAttributes(root);
-        initialiseCheckboxes(root);
-        initialiseBackstory(root);
-    }
-
     private void initialiseAlignmentSpinner(View root) {
         alignmentSpinner = root.findViewById(R.id.alignmentSpinner);
         ArrayAdapter<String> alignments = new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, EnumTranslator.getAllAlignmentsList());
@@ -156,8 +124,24 @@ public class EditCompanionFragment extends Fragment {
         alignmentSpinner.setAdapter(alignments);
     }
 
-    private void initialiseName(View root) {
-        name = root.findViewById(R.id.nameInput);
+    private void initialiseAttributes(View root) {
+        View attributeParent = root.findViewById(R.id.stats);
+        attributes = new ArrayList<>();
+        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.strength), getString(R.string.attributeStrength)));
+        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.dexterity), getString(R.string.attributeDexterity)));
+        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.constitution), getString(R.string.attributeConstitution)));
+        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.intelligence), getString(R.string.attributeIntelligence)));
+        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.wisdom), getString(R.string.attributeWisdom)));
+        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.charisma), getString(R.string.attributeCharisma)));
+    }
+
+    private void initialiseBackstory(View root) {
+        View backstoryParent = root.findViewById(R.id.backstory);
+        background = backstoryParent.findViewById(R.id.backgroundContent);
+        traits = backstoryParent.findViewById(R.id.traitsContent);
+        ideals = backstoryParent.findViewById(R.id.idealsContent);
+        bonds = backstoryParent.findViewById(R.id.bondsContent);
+        flaws = backstoryParent.findViewById(R.id.flawsContent);
     }
 
     private void initialiseCheckboxes(View root) {
@@ -192,6 +176,20 @@ public class EditCompanionFragment extends Fragment {
         skillCheckboxes.put(getString(R.string.attributeCharisma), (CheckBox) parent.findViewById(R.id.charisma));
     }
 
+    private void initialiseLayout(View root) {
+        initialiseName(root);
+        initialiseRaceSpinner(root);
+        initialiseProfessionSpinner(root);
+        initialiseAlignmentSpinner(root);
+        initialiseAttributes(root);
+        initialiseCheckboxes(root);
+        initialiseBackstory(root);
+    }
+
+    private void initialiseName(View root) {
+        name = root.findViewById(R.id.nameInput);
+    }
+
     private void initialiseProfessionSpinner(View root) {
         professionSpinner = root.findViewById(R.id.professionSpinner);
         ArrayAdapter<String> professions = new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, EnumTranslator.getAllProfessionsList());
@@ -204,26 +202,6 @@ public class EditCompanionFragment extends Fragment {
         ArrayAdapter<String> races = new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, EnumTranslator.getAllRacesList());
         races.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         raceSpinner.setAdapter(races);
-    }
-
-    private void initialiseAttributes(View root) {
-        View attributeParent = root.findViewById(R.id.stats);
-        attributes = new ArrayList<>();
-        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.strength), getString(R.string.attributeStrength)));
-        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.dexterity), getString(R.string.attributeDexterity)));
-        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.constitution), getString(R.string.attributeConstitution)));
-        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.intelligence), getString(R.string.attributeIntelligence)));
-        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.wisdom), getString(R.string.attributeWisdom)));
-        attributes.add(new AttributeWrapper(attributeParent.findViewById(R.id.charisma), getString(R.string.attributeCharisma)));
-    }
-
-    private void initialiseBackstory(View root) {
-        View backstoryParent = root.findViewById(R.id.backstory);
-        background = backstoryParent.findViewById(R.id.backgroundContent);
-        traits = backstoryParent.findViewById(R.id.traitsContent);
-        ideals = backstoryParent.findViewById(R.id.idealsContent);
-        bonds = backstoryParent.findViewById(R.id.bondsContent);
-        flaws = backstoryParent.findViewById(R.id.flawsContent);
     }
 
     private void updateDisplayedValues() {
@@ -260,6 +238,30 @@ public class EditCompanionFragment extends Fragment {
         ideals.setText(companion.getIdeals());
         bonds.setText(companion.getBonds());
         flaws.setText(companion.getFlaws());
+    }
+
+    private void updateAdventurerInstance() {
+        FirebaseCompanion firestoreAdventurer = editCompanionViewModel.getCompanion();
+
+        firestoreAdventurer.setName(name.getText().toString());
+        firestoreAdventurer.setRace(raceSpinner.getSelectedItem().toString());
+        firestoreAdventurer.setProfession(professionSpinner.getSelectedItem().toString());
+        firestoreAdventurer.setAlignment(alignmentSpinner.getSelectedItem().toString());
+        firestoreAdventurer.setStrength(attributes.get(0).getValue());
+        firestoreAdventurer.setDexterity(attributes.get(1).getValue());
+        firestoreAdventurer.setConstitution(attributes.get(2).getValue());
+        firestoreAdventurer.setIntelligence(attributes.get(3).getValue());
+        firestoreAdventurer.setWisdom(attributes.get(4).getValue());
+        firestoreAdventurer.setCharisma(attributes.get(5).getValue());
+        firestoreAdventurer.setSavingThrowProficiencies(getProficiencies(savingThrowCheckboxes));
+        firestoreAdventurer.setSkillProficiencies(getProficiencies(skillCheckboxes));
+        firestoreAdventurer.setBackground(background.getText().toString());
+        firestoreAdventurer.setPersonalityTraits(traits.getText().toString());
+        firestoreAdventurer.setIdeals(ideals.getText().toString());
+        firestoreAdventurer.setBonds(bonds.getText().toString());
+        firestoreAdventurer.setFlaws(flaws.getText().toString());
+
+        editCompanionViewModel.saveCompanion(firestoreAdventurer);
     }
 
 
